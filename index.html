@@ -342,5 +342,27 @@
     renderCollections(); renderProducts(); renderReviews();
     enableDragScroll('collectionScroll'); enableDragScroll('reviewSlider');
 </script>
+
+<script>
+    // Smooth video loop - hides the restart jerk
+    const video = document.getElementById('heroVideo');
+    if (video) {
+        video.addEventListener('timeupdate', function() {
+            // If video is near the end (last 0.3 seconds)
+            if (video.duration - video.currentTime < 0.3) {
+                video.style.opacity = '0.98';
+                setTimeout(() => {
+                    video.style.opacity = '1';
+                }, 50);
+            }
+        });
+    }
+</script>
+
+
+
+
+
+
 </body>
 </html>
