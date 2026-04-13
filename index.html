@@ -1,235 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>INDI-GRADA | Bold Luxury Watches & Jewelry</title>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0a0a0a;
-            color: #eaeaea;
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
-
-        /* Hero Video Section */
-        .hero-video-section {
-            position: relative;
-            width: 100%;
-            height: 90vh;
-            overflow: hidden;
-            margin-bottom: 2rem;
-        }
-        #heroVideo {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-            z-index: 1;
-        }
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 100%);
-            z-index: 2;
-        }
-        .hero-content {
-            position: absolute;
-            bottom: 15%;
-            left: 5%;
-            z-index: 3;
-            max-width: 650px;
-            animation: fadeUp 1s ease-out;
-        }
-        .hero-content h1 {
-            font-size: 3.8rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            background: linear-gradient(135deg, #fff, #c6a43f);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 1rem;
-        }
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: #eee;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-        }
-        .hero-btn {
-            background: transparent;
-            border: 2px solid #c6a43f;
-            color: #c6a43f;
-            padding: 0.8rem 2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
-            font-size: 1rem;
-            border-radius: 40px;
-            backdrop-filter: blur(4px);
-        }
-        .hero-btn:hover {
-            background: #c6a43f;
-            color: #0a0a0a;
-            transform: scale(1.05);
-        }
-
-        /* Navigation - same as before but sticky above video */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.8rem 5%;
-            background: rgba(10, 10, 10, 0.85);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(198, 164, 63, 0.3);
-        }
-        .logo {
-            font-size: 1.9rem;
-            font-weight: 700;
-            letter-spacing: 3px;
-            background: linear-gradient(135deg, #fff, #c6a43f);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            font-weight: 500;
-        }
-        .nav-links a {
-            color: #ddd;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-        .nav-links a:hover {
-            color: #c6a43f;
-        }
-        .nav-icons i {
-            margin-left: 1.2rem;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .nav-icons i:hover {
-            color: #c6a43f;
-        }
-
-        /* Rest of the styles (slider, grid, etc.) - same as previous */
-        .slider-title {
-            font-size: 2rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-            padding-left: 2%;
-        }
-        .slider-title span {
-            color: #c6a43f;
-        }
-        .horizontal-scroll {
-            display: flex;
-            overflow-x: auto;
-            gap: 1.8rem;
-            scroll-behavior: smooth;
-            padding: 1rem 2% 2rem;
-            cursor: grab;
-        }
-        .horizontal-scroll:active {
-            cursor: grabbing;
-        }
-        .collection-card, .product-card {
-            background: #111;
-            border-radius: 20px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .collection-card {
-            min-width: 280px;
-        }
-        .collection-card:hover, .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 30px rgba(198,164,63,0.2);
-        }
-        .card-img, .product-img {
-            height: 280px;
-            background: linear-gradient(145deg, #1f1f1f, #0c0c0c);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-        }
-        .card-info, .product-details {
-            padding: 1rem;
-        }
-        .price {
-            color: #c6a43f;
-            font-weight: bold;
-        }
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 2rem;
-            padding: 2rem 5%;
-        }
-        .trust-section {
-            background: #050505;
-            padding: 3rem 2%;
-            text-align: center;
-        }
-        .review-slider {
-            display: flex;
-            overflow-x: auto;
-            gap: 2rem;
-            padding: 1rem 3%;
-        }
-        .review-card {
-            min-width: 300px;
-            background: #111;
-            border-radius: 24px;
-            padding: 1.5rem;
-            border: 1px solid #2a2a2a;
-        }
-        .stars {
-            color: #c6a43f;
-        }
-        footer {
-            background: #020202;
-            padding: 2rem;
-            text-align: center;
-        }
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero-content h1 { font-size: 2.2rem; }
-        }
-    </style>
-</head>
 <body>
 
 <nav class="navbar">
@@ -242,13 +10,11 @@
     </div>
 </nav>
 
-<!-- Hero Video Section (Rolex style) -->
+<!-- Hero Video Section - FIXED VERSION -->
 <div class="hero-video-section">
-    <!-- Replace the video URL with your own video file -->
     <video autoplay loop muted playsinline id="heroVideo">
-    <source src="https://assets.mixkit.co/videos/preview/mixkit-clock-with-golden-gears-close-up-32808-large.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-clock-with-golden-gears-close-up-32808-large.mp4" type="video/mp4">
+    </video>
     <div class="hero-overlay"></div>
     <div class="hero-content">
         <h1>Time Forged in Fire</h1>
@@ -258,20 +24,17 @@
 </div>
 
 <main>
-    <!-- Collections slider -->
     <div class="hero-slider">
         <div class="slider-title">EXPLORE THE <span>COLLECTIONS</span> →</div>
         <div class="horizontal-scroll" id="collectionScroll"></div>
     </div>
 
-    <!-- Product grid -->
     <div class="section-header" style="display: flex; justify-content: space-between; padding: 1rem 5%;">
         <h2>Latest Drops · <span style="color:#c6a43f">Timeless Edge</span></h2>
         <div class="view-all" style="color:#c6a43f;">View all →</div>
     </div>
     <div class="product-grid" id="productGrid"></div>
 
-    <!-- Reviews -->
     <div class="trust-section">
         <div class="trust-title">TRUSTED BY 20,000+ COLLECTORS</div>
         <div class="review-slider" id="reviewSlider"></div>
@@ -286,7 +49,6 @@
 </footer>
 
 <script>
-    // Data for collections, products, reviews (same as before)
     const collections = [
         { name: "Vanguard", sub: "Carbon Chrono", icon: "⌚", price: "HK$4,100" },
         { name: "Intrepid", sub: "Sport Collection", icon: "⏱️", price: "HK$2,000" },
@@ -308,7 +70,7 @@
 
     function renderCollections() {
         const container = document.getElementById('collectionScroll');
-        container.innerHTML = collections.map(c => `
+        if(container) container.innerHTML = collections.map(c => `
             <div class="collection-card">
                 <div class="card-img"><div style="font-size:3rem;">${c.icon}</div></div>
                 <div class="card-info"><h3>${c.name}</h3><p>${c.sub}</p><div class="price">${c.price}</div></div>
@@ -317,7 +79,7 @@
     }
     function renderProducts() {
         const grid = document.getElementById('productGrid');
-        grid.innerHTML = products.map(p => `
+        if(grid) grid.innerHTML = products.map(p => `
             <div class="product-card">
                 <div class="product-img"><span style="font-size:3rem;">${p.icon}</span></div>
                 <div class="product-details"><span class="tag" style="background:#c6a43f30; padding:0.2rem 0.6rem;">${p.tag}</span><div class="product-title">${p.title}</div><div class="price">${p.price}</div></div>
@@ -326,12 +88,13 @@
     }
     function renderReviews() {
         const slider = document.getElementById('reviewSlider');
-        slider.innerHTML = reviews.map(r => `
+        if(slider) slider.innerHTML = reviews.map(r => `
             <div class="review-card"><div class="stars">${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</div><div class="review-text">“${r.text}”</div><div class="reviewer">— ${r.name} ✧ ${r.product}</div></div>
         `).join('');
     }
     function enableDragScroll(id) {
         const slider = document.getElementById(id);
+        if(!slider) return;
         let isDown = false, startX, scrollLeft;
         slider.addEventListener('mousedown', (e) => { isDown = true; startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; slider.style.cursor = 'grabbing'; });
         slider.addEventListener('mouseleave', () => { isDown = false; slider.style.cursor = 'grab'; });
@@ -339,30 +102,28 @@
         slider.addEventListener('mousemove', (e) => { if(!isDown) return; e.preventDefault(); const x = e.pageX - slider.offsetLeft; slider.scrollLeft = scrollLeft - (x - startX); });
         slider.style.cursor = 'grab';
     }
+    
     renderCollections(); renderProducts(); renderReviews();
     enableDragScroll('collectionScroll'); enableDragScroll('reviewSlider');
 </script>
 
-<script>
-    // Smooth video loop - hides the restart jerk
-    const video = document.getElementById('heroVideo');
-    if (video) {
-        video.addEventListener('timeupdate', function() {
-            // If video is near the end (last 0.3 seconds)
-            if (video.duration - video.currentTime < 0.3) {
-                video.style.opacity = '0.98';
-                setTimeout(() => {
-                    video.style.opacity = '1';
-                }, 50);
-            }
-        });
+<!-- Force video to show - debug helper -->
+<style>
+    .hero-video-section {
+        position: relative !important;
+        width: 100% !important;
+        height: 90vh !important;
+        min-height: 500px !important;
+        background: #000 !important;
+        display: block !important;
+        overflow: hidden !important;
     }
-</script>
-
-
-
-
-
+    #heroVideo {
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+</style>
 
 </body>
-</html>
