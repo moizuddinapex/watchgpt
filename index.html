@@ -228,6 +228,88 @@
             .nav-links { display: none; }
             .hero-content h1 { font-size: 2.2rem; }
         }
+   
+               /* Middle Video Section */
+        .middle-video-section {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            min-height: 450px;
+            overflow: hidden;
+            margin: 3rem 0;
+        }
+        #middleVideo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: 1;
+        }
+        .middle-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
+            z-index: 2;
+        }
+        .middle-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 3;
+            width: 80%;
+            max-width: 700px;
+            animation: fadeUp 0.8s ease-out;
+        }
+        .middle-content h2 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #fff, #c6a43f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+        .middle-content p {
+            font-size: 1.2rem;
+            color: #eee;
+            margin-bottom: 2rem;
+        }
+        .middle-btn {
+            background: transparent;
+            border: 2px solid #c6a43f;
+            color: #c6a43f;
+            padding: 0.8rem 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 1rem;
+            border-radius: 40px;
+        }
+        .middle-btn:hover {
+            background: #c6a43f;
+            color: #0a0a0a;
+            transform: scale(1.05);
+        }
+        @media (max-width: 768px) {
+            .middle-content h2 { font-size: 1.8rem; }
+            .middle-video-section { height: 50vh; min-height: 350px; }
+        }
+    
+    
+    
+    
+    
+    
     </style>
 </head>
 <body>
@@ -272,6 +354,24 @@
     </div>
     <div class="product-grid" id="productGrid"></div>
 
+   
+        <!-- Middle Video Section -->
+    <div class="middle-video-section">
+        <video autoplay loop muted playsinline id="middleVideo">
+            <source src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/37006-413208203_medium.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="middle-overlay"></div>
+        <div class="middle-content">
+            <h2>Crafted for the Bold</h2>
+            <p>Every detail tells a story. Every timepiece, a legacy.</p>
+            <button class="middle-btn">DISCOVER THE CRAFT →</button>
+        </div>
+    </div>
+    
+    
+    
+    
     <!-- Reviews -->
     <div class="trust-section">
         <div class="trust-title">TRUSTED BY 20,000+ COLLECTORS</div>
