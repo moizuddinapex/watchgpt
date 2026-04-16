@@ -173,13 +173,19 @@
             transform: translateY(-8px);
             box-shadow: 0 20px 30px rgba(198,164,63,0.2);
         }
-        .card-img, .product-img {
+                .card-img {
             height: 280px;
             background: linear-gradient(145deg, #1f1f1f, #0c0c0c);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3rem;
+        }
+        .product-img {
+            position: relative;
+            overflow: hidden;
+            height: 280px;
+            background: #111;
         }
         .card-info, .product-details {
             padding: 1rem;
