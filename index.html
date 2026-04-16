@@ -392,7 +392,76 @@
     border-radius: 8px;
     cursor: pointer;
 }      
-    
+
+
+
+
+        .product-section {
+    padding: 60px 20px;
+    background-color: #000; /* Matching your black theme */
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-card {
+    background: #111;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    border: 1px solid #222;
+    text-align: center;
+}
+
+.video-container {
+    width: 100%;
+    aspect-ratio: 1/1; /* Keeps it square */
+    overflow: hidden;
+    background: #000;
+}
+
+.watch-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 15px;
+    color: white;
+}
+
+.badge {
+    color: #d4af37;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.price {
+    font-weight: bold;
+    color: #d4af37;
+    font-size: 1.2rem;
+}
+
+.add-to-cart {
+    background: #d4af37;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Responsive for Mobile */
+@media (max-width: 900px) {
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+}
     
     </style>
 </head>
@@ -520,33 +589,61 @@
         
         grid.innerHTML = productsWithVideos.map((p, index) => `
 <section id="products" class="product-section">
-    <div class="product-container">
-        <div class="watch-card">
-            <video class="hover-video" muted loop playsinline>
-                <source src="136967-765457958_medium.mp4" type="video/mp4">
-            </video>
-            <h3>Classic Gold</h3>
+    <div class="product-grid">
+        <div class="product-card">
+            <div class="video-container">
+                <video class="watch-video" muted loop playsinline poster="classic-gold-thumb.jpg">
+                    <source src="136967-765457958_medium.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="product-info">
+                <span class="badge">New</span>
+                <h3>The Vanguard Carbon</h3>
+                <p class="price">HK$4,100</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
         </div>
 
-        <div class="watch-card">
-            <video class="hover-video" muted loop playsinline>
-                <source src="3019-165457954_medium.mp4" type="video/mp4">
-            </video>
-            <h3>Silver Executive</h3>
+        <div class="product-card">
+            <div class="video-container">
+                <video class="watch-video" muted loop playsinline poster="silver-exec-thumb.jpg">
+                    <source src="3019-165457954_medium.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="product-info">
+                <span class="badge">New</span>
+                <h3>Intrepid Sport Northern</h3>
+                <p class="price">HK$2,000</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
         </div>
 
-        <div class="watch-card">
-            <video class="hover-video" muted loop playsinline>
-                <source src="34855-403777679_medium.mp4" type="video/mp4">
-            </video>
-            <h3>Modern Black</h3>
+        <div class="product-card">
+            <div class="video-container">
+                <video class="watch-video" muted loop playsinline poster="modern-black-thumb.jpg">
+                    <source src="34855-403777679_medium.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="product-info">
+                <span class="badge">Limited</span>
+                <h3>The Valencia Rose</h3>
+                <p class="price">$1,750</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
         </div>
 
-        <div class="watch-card">
-            <video class="hover-video" muted loop playsinline>
-                <source src="39863-425400884_medium.mp4" type="video/mp4">
-            </video>
-            <h3>Sport Edition</h3>
+        <div class="product-card">
+            <div class="video-container">
+                <video class="watch-video" muted loop playsinline poster="sport-edit-thumb.jpg">
+                    <source src="39863-425400884_medium.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="product-info">
+                <span class="badge">New</span>
+                <h3>Intrepid Sport Ladies</h3>
+                <p class="price">HK$2,000</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
         </div>
     </div>
 </section>
@@ -792,7 +889,20 @@
     });
 </script>
     
-    
+    <script>
+    document.querySelectorAll('.product-card').forEach(card => {
+        const video = card.querySelector('.watch-video');
+
+        card.addEventListener('mouseenter', () => {
+            video.play().catch(error => console.log("Autoplay blocked or loading"));
+        });
+
+        card.addEventListener('mouseleave', () => {
+            video.pause();
+            video.currentTime = 0; // Resets video to start
+        });
+    });
+</script>
     
     
     
