@@ -199,6 +199,7 @@
             position: relative;
             overflow: hidden;
             height: 280px;
+            background: #111;
         }
         .product-video {
             position: absolute;
@@ -216,6 +217,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            font-size: 3rem;
             z-index: 2;
             transition: opacity 0.3s ease;
         }
@@ -471,7 +473,7 @@
         `).join('');
     }
        
-            function renderProducts() {
+                function renderProducts() {
         const grid = document.getElementById('productGrid');
         // Products with video URLs
         const productsWithVideos = [
@@ -482,12 +484,12 @@
         ];
         
         grid.innerHTML = productsWithVideos.map((p, index) => `
-            <div class="product-card" data-video="${p.video}">
-                <div class="product-img" style="position: relative; overflow: hidden;">
-                    <video class="product-video" loop muted playsinline preload="metadata" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.3s ease; z-index: 1;">
+            <div class="product-card">
+                <div class="product-img" style="position: relative; overflow: hidden; background: #111;">
+                    <video class="product-video" loop muted playsinline preload="auto" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;">
                         <source src="${p.video}" type="video/mp4">
                     </video>
-                    <span class="product-icon" style="font-size: 3rem; position: absolute; z-index: 2; transition: opacity 0.3s ease;">${p.icon}</span>
+                    <span class="product-icon" style="font-size: 3rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; transition: opacity 0.3s ease;">${p.icon}</span>
                 </div>
                 <div class="product-details">
                     <span class="tag" style="background:#c6a43f30; padding:0.2rem 0.6rem;">${p.tag}</span>
@@ -505,16 +507,21 @@
             </div>
         `).join('');
         
-        // Add hover effect for videos
+        // Add hover effect for videos - FIXED VERSION
         document.querySelectorAll('.product-card').forEach(card => {
             const video = card.querySelector('.product-video');
             const icon = card.querySelector('.product-icon');
+            
             if(video) {
+                // Preload video metadata
+                video.load();
+                
                 card.addEventListener('mouseenter', () => {
                     video.style.opacity = '1';
                     if(icon) icon.style.opacity = '0';
-                    video.play().catch(e => console.log('Play error:', e));
+                    video.play().catch(e => console.log('Video play error:', e));
                 });
+                
                 card.addEventListener('mouseleave', () => {
                     video.style.opacity = '0';
                     if(icon) icon.style.opacity = '1';
@@ -554,6 +561,7 @@
             });
         });
     }
+
     
     function renderReviews() {
         const slider = document.getElementById('reviewSlider');
