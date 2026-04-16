@@ -326,59 +326,6 @@
     
     </style>
 </head>
-
-    
-    <script>
-    function updateCounters() {
-        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        
-        let wishlistCount = document.querySelector('.wishlist-count');
-        let cartCount = document.querySelector('.cart-count');
-        
-        if(wishlistCount) wishlistCount.textContent = wishlist.length;
-        if(cartCount) cartCount.textContent = cart.length;
-    }
-    
-    document.getElementById('searchIcon')?.addEventListener('click', () => {
-        let searchQuery = prompt('🔍 Search INDI-GRADA:', 'Vanguard');
-        if(searchQuery) alert(`Searching for "${searchQuery}"...`);
-    });
-    
-    document.getElementById('userIcon')?.addEventListener('click', () => {
-        alert('👤 Account: Sign in to access your profile, orders, and wishlist.');
-    });
-    
-    document.getElementById('wishlistIcon')?.addEventListener('click', () => {
-        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-        if(wishlist.length === 0) {
-            alert('❤️ Your wishlist is empty. Add items by clicking the heart on any product.');
-        } else {
-            alert(`❤️ Your wishlist has ${wishlist.length} item(s).\n\nItems: ${wishlist.join(', ')}`);
-        }
-    });
-    
-    document.getElementById('cartIcon')?.addEventListener('click', () => {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        if(cart.length === 0) {
-            alert('🛒 Your cart is empty. Start shopping now!');
-        } else {
-            alert(`🛒 Cart: ${cart.length} item(s). Total: HK$ ${calculateTotal(cart)}`);
-        }
-    });
-    
-        function calculateTotal(cart) {
-        let total = 0;
-        cart.forEach(item => {
-            let priceNum = parseFloat(item.price.replace('HK$', '').replace(',', ''));
-            total += priceNum;
-        });
-        return 'HK$ ' + total.toLocaleString();
-    }
-    
-    updateCounters();
-</script>
-    
     <body>
 
 <nav class="navbar">
@@ -578,6 +525,116 @@
 
 
 
-
+<script>
+    // Icon click functionality - runs after DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // Search icon
+        const searchIcon = document.getElementById('searchIcon');
+        if(searchIcon) {
+            searchIcon.addEventListener('click', () => {
+                let searchQuery = prompt('🔍 Search INDI-GRADA:', 'Vanguard');
+                if(searchQuery) alert(`Searching for "${searchQuery}"...`);
+            });
+        }
+        
+        // User icon
+        const userIcon = document.getElementById('userIcon');
+        if(userIcon) {
+            userIcon.addEventListener('click', () => {
+                alert('👤 Account: Sign in to access your profile, orders, and wishlist.');
+            });
+        }
+        
+        // Wishlist icon
+        const wishlistIcon = document.getElementById('wishlistIcon');
+        if(wishlistIcon) {
+            wishlistIcon.addEventListener('click', () => {
+                let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+                if(wishlist.length === 0) {
+                    alert('❤️ Your wishlist is empty. Add items by clicking the heart on any product.');
+                } else {
+                    alert(`❤️ Your wishlist has ${wishlist.length} item(s).\n\nItems: ${wishlist.join(', ')}`);
+                }
+            });
+        }
+        
+        // Cart icon
+        const cartIcon = document.getElementById('cartIcon');
+        if(cartIcon) {
+            cartIcon.addEventListener('click', () => {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                if(cart.length === 0) {
+                    alert('🛒 Your cart is empty. Start shopping now!');
+                } else {
+                    let total = 0;
+                    cart.forEach(item => {
+                        let priceNum = parseFloat(item.price.replace('HK$', '').replace(',', ''));
+                        total += priceNum;
+                    });
+                    alert(`🛒 Cart: ${cart.length} item(s). Total: HK$ ${total.toLocaleString()}`);
+                }
+            });
+        }
+        
+        // Update counter display (adds badges to icons)
+        function updateCounters() {
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            let wishlistIcon = document.getElementById('wishlistIcon');
+            let cartIcon = document.getElementById('cartIcon');
+            
+            // Remove existing badges
+            document.querySelectorAll('.icon-badge').forEach(badge => badge.remove());
+            
+            // Add wishlist badge
+            if(wishlist.length > 0 && wishlistIcon) {
+                let badge = document.createElement('span');
+                badge.className = 'icon-badge';
+                badge.textContent = wishlist.length;
+                badge.style.position = 'absolute';
+                badge.style.top = '-8px';
+                badge.style.right = '-12px';
+                badge.style.background = '#c6a43f';
+                badge.style.color = '#0a0a0a';
+                badge.style.fontSize = '0.65rem';
+                badge.style.fontWeight = 'bold';
+                badge.style.padding = '2px 6px';
+                badge.style.borderRadius = '20px';
+                badge.style.minWidth = '18px';
+                badge.style.textAlign = 'center';
+                wishlistIcon.style.position = 'relative';
+                wishlistIcon.parentNode.style.position = 'relative';
+                wishlistIcon.parentNode.appendChild(badge);
+            }
+            
+            // Add cart badge
+            if(cart.length > 0 && cartIcon) {
+                let badge = document.createElement('span');
+                badge.className = 'icon-badge';
+                badge.textContent = cart.length;
+                badge.style.position = 'absolute';
+                badge.style.top = '-8px';
+                badge.style.right = '-12px';
+                badge.style.background = '#c6a43f';
+                badge.style.color = '#0a0a0a';
+                badge.style.fontSize = '0.65rem';
+                badge.style.fontWeight = 'bold';
+                badge.style.padding = '2px 6px';
+                badge.style.borderRadius = '20px';
+                badge.style.minWidth = '18px';
+                badge.style.textAlign = 'center';
+                cartIcon.style.position = 'relative';
+                cartIcon.parentNode.style.position = 'relative';
+                cartIcon.parentNode.appendChild(badge);
+            }
+        }
+        
+        updateCounters();
+        
+        // Also update counters whenever wishlist/cart changes (make updateCounters global)
+        window.updateNavCounters = updateCounters;
+    });
+</script>
 </body>
 </html>
