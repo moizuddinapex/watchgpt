@@ -2,837 +2,169 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>INDI-GRADA | Bold Luxury Watches & Jewelry</title>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WatchGPT - Premium Timepieces</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0a0a0a;
-            color: #eaeaea;
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
-
-        /* Hero Video Section */
-        .hero-video-section {
-            position: relative;
-            width: 100%;
-            height: 90vh;
-            overflow: hidden;
-            margin-bottom: 2rem;
-        }
-        #heroVideo {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-            z-index: 1;
-        }
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 100%);
-            z-index: 2;
-        }
-        .hero-content {
-            position: absolute;
-            bottom: 15%;
-            left: 5%;
-            z-index: 3;
-            max-width: 650px;
-            animation: fadeUp 1s ease-out;
-        }
-        .hero-content h1 {
-            font-size: 3.8rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            background: linear-gradient(135deg, #fff, #c6a43f);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 1rem;
-        }
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: #eee;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-        }
-        .hero-btn {
-            background: transparent;
-            border: 2px solid #c6a43f;
-            color: #c6a43f;
-            padding: 0.8rem 2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
-            font-size: 1rem;
-            border-radius: 40px;
-            backdrop-filter: blur(4px);
-        }
-        .hero-btn:hover {
-            background: #c6a43f;
-            color: #0a0a0a;
-            transform: scale(1.05);
-        }
-
-        /* Navigation - same as before but sticky above video */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.8rem 5%;
-            background: rgba(10, 10, 10, 0.85);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(198, 164, 63, 0.3);
-        }
-        .logo {
-            font-size: 1.9rem;
-            font-weight: 700;
-            letter-spacing: 3px;
-            background: linear-gradient(135deg, #fff, #c6a43f);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            font-weight: 500;
-        }
-        .nav-links a {
-            color: #ddd;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-        .nav-links a:hover {
-            color: #c6a43f;
-        }
-        .nav-icons i {
-            margin-left: 1.2rem;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .nav-icons i:hover {
-            color: #c6a43f;
-        }
-
-        /* Rest of the styles (slider, grid, etc.) - same as previous */
-        .slider-title {
-            font-size: 2rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-            padding-left: 2%;
-        }
-        .slider-title span {
-            color: #c6a43f;
-        }
-        .horizontal-scroll {
-            display: flex;
-            overflow-x: auto;
-            gap: 1.8rem;
-            scroll-behavior: smooth;
-            padding: 1rem 2% 2rem;
-            cursor: grab;
-        }
-        .horizontal-scroll:active {
-            cursor: grabbing;
-        }
-        .collection-card, .product-card {
-            background: #111;
-            border-radius: 20px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .collection-card {
-            min-width: 280px;
-        }
-        .collection-card:hover, .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 30px rgba(198,164,63,0.2);
-        }
-                .card-img {
-            height: 280px;
-            background: linear-gradient(145deg, #1f1f1f, #0c0c0c);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-        }
-        .product-img {
-            position: relative;
-            overflow: hidden;
-            height: 280px;
-            background: #111;
-        }
-        .card-info, .product-details {
-            padding: 1rem;
-        }
-        .price {
-            color: #c6a43f;
-            font-weight: bold;
-        }
+        /* Specific styles for the video grid to ensure 4 columns and hover effect */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 2rem;
-            padding: 2rem 5%;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
-       
-                .product-img {
-            position: relative;
+        .product-card {
+            background: #1a1a1a;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid #333;
+        }
+        .video-container {
+            width: 100%;
+            aspect-ratio: 1 / 1;
             overflow: hidden;
-            height: 280px;
-            background: #111;
+            border-radius: 10px;
+            background: #000;
+            margin-bottom: 15px;
         }
         .product-video {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1;
-        }
-        .product-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 3rem;
-            z-index: 2;
-            transition: opacity 0.3s ease;
-        }
-        .product-card:hover .product-video {
-            opacity: 1;
-        }
-        .product-card:hover .product-icon {
-            opacity: 0;
-        }
-        
-        
-        .trust-section {
-            background: #050505;
-            padding: 3rem 2%;
-            text-align: center;
-        }
-        .review-slider {
-            display: flex;
-            overflow-x: auto;
-            gap: 2rem;
-            padding: 1rem 3%;
-        }
-        .review-card {
-            min-width: 300px;
-            background: #111;
-            border-radius: 24px;
-            padding: 1.5rem;
-            border: 1px solid #2a2a2a;
-        }
-        .stars {
-            color: #c6a43f;
-        }
-        footer {
-            background: #020202;
-            padding: 2rem;
-            text-align: center;
-        }
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero-content h1 { font-size: 2.2rem; }
-        }
-   
-               /* Middle Video Section */
-        .middle-video-section {
-            position: relative;
-            width: 100%;
-            height: 70vh;
-            min-height: 450px;
-            overflow: hidden;
-            margin: 3rem 0;
-        }
-        #middleVideo {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-            z-index: 1;
-        }
-        .middle-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
-            z-index: 2;
-        }
-        .middle-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            z-index: 3;
-            width: 80%;
-            max-width: 700px;
-            animation: fadeUp 0.8s ease-out;
-        }
-        .middle-content h2 {
-            font-size: 2.8rem;
-            font-weight: 600;
-            background: linear-gradient(135deg, #fff, #c6a43f);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 1rem;
-        }
-        .middle-content p {
-            font-size: 1.2rem;
-            color: #eee;
-            margin-bottom: 2rem;
-        }
-        .middle-btn {
-            background: transparent;
-            border: 2px solid #c6a43f;
-            color: #c6a43f;
-            padding: 0.8rem 2rem;
-            font-weight: 600;
             cursor: pointer;
-            transition: 0.3s;
-            font-size: 1rem;
-            border-radius: 40px;
         }
-        .middle-btn:hover {
-            background: #c6a43f;
-            color: #0a0a0a;
-            transform: scale(1.05);
+        @media (max-width: 992px) {
+            .product-grid { grid-template-columns: repeat(2, 1fr); }
         }
-        @media (max-width: 768px) {
-            .middle-content h2 { font-size: 1.8rem; }
-            .middle-video-section { height: 50vh; min-height: 350px; }
+        @media (max-width: 600px) {
+            .product-grid { grid-template-columns: 1fr; }
         }
-    
-        .nav-icons { position: relative; display: flex; gap: 1.2rem; align-items: center; }
-.nav-icons i { position: relative; }
-.cart-count, .wishlist-count {
-    position: absolute;
-    top: -8px;
-    right: -12px;
-    background: #c6a43f;
-    color: #0a0a0a;
-    font-size: 0.65rem;
-    font-weight: bold;
-    padding: 2px 6px;
-    border-radius: 20px;
-    min-width: 18px;
-    text-align: center;
-}
-    
-.watch-video {
-    width: 100%;
-    height: 300px; /* Adjust height based on your design */
-    object-fit: cover; /* Ensures the video fills the area without stretching */
-    border-radius: 12px;
-    display: block;
-}
-
-
-        
-    
-    
     </style>
 </head>
-    <body>
+<body>
+    <header>
+        <nav>
+            <div class="logo">WatchGPT</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Collection</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<nav class="navbar">
-    <div class="logo">✦ INDI-GRADA</div>
-    <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="watches.html">Watches</a>
-    <a href="jewelry.html">Jewelry</a>
-    <a href="collections.html">Collections</a>
-    <a href="journal.html">Journal</a>
-</div>
-    <div class="nav-icons">
-    <i class="fas fa-search" id="searchIcon" style="cursor: pointer;"></i>
-    <i class="far fa-user" id="userIcon" style="cursor: pointer;"></i>
-    <i class="far fa-heart" id="wishlistIcon" style="cursor: pointer;"></i>
-    <i class="fas fa-bag-shopping" id="cartIcon" style="cursor: pointer;"></i>
-</div>
-</nav>
-
-<!-- Hero Video Section (Rolex style) -->
-<div class="hero-video-section">
-    <!-- Replace the video URL with your own video file -->
-    <video autoplay loop muted playsinline id="heroVideo">
-    <source src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/73425-548173432_medium.mp4" type="video/mp4">
-        
-    Your browser does not support the video tag.
-</video>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-        <h1>Time Forged in Fire</h1>
-        <p>Discover the new Vanguard Carbon Chrono. Bold by design, relentless in spirit.</p>
-        <button class="hero-btn">EXPLORE THE COLLECTION →</button>
-    </div>
-</div>
-
-<main>
-    <!-- Collections slider -->
-    <div class="hero-slider">
-        <div class="slider-title">EXPLORE THE <span>COLLECTIONS</span> →</div>
-        <div class="horizontal-scroll" id="collectionScroll"></div>
-    </div>
-
-    <!-- Product grid -->
-    <div class="section-header" style="display: flex; justify-content: space-between; padding: 1rem 5%;">
-        <h2>Latest Drops · <span style="color:#c6a43f">Timeless Edge</span></h2>
-        <div class="view-all" style="color:#c6a43f;">View all →</div>
-    </div>
-    <div class="product-grid" id="productGrid"></div>
-
-   
-        <!-- Middle Video Section -->
-    <div class="middle-video-section">
-        <video autoplay loop muted playsinline id="middleVideo">
-            <source src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/37006-413208203_medium.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="middle-overlay"></div>
-        <div class="middle-content">
-            <h2>Crafted for the Bold</h2>
-            <p>Every detail tells a story. Every timepiece, a legacy.</p>
-            <button class="middle-btn">DISCOVER THE CRAFT →</button>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Timeless Elegance</h1>
+            <p>Experience the future of luxury timepieces with WatchGPT.</p>
+            <a href="#products" class="btn">Shop Now</a>
         </div>
-    </div>
-    
-    
-    
-    
-    <!-- Reviews -->
-    <div class="trust-section">
-        <div class="trust-title">TRUSTED BY 20,000+ COLLECTORS</div>
-        <div class="review-slider" id="reviewSlider"></div>
-    </div>
-</main>
+    </section>
 
-<footer>
-    <div class="footer-links" style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem;">
-        <a href="#" style="color:#aaa;">About</a><a href="#" style="color:#aaa;">Sustainability</a><a href="#" style="color:#aaa;">Contact</a>
-    </div>
-    <p style="color:#666;">© 2026 INDI-GRADA — Bold By Design</p>
-</footer>
-
-<script>
-    // Data for collections, products, reviews (same as before)
-    const collections = [
-        { name: "Vanguard", sub: "Carbon Chrono", icon: "⌚", price: "HK$4,100" },
-        { name: "Intrepid", sub: "Sport Collection", icon: "⏱️", price: "HK$2,000" },
-        { name: "Intrepid", sub: "Sport Ice", icon: "❄️", price: "HK$2,200" },
-        { name: "Men’s jewellery", sub: "Forged Steel", icon: "🔗", price: "HK$1,200" },
-        { name: "Women’s watches", sub: "Celestial", icon: "✨", price: "HK$2,800" }
-    ];
-    const products = [
-        { title: "The Vanguard Carbon Chrono Arctic Tundra", price: "HK$4,100", tag: "New", icon: "❄️" },
-        { title: "Intrepid Sport Northern Lights", price: "HK$2,000", tag: "New", icon: "🌌" },
-        { title: "The Valencia Rose Allure", price: "HK$1,750", tag: "Limited", icon: "🌹" },
-        { title: "Intrepid Sport Ladies Emerald Mist", price: "HK$2,000", tag: "New", icon: "🍃" }
-    ];
-    const reviews = [
-        { name: "Aarav K.", text: "The Vanguard Carbon Chrono is a beast. Feels like a $10k watch.", stars: 5, product: "Vanguard" },
-        { name: "Zara M.", text: "Sleek, modern, and the unboxing experience is premium.", stars: 5, product: "Intrepid Sport" },
-        { name: "Rohan S.", text: "Finally a brand that balances aggression and elegance.", stars: 5, product: "Valencia Rose" }
-    ];
-
-    function renderCollections() {
-        const container = document.getElementById('collectionScroll');
-        container.innerHTML = collections.map(c => `
-            <div class="collection-card">
-                <div class="card-img"><div style="font-size:3rem;">${c.icon}</div></div>
-                <div class="card-info"><h3>${c.name}</h3><p>${c.sub}</p><div class="price">${c.price}</div></div>
-            </div>
-        `).join('');
-    }
-
-
-
-        function renderProducts() {
-        const grid = document.getElementById('productGrid');
-        const productsWithVideos = [
-            { title: "The Vanguard Carbon Chrono Arctic Tundra", price: "HK$4,100", tag: "New", icon: "❄️", video: "https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/136967-765457958_medium.mp4" },
-            { title: "Intrepid Sport Northern Lights", price: "HK$2,000", tag: "New", icon: "🌌", video: "https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/3019-165457954_medium.mp4" },
-            { title: "The Valencia Rose Allure", price: "HK$1,750", tag: "Limited", icon: "🌹", video: "https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/34855-403777679_medium.mp4" },
-            { title: "Intrepid Sport Ladies Emerald Mist", price: "HK$2,000", tag: "New", icon: "🍃", video: "https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/39863-425400884_medium.mp4" }
-        ];
-        
-        grid.innerHTML = productsWithVideos.map(p => `
-            <section class="watch-collection">
-    <div class="watch-grid">
-        <div class="watch-item">
-            <div class="video-box">
-                <video class="product-video" muted loop playsinline>
-                    <source src="136967-765457958_medium.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="watch-info">
-                <span class="status">New</span>
-                <h3 class="name">The Vanguard Carbon Chrono</h3>
-                <p class="price">HK$4,100</p>
-                <div class="actions">
-                    <button class="wish-btn">♡ Wishlist</button>
-                    <button class="cart-btn">Add to Cart</button>
+    <section id="products">
+        <h2 class="section-title">Featured Watches</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="video-container">
+                    <video class="product-video" muted loop playsinline>
+                        <source src="136967-765457958_medium.mp4" type="video/mp4">
+                    </video>
                 </div>
+                <h3>Classic Gold</h3>
+                <p>$199.00</p>
+                <button class="btn">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="video-container">
+                    <video class="product-video" muted loop playsinline>
+                        <source src="3019-165457954_medium.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <h3>Silver Executive</h3>
+                <p>$249.00</p>
+                <button class="btn">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="video-container">
+                    <video class="product-video" muted loop playsinline>
+                        <source src="34855-403777679_medium.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <h3>Modern Black</h3>
+                <p>$299.00</p>
+                <button class="btn">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <div class="video-container">
+                    <video class="product-video" muted loop playsinline>
+                        <source src="39863-425400884_medium.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <h3>Sport Edition</h3>
+                <p>$349.00</p>
+                <button class="btn">Add to Cart</button>
             </div>
         </div>
+    </section>
 
-        <div class="watch-item">
-            <div class="video-box">
-                <video class="product-video" muted loop playsinline>
-                    <source src="3019-165457954_medium.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="watch-info">
-                <span class="status">New</span>
-                <h3 class="name">Intrepid Sport Northern Lights</h3>
-                <p class="price">HK$2,000</p>
-                <div class="actions">
-                    <button class="wish-btn">♡ Wishlist</button>
-                    <button class="cart-btn">Add to Cart</button>
-                </div>
-            </div>
+    <section id="about" class="about">
+        <div class="about-content">
+            <h2>About Us</h2>
+            <p>WatchGPT combines traditional craftsmanship with modern design. Our mission is to provide high-quality, stylish watches for every occasion.</p>
         </div>
+    </section>
 
-        <div class="watch-item">
-            <div class="video-box">
-                <video class="product-video" muted loop playsinline>
-                    <source src="34855-403777679_medium.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="watch-info">
-                <span class="status">Limited</span>
-                <h3 class="name">The Valencia Rose Allure</h3>
-                <p class="price">HK$1,750</p>
-                <div class="actions">
-                    <button class="wish-btn">♡ Wishlist</button>
-                    <button class="cart-btn">Add to Cart</button>
-                </div>
-            </div>
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <form id="contact-form">
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Message" required></textarea>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 WatchGPT. All rights reserved.</p>
+        <div class="socials">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
         </div>
-
-        <div class="watch-item">
-            <div class="video-box">
-                <video class="product-video" muted loop playsinline>
-                    <source src="39863-425400884_medium.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="watch-info">
-                <span class="status">New</span>
-                <h3 class="name">Intrepid Sport Ladies Emerald</h3>
-                <p class="price">HK$2,000</p>
-                <div class="actions">
-                    <button class="wish-btn">♡ Wishlist</button>
-                    <button class="cart-btn">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<style>
-    .watch-collection { background: #000; padding: 50px 20px; color: #fff; }
-    .watch-grid { 
-        display: grid; 
-        grid-template-columns: repeat(4, 1fr); 
-        gap: 15px; 
-        max-width: 1300px; 
-        margin: 0 auto; 
-    }
-    .watch-item { background: #111; border: 1px solid #222; border-radius: 10px; overflow: hidden; transition: 0.3s; }
-    .video-box { width: 100%; aspect-ratio: 1/1; background: #000; position: relative; }
-    .product-video { width: 100%; height: 100%; object-fit: cover; }
-    .watch-info { padding: 15px; text-align: left; }
-    .status { color: #d4af37; font-size: 12px; font-weight: bold; }
-    .name { font-size: 16px; margin: 5px 0; min-height: 40px; }
-    .price { color: #d4af37; font-size: 18px; font-weight: bold; margin-bottom: 10px; }
-    .actions { display: flex; gap: 10px; }
-    .wish-btn, .cart-btn { 
-        padding: 8px 12px; border-radius: 20px; border: 1px solid #d4af37; 
-        cursor: pointer; font-size: 12px; font-weight: bold; transition: 0.3s;
-    }
-    .wish-btn { background: transparent; color: #d4af37; }
-    .cart-btn { background: #d4af37; color: #000; flex-grow: 1; }
-    .cart-btn:hover { background: #fff; border-color: #fff; }
-
-    @media (max-width: 1024px) { .watch-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 600px) { .watch-grid { grid-template-columns: 1fr; } }
-</style>
-                <div class="product-details">
-                    <span class="tag" style="background:#c6a43f30; padding:0.2rem 0.6rem;">${p.tag}</span>
-                    <div class="product-title">${p.title}</div>
-                    <div class="price">${p.price}</div>
-                    <div style="margin-top: 0.8rem;">
-                        <button class="wishlist-btn" data-title="${p.title}" style="background:none; border:1px solid #c6a43f; color:#c6a43f; padding:0.3rem 0.8rem; border-radius:20px; cursor:pointer; font-size:0.7rem; margin-right:0.5rem;">
-                            <i class="far fa-heart"></i> Wishlist
-                        </button>
-                        <button class="cart-btn" data-title="${p.title}" data-price="${p.price}" style="background:#c6a43f; border:none; color:#0a0a0a; padding:0.3rem 0.8rem; border-radius:20px; cursor:pointer; font-size:0.7rem;">
-                            <i class="fas fa-bag-shopping"></i> Add to Cart
-                        </button>
-                    </div>
-                </div>
-            </div>
-        `).join('');
-        
-        document.querySelectorAll('.product-card').forEach(card => {
-            const video = card.querySelector('.product-video');
-            const icon = card.querySelector('.product-icon');
-            if(video) {
-                card.addEventListener('mouseenter', () => {
-                    video.style.display = 'block';
-                    if(icon) icon.style.display = 'none';
-                    video.play().catch(e => console.log('hover play error'));
-                });
-                card.addEventListener('mouseleave', () => {
-                    video.pause();
-                    video.currentTime = 0;
-                    video.style.display = 'none';
-                    if(icon) icon.style.display = 'flex';
-                });
-            }
-        });
-        
-        document.querySelectorAll('.wishlist-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                let title = btn.getAttribute('data-title');
-                let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-                if(!wishlist.includes(title)) {
-                    wishlist.push(title);
-                    localStorage.setItem('wishlist', JSON.stringify(wishlist));
-                    alert(`❤️ ${title} added to wishlist!`);
-                    if(window.updateNavCounters) window.updateNavCounters();
-                } else {
-                    alert(`❤️ ${title} is already in your wishlist.`);
-                }
-            });
-        });
-        
-        document.querySelectorAll('.cart-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                let title = btn.getAttribute('data-title');
-                let price = btn.getAttribute('data-price');
-                let cart = JSON.parse(localStorage.getItem('cart')) || [];
-                cart.push({ title: title, price: price });
-                localStorage.setItem('cart', JSON.stringify(cart));
-                alert(`🛒 ${title} added to cart!`);
-                if(window.updateNavCounters) window.updateNavCounters();
-            });
-        });
-    }
-
-    
-    function renderReviews() {
-        const slider = document.getElementById('reviewSlider');
-        slider.innerHTML = reviews.map(r => `
-            <div class="review-card"><div class="stars">${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</div><div class="review-text">“${r.text}”</div><div class="reviewer">— ${r.name} ✧ ${r.product}</div></div>
-        `).join('');
-    }
-    function enableDragScroll(id) {
-        const slider = document.getElementById(id);
-        let isDown = false, startX, scrollLeft;
-        slider.addEventListener('mousedown', (e) => { isDown = true; startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; slider.style.cursor = 'grabbing'; });
-        slider.addEventListener('mouseleave', () => { isDown = false; slider.style.cursor = 'grab'; });
-        slider.addEventListener('mouseup', () => { isDown = false; slider.style.cursor = 'grab'; });
-        slider.addEventListener('mousemove', (e) => { if(!isDown) return; e.preventDefault(); const x = e.pageX - slider.offsetLeft; slider.scrollLeft = scrollLeft - (x - startX); });
-        slider.style.cursor = 'grab';
-    }
-    renderCollections(); renderProducts(); renderReviews();
-    enableDragScroll('collectionScroll'); enableDragScroll('reviewSlider');
-</script>
-
-<script>
-    // Smooth video loop - hides the restart jerk
-    const video = document.getElementById('heroVideo');
-    if (video) {
-        video.addEventListener('timeupdate', function() {
-            // If video is near the end (last 0.3 seconds)
-            if (video.duration - video.currentTime < 0.3) {
-                video.style.opacity = '0.98';
-                setTimeout(() => {
-                    video.style.opacity = '1';
-                }, 50);
-            }
-        });
-    }
-</script>
-
-
-
-
-
-<script>
-    // Icon click functionality - runs after DOM is fully loaded
-    document.addEventListener('DOMContentLoaded', function() {
-        // Search icon
-        const searchIcon = document.getElementById('searchIcon');
-        if(searchIcon) {
-            searchIcon.addEventListener('click', () => {
-                let searchQuery = prompt('🔍 Search INDI-GRADA:', 'Vanguard');
-                if(searchQuery) alert(`Searching for "${searchQuery}"...`);
-            });
-        }
-        
-        // User icon
-        const userIcon = document.getElementById('userIcon');
-        if(userIcon) {
-            userIcon.addEventListener('click', () => {
-                alert('👤 Account: Sign in to access your profile, orders, and wishlist.');
-            });
-        }
-        
-        // Wishlist icon
-        const wishlistIcon = document.getElementById('wishlistIcon');
-        if(wishlistIcon) {
-            wishlistIcon.addEventListener('click', () => {
-                let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-                if(wishlist.length === 0) {
-                    alert('❤️ Your wishlist is empty. Add items by clicking the heart on any product.');
-                } else {
-                    alert(`❤️ Your wishlist has ${wishlist.length} item(s).\n\nItems: ${wishlist.join(', ')}`);
-                }
-            });
-        }
-        
-        // Cart icon
-        const cartIcon = document.getElementById('cartIcon');
-        if(cartIcon) {
-            cartIcon.addEventListener('click', () => {
-                let cart = JSON.parse(localStorage.getItem('cart')) || [];
-                if(cart.length === 0) {
-                    alert('🛒 Your cart is empty. Start shopping now!');
-                } else {
-                    let total = 0;
-                    cart.forEach(item => {
-                        let priceNum = parseFloat(item.price.replace('HK$', '').replace(',', ''));
-                        total += priceNum;
-                    });
-                    alert(`🛒 Cart: ${cart.length} item(s). Total: HK$ ${total.toLocaleString()}`);
-                }
-            });
-        }
-        
-        // Update counter display (adds badges to icons)
-        function updateCounters() {
-            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            
-            let wishlistIcon = document.getElementById('wishlistIcon');
-            let cartIcon = document.getElementById('cartIcon');
-            
-            // Remove existing badges
-            document.querySelectorAll('.icon-badge').forEach(badge => badge.remove());
-            
-            // Add wishlist badge
-            if(wishlist.length > 0 && wishlistIcon) {
-                let badge = document.createElement('span');
-                badge.className = 'icon-badge';
-                badge.textContent = wishlist.length;
-                badge.style.position = 'absolute';
-                badge.style.top = '-8px';
-                badge.style.right = '-12px';
-                badge.style.background = '#c6a43f';
-                badge.style.color = '#0a0a0a';
-                badge.style.fontSize = '0.65rem';
-                badge.style.fontWeight = 'bold';
-                badge.style.padding = '2px 6px';
-                badge.style.borderRadius = '20px';
-                badge.style.minWidth = '18px';
-                badge.style.textAlign = 'center';
-                wishlistIcon.style.position = 'relative';
-                wishlistIcon.parentNode.style.position = 'relative';
-                wishlistIcon.parentNode.appendChild(badge);
-            }
-            
-            // Add cart badge
-            if(cart.length > 0 && cartIcon) {
-                let badge = document.createElement('span');
-                badge.className = 'icon-badge';
-                badge.textContent = cart.length;
-                badge.style.position = 'absolute';
-                badge.style.top = '-8px';
-                badge.style.right = '-12px';
-                badge.style.background = '#c6a43f';
-                badge.style.color = '#0a0a0a';
-                badge.style.fontSize = '0.65rem';
-                badge.style.fontWeight = 'bold';
-                badge.style.padding = '2px 6px';
-                badge.style.borderRadius = '20px';
-                badge.style.minWidth = '18px';
-                badge.style.textAlign = 'center';
-                cartIcon.style.position = 'relative';
-                cartIcon.parentNode.style.position = 'relative';
-                cartIcon.parentNode.appendChild(badge);
-            }
-        }
-        
-        updateCounters();
-        
-        // Also update counters whenever wishlist/cart changes (make updateCounters global)
-        window.updateNavCounters = updateCounters;
-    });
-</script>
+    </footer>
 
     <script>
-    document.querySelectorAll('.watch-item').forEach(item => {
-        const vid = item.querySelector('.product-video');
-        
-        item.addEventListener('mouseenter', () => {
-            vid.play();
+        // Hover to play/pause logic
+        const videos = document.querySelectorAll('.product-video');
+
+        videos.forEach(video => {
+            const card = video.closest('.product-card');
+
+            card.addEventListener('mouseenter', () => {
+                video.play();
+            });
+
+            card.addEventListener('mouseleave', () => {
+                video.pause();
+                video.currentTime = 0;
+            });
         });
-        
-        item.addEventListener('mouseleave', () => {
-            vid.pause();
-            vid.currentTime = 0; // Returns to start when mouse leaves
+
+        // Contact Form alert
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
         });
-    });
-</script>
-    
-    
-    
-    
-    </body>
+    </script>
+</body>
 </html>
