@@ -479,7 +479,7 @@
         `).join('');
     }
        
-    function renderProducts() {
+        function renderProducts() {
         const grid = document.getElementById('productGrid');
         // Products with video URLs
         const productsWithVideos = [
@@ -491,11 +491,11 @@
         
         grid.innerHTML = productsWithVideos.map((p, index) => `
             <div class="product-card">
-                <div class="product-img" style="position: relative; overflow: hidden; background: #111;">
-                    <video class="product-video" loop muted playsinline preload="auto" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;">
+                <div class="product-img" style="position: relative; overflow: hidden; background: #111; height: 280px;">
+                    <video class="product-video" loop muted playsinline preload="auto" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; display: none;">
                         <source src="${p.video}" type="video/mp4">
                     </video>
-                    <span class="product-icon" style="font-size: 3rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; transition: opacity 0.3s ease;">${p.icon}</span>
+                    <span class="product-icon" style="font-size: 3rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2;">${p.icon}</span>
                 </div>
                 <div class="product-details">
                     <span class="tag" style="background:#c6a43f30; padding:0.2rem 0.6rem;">${p.tag}</span>
@@ -513,49 +513,23 @@
             </div>
         `).join('');
         
-        // Add hover effect for videos - FIXED PROMISE VERSION
+        // SIMPLE HOVER EFFECT - NO PROMISE ERRORS
         document.querySelectorAll('.product-card').forEach(card => {
             const video = card.querySelector('.product-video');
             const icon = card.querySelector('.product-icon');
-            let playPromise = null;
             
             if(video) {
-                video.load();
-                
                 card.addEventListener('mouseenter', () => {
-                    video.style.opacity = '1';
-                    if(icon) icon.style.opacity = '0';
-                    
-                    playPromise = video.play();
-                    if (playPromise !== undefined) {
-                        playPromise.catch(error => {
-                            console.log('Play error:', error);
-                            setTimeout(() => {
-                                if (video.style.opacity === '1') {
-                                    video.play().catch(e => console.log('Retry failed:', e));
-                                }
-                            }, 100);
-                        });
-                    }
+                    video.style.display = 'block';
+                    icon.style.display = 'none';
+                    video.play().catch(e => console.log('Play error ignored'));
                 });
                 
                 card.addEventListener('mouseleave', () => {
-                    video.style.opacity = '0';
-                    if(icon) icon.style.opacity = '1';
-                    
-                    if (playPromise !== undefined) {
-                        playPromise.then(() => {
-                            video.pause();
-                            video.currentTime = 0;
-                        }).catch(() => {
-                            video.pause();
-                            video.currentTime = 0;
-                        });
-                    } else {
-                        video.pause();
-                        video.currentTime = 0;
-                    }
-                    playPromise = null;
+                    video.pause();
+                    video.currentTime = 0;
+                    video.style.display = 'none';
+                    icon.style.display = 'flex';
                 });
             }
         });
@@ -590,7 +564,6 @@
             });
         });
     }
-
 
 
 
