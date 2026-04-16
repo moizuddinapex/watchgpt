@@ -479,7 +479,7 @@
         `).join('');
     }
        
-                function renderProducts() {
+    function renderProducts() {
         const grid = document.getElementById('productGrid');
         // Products with video URLs
         const productsWithVideos = [
@@ -513,26 +513,49 @@
             </div>
         `).join('');
         
-        // Add hover effect for videos - FIXED VERSION
+        // Add hover effect for videos - FIXED PROMISE VERSION
         document.querySelectorAll('.product-card').forEach(card => {
             const video = card.querySelector('.product-video');
             const icon = card.querySelector('.product-icon');
+            let playPromise = null;
             
             if(video) {
-                // Preload video metadata
                 video.load();
                 
                 card.addEventListener('mouseenter', () => {
                     video.style.opacity = '1';
                     if(icon) icon.style.opacity = '0';
-                    video.play().catch(e => console.log('Video play error:', e));
+                    
+                    playPromise = video.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(error => {
+                            console.log('Play error:', error);
+                            setTimeout(() => {
+                                if (video.style.opacity === '1') {
+                                    video.play().catch(e => console.log('Retry failed:', e));
+                                }
+                            }, 100);
+                        });
+                    }
                 });
                 
                 card.addEventListener('mouseleave', () => {
                     video.style.opacity = '0';
                     if(icon) icon.style.opacity = '1';
-                    video.pause();
-                    video.currentTime = 0;
+                    
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            video.pause();
+                            video.currentTime = 0;
+                        }).catch(() => {
+                            video.pause();
+                            video.currentTime = 0;
+                        });
+                    } else {
+                        video.pause();
+                        video.currentTime = 0;
+                    }
+                    playPromise = null;
                 });
             }
         });
@@ -567,6 +590,9 @@
             });
         });
     }
+
+
+
 
     
     function renderReviews() {
