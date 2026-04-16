@@ -367,9 +367,13 @@
         }
     });
     
-    function calculateTotal(cart) {
-        // This would connect to your product prices
-        return '0';
+        function calculateTotal(cart) {
+        let total = 0;
+        cart.forEach(item => {
+            let priceNum = parseFloat(item.price.replace('HK$', '').replace(',', ''));
+            total += priceNum;
+        });
+        return 'HK$ ' + total.toLocaleString();
     }
     
     updateCounters();
@@ -486,14 +490,54 @@
             </div>
         `).join('');
     }
-    function renderProducts() {
+        function renderProducts() {
         const grid = document.getElementById('productGrid');
         grid.innerHTML = products.map(p => `
             <div class="product-card">
                 <div class="product-img"><span style="font-size:3rem;">${p.icon}</span></div>
-                <div class="product-details"><span class="tag" style="background:#c6a43f30; padding:0.2rem 0.6rem;">${p.tag}</span><div class="product-title">${p.title}</div><div class="price">${p.price}</div></div>
+                <div class="product-details">
+                    <span class="tag" style="background:#c6a43f30; padding:0.2rem 0.6rem;">${p.tag}</span>
+                    <div class="product-title">${p.title}</div>
+                    <div class="price">${p.price}</div>
+                    <div style="margin-top: 0.8rem;">
+                        <button class="wishlist-btn" data-title="${p.title}" style="background:none; border:1px solid #c6a43f; color:#c6a43f; padding:0.3rem 0.8rem; border-radius:20px; cursor:pointer; font-size:0.7rem; margin-right:0.5rem;">
+                            <i class="far fa-heart"></i> Wishlist
+                        </button>
+                        <button class="cart-btn" data-title="${p.title}" data-price="${p.price}" style="background:#c6a43f; border:none; color:#0a0a0a; padding:0.3rem 0.8rem; border-radius:20px; cursor:pointer; font-size:0.7rem;">
+                            <i class="fas fa-bag-shopping"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
             </div>
         `).join('');
+        
+        // Add event listeners to the new buttons
+        document.querySelectorAll('.wishlist-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                let title = btn.getAttribute('data-title');
+                let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+                if(!wishlist.includes(title)) {
+                    wishlist.push(title);
+                    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                    alert(`❤️ ${title} added to wishlist!`);
+                    updateCounters();
+                } else {
+                    alert(`❤️ ${title} is already in your wishlist.`);
+                }
+            });
+        });
+        
+        document.querySelectorAll('.cart-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                let title = btn.getAttribute('data-title');
+                let price = btn.getAttribute('data-price');
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart.push({ title: title, price: price });
+                localStorage.setItem('cart', JSON.stringify(cart));
+                alert(`🛒 ${title} added to cart!`);
+                updateCounters();
+            });
+        });
     }
     function renderReviews() {
         const slider = document.getElementById('reviewSlider');
