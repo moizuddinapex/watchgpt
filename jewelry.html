@@ -1,1 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>INDI-GRADA | Bold Jewelry Collection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #eaeaea; scroll-behavior: smooth; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #1a1a1a; }
+        ::-webkit-scrollbar-thumb { background: #c6a43f; border-radius: 4px; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1.8rem 5%; background: rgba(10, 10, 10, 0.92); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(198, 164, 63, 0.2); }
+        .logo { font-size: 1.9rem; font-weight: 700; letter-spacing: 3px; background: linear-gradient(135deg, #fff, #c6a43f); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .nav-links { display: flex; gap: 2.5rem; font-weight: 500; }
+        .nav-links a { color: #ddd; text-decoration: none; transition: 0.3s; font-size: 0.95rem; }
+        .nav-links a:hover, .nav-links a.active { color: #c6a43f; }
+        .nav-icons i { margin-left: 1.2rem; font-size: 1.2rem; cursor: pointer; transition: 0.2s; }
+        .nav-icons i:hover { color: #c6a43f; }
+        .page-header { text-align: center; padding: 4rem 5% 2rem; }
+        .page-header h1 { font-size: 3rem; font-weight: 600; background: linear-gradient(135deg, #fff, #c6a43f); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .page-header p { color: #aaa; margin-top: 0.5rem; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; padding: 2rem 5% 4rem; }
+        .product-card { background: #0f0f0f; border-radius: 24px; overflow: hidden; transition: all 0.3s; }
+        .product-card:hover { transform: scale(1.02); background: #141414; box-shadow: 0 12px 24px rgba(0,0,0,0.6); }
+        .product-img { height: 280px; background: linear-gradient(145deg, #1f1f1f, #0c0c0c); display: flex; align-items: center; justify-content: center; font-size: 3.2rem; }
+        .product-details { padding: 1rem 1.2rem 1.5rem; }
+        .product-title { font-weight: 600; font-size: 1rem; }
+        .product-price { font-weight: 700; margin-top: 0.6rem; font-size: 1.2rem; color: #c6a43f; }
+        .tag { font-size: 0.7rem; background: #c6a43f30; display: inline-block; padding: 0.2rem 0.6rem; border-radius: 30px; margin-bottom: 0.5rem; }
+        footer { background: #020202; padding: 2.5rem 5%; text-align: center; border-top: 1px solid #1f1f1f; margin-top: 3rem; }
+        .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        .footer-links a { color: #aaa; text-decoration: none; }
+        @media (max-width: 768px) { .nav-links { display: none; } .page-header h1 { font-size: 2rem; } }
+    </style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="logo">✦ INDI-GRADA</div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="watches.html">Watches</a>
+        <a href="jewelry.html" class="active">Jewelry</a>
+        <a href="collections.html">Collections</a>
+        <a href="journal.html">Journal</a>
+    </div>
+    <div class="nav-icons">
+        <i class="fas fa-search"></i><i class="far fa-user"></i><i class="far fa-heart"></i><i class="fas fa-bag-shopping"></i>
+    </div>
+</nav>
 
+<div class="page-header">
+    <h1>Statement Jewelry</h1>
+    <p>Handcrafted pieces that command attention</p>
+</div>
+
+<div class="product-grid" id="jewelryGrid"></div>
+
+<footer>
+    <div class="footer-links">
+        <a href="#">About INDI-GRADA</a><a href="#">Sustainability</a><a href="#">Shipping & Returns</a><a href="#">Warranty</a><a href="#">Contact</a>
+    </div>
+    <p style="color:#666;">© 2026 INDI-GRADA — Bold By Design</p>
+</footer>
+
+<script>
+    const jewelry = [
+        { title: "Forged Steel Cuff", price: "HK$1,200", tag: "Men's", icon: "🔗" },
+        { title: "Celestial Pendant", price: "HK$2,800", tag: "Women's", icon: "✨" },
+        { title: "Rose Gold Signet Ring", price: "HK$1,750", tag: "Limited", icon: "💍" },
+        { title: "Carbon Fiber Bracelet", price: "HK$950", tag: "New", icon: "⛓️" },
+        { title: "Diamond Halo Earrings", price: "HK$3,200", tag: "Premium", icon: "💎" },
+        { title: "Titanium Chain Necklace", price: "HK$1,500", tag: "Best Seller", icon: "📿" },
+        { title: "Obsidian Beads", price: "HK$800", tag: "Unisex", icon: "⚫" },
+        { title: "Golden Ivy Cufflinks", price: "HK$1,650", tag: "Formal", icon: "🌿" }
+    ];
+    function renderJewelry() {
+        const grid = document.getElementById('jewelryGrid');
+        grid.innerHTML = jewelry.map(j => `
+            <div class="product-card">
+                <div class="product-img"><span style="font-size:3rem;">${j.icon}</span></div>
+                <div class="product-details"><span class="tag">${j.tag}</span><div class="product-title">${j.title}</div><div class="product-price">${j.price}</div></div>
+            </div>
+        `).join('');
+    }
+    renderJewelry();
+</script>
+</body>
+</html>
