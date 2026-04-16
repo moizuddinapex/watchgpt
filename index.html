@@ -487,10 +487,11 @@
             </div>
         `).join('');
     }
-       
-    function renderProducts() {
+
+
+
+        function renderProducts() {
         const grid = document.getElementById('productGrid');
-        // Products with video URLs - ONLY THESE 4
         const productsWithVideos = [
             { title: "The Vanguard Carbon Chrono Arctic Tundra", price: "HK$4,100", tag: "New", icon: "❄️", video: "https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/136967-765457958_medium.mp4" },
             { title: "Intrepid Sport Northern Lights", price: "HK$2,000", tag: "New", icon: "🌌", video: "https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/3019-165457954_medium.mp4" },
@@ -498,7 +499,7 @@
             { title: "Intrepid Sport Ladies Emerald Mist", price: "HK$2,000", tag: "New", icon: "🍃", video: "https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/39863-425400884_medium.mp4" }
         ];
         
-        grid.innerHTML = productsWithVideos.map((p) => `
+        grid.innerHTML = productsWithVideos.map(p => `
             <div class="product-card">
                 <div class="product-img" style="position: relative; overflow: hidden; background: #111; height: 280px;">
                     <video class="product-video" loop muted playsinline preload="auto" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; display: none;">
@@ -522,18 +523,15 @@
             </div>
         `).join('');
         
-        // Hover effect for videos
         document.querySelectorAll('.product-card').forEach(card => {
             const video = card.querySelector('.product-video');
             const icon = card.querySelector('.product-icon');
-            
             if(video) {
                 card.addEventListener('mouseenter', () => {
                     video.style.display = 'block';
                     if(icon) icon.style.display = 'none';
-                    video.play().catch(e => console.log('Play error ignored'));
+                    video.play().catch(e => console.log('hover play error'));
                 });
-                
                 card.addEventListener('mouseleave', () => {
                     video.pause();
                     video.currentTime = 0;
@@ -543,7 +541,6 @@
             }
         });
         
-        // Wishlist button listeners
         document.querySelectorAll('.wishlist-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -560,7 +557,6 @@
             });
         });
         
-        // Cart button listeners
         document.querySelectorAll('.cart-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
