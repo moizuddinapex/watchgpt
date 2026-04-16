@@ -371,7 +371,27 @@
 }
 
 
-        
+  .product-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Exactly 4 products */
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.watch-card {
+    text-align: center;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.hover-video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    cursor: pointer;
+}      
     
     
     </style>
@@ -499,41 +519,39 @@
         ];
         
         grid.innerHTML = productsWithVideos.map((p, index) => `
-            <div class="product-card">
-    <video class="watch-video" autoplay loop muted playsinline poster="optional-thumbnail1.jpg">
-        <source src="136967-765457958_medium.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <h3>Watch Model A</h3>
-    <p>$199.00</p>
-</div>
+<section id="products" class="product-section">
+    <div class="product-container">
+        <div class="watch-card">
+            <video class="hover-video" muted loop playsinline>
+                <source src="136967-765457958_medium.mp4" type="video/mp4">
+            </video>
+            <h3>Classic Gold</h3>
+        </div>
 
-<div class="product-card">
-    <video class="watch-video" autoplay loop muted playsinline poster="optional-thumbnail2.jpg">
-        <source src="3019-165457954_medium.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <h3>Watch Model B</h3>
-    <p>$249.00</p>
-</div>
+        <div class="watch-card">
+            <video class="hover-video" muted loop playsinline>
+                <source src="3019-165457954_medium.mp4" type="video/mp4">
+            </video>
+            <h3>Silver Executive</h3>
+        </div>
 
-<div class="product-card">
-    <video class="watch-video" autoplay loop muted playsinline poster="optional-thumbnail3.jpg">
-        <source src="34855-403777679_medium.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <h3>Watch Model C</h3>
-    <p>$299.00</p>
-</div>
+        <div class="watch-card">
+            <video class="hover-video" muted loop playsinline>
+                <source src="34855-403777679_medium.mp4" type="video/mp4">
+            </video>
+            <h3>Modern Black</h3>
+        </div>
 
-<div class="product-card">
-    <video class="watch-video" autoplay loop muted playsinline poster="optional-thumbnail4.jpg">
-        <source src="39863-425400884_medium.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <h3>Watch Model D</h3>
-    <p>$349.00</p>
-</div>
+        <div class="watch-card">
+            <video class="hover-video" muted loop playsinline>
+                <source src="39863-425400884_medium.mp4" type="video/mp4">
+            </video>
+            <h3>Sport Edition</h3>
+        </div>
+    </div>
+</section>
+
+            
                 <div class="product-details">
                     <span class="tag" style="background:#c6a43f30; padding:0.2rem 0.6rem;">${p.tag}</span>
                     <div class="product-title">${p.title}</div>
@@ -755,5 +773,28 @@
         window.updateNavCounters = updateCounters;
     });
 </script>
-</body>
+
+    
+    <script>
+    const videos = document.querySelectorAll('.hover-video');
+
+    videos.forEach(video => {
+        const card = video.parentElement;
+
+        card.addEventListener('mouseenter', () => {
+            video.play();
+        });
+
+        card.addEventListener('mouseleave', () => {
+            video.pause();
+            video.currentTime = 0; // Resets to start when mouse leaves
+        });
+    });
+</script>
+    
+    
+    
+    
+    
+    </body>
 </html>
