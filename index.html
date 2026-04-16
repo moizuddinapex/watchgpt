@@ -305,14 +305,77 @@
             .middle-video-section { height: 50vh; min-height: 350px; }
         }
     
-    
+        .nav-icons { position: relative; display: flex; gap: 1.2rem; align-items: center; }
+.nav-icons i { position: relative; }
+.cart-count, .wishlist-count {
+    position: absolute;
+    top: -8px;
+    right: -12px;
+    background: #c6a43f;
+    color: #0a0a0a;
+    font-size: 0.65rem;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 20px;
+    min-width: 18px;
+    text-align: center;
+}
     
     
     
     
     </style>
 </head>
-<body>
+
+    
+    <script>
+    function updateCounters() {
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        let wishlistCount = document.querySelector('.wishlist-count');
+        let cartCount = document.querySelector('.cart-count');
+        
+        if(wishlistCount) wishlistCount.textContent = wishlist.length;
+        if(cartCount) cartCount.textContent = cart.length;
+    }
+    
+    document.getElementById('searchIcon')?.addEventListener('click', () => {
+        let searchQuery = prompt('🔍 Search INDI-GRADA:', 'Vanguard');
+        if(searchQuery) alert(`Searching for "${searchQuery}"...`);
+    });
+    
+    document.getElementById('userIcon')?.addEventListener('click', () => {
+        alert('👤 Account: Sign in to access your profile, orders, and wishlist.');
+    });
+    
+    document.getElementById('wishlistIcon')?.addEventListener('click', () => {
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        if(wishlist.length === 0) {
+            alert('❤️ Your wishlist is empty. Add items by clicking the heart on any product.');
+        } else {
+            alert(`❤️ Your wishlist has ${wishlist.length} item(s).\n\nItems: ${wishlist.join(', ')}`);
+        }
+    });
+    
+    document.getElementById('cartIcon')?.addEventListener('click', () => {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        if(cart.length === 0) {
+            alert('🛒 Your cart is empty. Start shopping now!');
+        } else {
+            alert(`🛒 Cart: ${cart.length} item(s). Total: HK$ ${calculateTotal(cart)}`);
+        }
+    });
+    
+    function calculateTotal(cart) {
+        // This would connect to your product prices
+        return '0';
+    }
+    
+    updateCounters();
+</script>
+    
+    <body>
 
 <nav class="navbar">
     <div class="logo">✦ INDI-GRADA</div>
