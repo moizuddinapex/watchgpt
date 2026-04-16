@@ -1,1 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>INDI-GRADA | Signature Collections</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #eaeaea; scroll-behavior: smooth; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #1a1a1a; }
+        ::-webkit-scrollbar-thumb { background: #c6a43f; border-radius: 4px; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1.8rem 5%; background: rgba(10, 10, 10, 0.92); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(198, 164, 63, 0.2); }
+        .logo { font-size: 1.9rem; font-weight: 700; letter-spacing: 3px; background: linear-gradient(135deg, #fff, #c6a43f); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .nav-links { display: flex; gap: 2.5rem; font-weight: 500; }
+        .nav-links a { color: #ddd; text-decoration: none; transition: 0.3s; font-size: 0.95rem; }
+        .nav-links a:hover, .nav-links a.active { color: #c6a43f; }
+        .nav-icons i { margin-left: 1.2rem; font-size: 1.2rem; cursor: pointer; transition: 0.2s; }
+        .nav-icons i:hover { color: #c6a43f; }
+        .page-header { text-align: center; padding: 4rem 5% 2rem; }
+        .page-header h1 { font-size: 3rem; font-weight: 600; background: linear-gradient(135deg, #fff, #c6a43f); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .collections-grid { display: flex; flex-direction: column; gap: 3rem; padding: 2rem 5% 4rem; }
+        .collection-banner { display: flex; align-items: center; background: #0f0f0f; border-radius: 28px; overflow: hidden; transition: 0.3s; }
+        .collection-banner:hover { transform: scale(1.01); box-shadow: 0 12px 28px rgba(198,164,63,0.15); }
+        .collection-img { flex: 1; min-height: 320px; background: linear-gradient(145deg, #1f1f1f, #0c0c0c); display: flex; align-items: center; justify-content: center; font-size: 5rem; }
+        .collection-info { flex: 1; padding: 2rem; }
+        .collection-info h2 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+        .collection-info p { color: #aaa; margin-bottom: 1rem; }
+        .collection-btn { background: transparent; border: 1px solid #c6a43f; color: #c6a43f; padding: 0.5rem 1.2rem; border-radius: 40px; cursor: pointer; transition: 0.2s; }
+        .collection-btn:hover { background: #c6a43f; color: #0a0a0a; }
+        footer { background: #020202; padding: 2.5rem 5%; text-align: center; border-top: 1px solid #1f1f1f; margin-top: 3rem; }
+        .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        .footer-links a { color: #aaa; text-decoration: none; }
+        @media (max-width: 768px) { .nav-links { display: none; } .collection-banner { flex-direction: column; } .page-header h1 { font-size: 2rem; } }
+    </style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="logo">✦ INDI-GRADA</div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="watches.html">Watches</a>
+        <a href="jewelry.html">Jewelry</a>
+        <a href="collections.html" class="active">Collections</a>
+        <a href="journal.html">Journal</a>
+    </div>
+    <div class="nav-icons">
+        <i class="fas fa-search"></i><i class="far fa-user"></i><i class="far fa-heart"></i><i class="fas fa-bag-shopping"></i>
+    </div>
+</nav>
 
+<div class="page-header">
+    <h1>Our Signature Collections</h1>
+    <p>Curated stories told through design</p>
+</div>
+
+<div class="collections-grid" id="collectionsGrid"></div>
+
+<footer>
+    <div class="footer-links">
+        <a href="#">About INDI-GRADA</a><a href="#">Sustainability</a><a href="#">Shipping & Returns</a><a href="#">Warranty</a><a href="#">Contact</a>
+    </div>
+    <p style="color:#666;">© 2026 INDI-GRADA — Bold By Design</p>
+</footer>
+
+<script>
+    const collectionsList = [
+        { name: "Vanguard", desc: "Carbon fiber cases, chronograph movements, and avant-garde design. For those who lead.", icon: "⌚", price: "From HK$4,100" },
+        { name: "Intrepid", desc: "Sport meets luxury. Sapphire crystals, 100m water resistance, and bold gradients.", icon: "⏱️", price: "From HK$2,000" },
+        { name: "Valencia", desc: "Elegance redefined. Delicate dials, rose gold accents, for the modern woman.", icon: "🌹", price: "From HK$1,750" },
+        { name: "Riviera", desc: "Mediterranean spirit. Gold blossom motifs, interchangeable straps.", icon: "🌊", price: "From HK$1,650" }
+    ];
+    function renderCollections() {
+        const grid = document.getElementById('collectionsGrid');
+        grid.innerHTML = collectionsList.map(c => `
+            <div class="collection-banner">
+                <div class="collection-img"><span style="font-size:4rem;">${c.icon}</span></div>
+                <div class="collection-info">
+                    <h2>${c.name}</h2>
+                    <p>${c.desc}</p>
+                    <div style="color:#c6a43f; font-weight:bold;">${c.price}</div>
+                    <button class="collection-btn" onclick="alert('Explore ${c.name} collection')">Discover →</button>
+                </div>
+            </div>
+        `).join('');
+    }
+    renderCollections();
+</script>
+</body>
+</html>
