@@ -488,9 +488,9 @@
         `).join('');
     }
        
-        function renderProducts() {
+    function renderProducts() {
         const grid = document.getElementById('productGrid');
-        // Products with video URLs
+        // Products with video URLs - ONLY THESE 4
         const productsWithVideos = [
             { title: "The Vanguard Carbon Chrono Arctic Tundra", price: "HK$4,100", tag: "New", icon: "❄️", video: "https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/136967-765457958_medium.mp4" },
             { title: "Intrepid Sport Northern Lights", price: "HK$2,000", tag: "New", icon: "🌌", video: "https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/3019-165457954_medium.mp4" },
@@ -498,42 +498,14 @@
             { title: "Intrepid Sport Ladies Emerald Mist", price: "HK$2,000", tag: "New", icon: "🍃", video: "https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/39863-425400884_medium.mp4" }
         ];
         
-        grid.innerHTML = productsWithVideos.map((p, index) => `
+        grid.innerHTML = productsWithVideos.map((p) => `
             <div class="product-card">
-    <video class="watch-video" autoplay loop muted playsinline poster="optional-thumbnail1.jpg">
-        <source src="136967-765457958_medium.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <h3>Watch Model A</h3>
-    <p>$199.00</p>
-</div>
-
-<div class="product-card">
-    <video class="watch-video" autoplay loop muted playsinline poster="optional-thumbnail2.jpg">
-        <source src="3019-165457954_medium.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <h3>Watch Model B</h3>
-    <p>$249.00</p>
-</div>
-
-<div class="product-card">
-    <video class="watch-video" autoplay loop muted playsinline poster="optional-thumbnail3.jpg">
-        <source src="34855-403777679_medium.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <h3>Watch Model C</h3>
-    <p>$299.00</p>
-</div>
-
-<div class="product-card">
-    <video class="watch-video" autoplay loop muted playsinline poster="optional-thumbnail4.jpg">
-        <source src="39863-425400884_medium.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <h3>Watch Model D</h3>
-    <p>$349.00</p>
-</div>
+                <div class="product-img" style="position: relative; overflow: hidden; background: #111; height: 280px;">
+                    <video class="product-video" loop muted playsinline preload="auto" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; display: none;">
+                        <source src="${p.video}" type="video/mp4">
+                    </video>
+                    <span class="product-icon" style="font-size: 3rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2;">${p.icon}</span>
+                </div>
                 <div class="product-details">
                     <span class="tag" style="background:#c6a43f30; padding:0.2rem 0.6rem;">${p.tag}</span>
                     <div class="product-title">${p.title}</div>
@@ -550,7 +522,7 @@
             </div>
         `).join('');
         
-        // SIMPLE HOVER EFFECT - NO PROMISE ERRORS
+        // Hover effect for videos
         document.querySelectorAll('.product-card').forEach(card => {
             const video = card.querySelector('.product-video');
             const icon = card.querySelector('.product-icon');
@@ -558,7 +530,7 @@
             if(video) {
                 card.addEventListener('mouseenter', () => {
                     video.style.display = 'block';
-                    icon.style.display = 'none';
+                    if(icon) icon.style.display = 'none';
                     video.play().catch(e => console.log('Play error ignored'));
                 });
                 
@@ -566,12 +538,12 @@
                     video.pause();
                     video.currentTime = 0;
                     video.style.display = 'none';
-                    icon.style.display = 'flex';
+                    if(icon) icon.style.display = 'flex';
                 });
             }
         });
         
-        // Wishlist and Cart button listeners
+        // Wishlist button listeners
         document.querySelectorAll('.wishlist-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -588,6 +560,7 @@
             });
         });
         
+        // Cart button listeners
         document.querySelectorAll('.cart-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -601,8 +574,6 @@
             });
         });
     }
-
-
 
     
     function renderReviews() {
