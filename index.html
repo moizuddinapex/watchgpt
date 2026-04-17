@@ -4,49 +4,375 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>INDI-GRADA | Bold Luxury Watches & Jewelry</title>
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #eaeaea; scroll-behavior: smooth; overflow-x: hidden; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #eaeaea;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
 
         /* Navigation */
         .navbar {
-            display: flex; justify-content: space-between; align-items: center; padding: 1.8rem 5%;
-            background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100;
-            border-bottom: 1px solid rgba(198, 164, 63, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: rgba(10, 10, 10, 0.92);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(198, 164, 63, 0.2);
         }
-        .logo { font-size: 1.9rem; font-weight: 700; letter-spacing: 3px; background: linear-gradient(135deg, #fff, #c6a43f); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .nav-links { display: flex; gap: 2.5rem; }
-        .nav-links a { color: #ddd; text-decoration: none; transition: 0.3s; }
-        .nav-links a:hover { color: #c6a43f; }
-        .nav-icons { display: flex; gap: 1.2rem; align-items: center; }
-        .nav-icons i { font-size: 1.2rem; cursor: pointer; transition: 0.2s; position: relative; }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #fff, #c6a43f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        .nav-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .nav-links a:hover {
+            color: #c6a43f;
+        }
+        .nav-icons {
+            display: flex;
+            gap: 1.2rem;
+        }
+        .nav-icons i {
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #ddd;
+        }
+        .nav-icons i:hover {
+            color: #c6a43f;
+        }
 
-        /* Hero */
-        .hero-video-section { position: relative; width: 100%; height: 90vh; overflow: hidden; }
-        #heroVideo { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); object-fit: cover; z-index: 1; }
-        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2; }
-        .hero-content { position: absolute; bottom: 15%; left: 5%; z-index: 3; max-width: 650px; }
-        .hero-content h1 { font-size: 3.5rem; margin-bottom: 1rem; }
-        .hero-btn { background: transparent; border: 2px solid #c6a43f; color: #c6a43f; padding: 0.8rem 2rem; border-radius: 40px; cursor: pointer; font-weight: bold; }
+        /* Hero Video Section */
+        .hero-video-section {
+            position: relative;
+            width: 100%;
+            height: 85vh;
+            overflow: hidden;
+        }
+        #heroVideo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: 1;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 100%);
+            z-index: 2;
+        }
+        .hero-content {
+            position: absolute;
+            bottom: 15%;
+            left: 5%;
+            z-index: 3;
+            max-width: 600px;
+            animation: fadeUp 0.8s ease-out;
+        }
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #fff, #c6a43f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #eee;
+        }
+        .hero-btn {
+            background: transparent;
+            border: 2px solid #c6a43f;
+            color: #c6a43f;
+            padding: 0.7rem 1.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 0.9rem;
+            border-radius: 40px;
+        }
+        .hero-btn:hover {
+            background: #c6a43f;
+            color: #0a0a0a;
+            transform: scale(1.02);
+        }
+
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            padding: 3rem 5% 1rem;
+        }
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 500;
+        }
+        .section-header span {
+            color: #c6a43f;
+        }
 
         /* Watch Grid */
-        .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 2rem 5%; }
-        .watch-item { background: #111; border: 1px solid #222; border-radius: 12px; overflow: hidden; transition: 0.3s; }
-        .video-box { width: 100%; aspect-ratio: 1/1; background: #000; position: relative; }
-        .product-video { width: 100%; height: 100%; object-fit: cover; cursor: pointer; }
-        .watch-info { padding: 1.5rem; }
-        .status { color: #d4af37; font-size: 12px; font-weight: bold; text-transform: uppercase; }
-        .name { font-size: 16px; margin: 8px 0; min-height: 40px; }
-        .price { color: #d4af37; font-size: 18px; font-weight: bold; }
-        
-        /* Middle Video Section */
-        .middle-video-section { position: relative; width: 100%; height: 60vh; overflow: hidden; margin: 3rem 0; }
-        #middleVideo { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); object-fit: cover; }
-        
-        @media (max-width: 1024px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px) { .product-grid { grid-template-columns: 1fr; } }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.8rem;
+            padding: 2rem 5% 3rem;
+        }
+        .watch-item {
+            background: #111;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .watch-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(198,164,63,0.15);
+        }
+        .video-box {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: #000;
+            position: relative;
+            overflow: hidden;
+        }
+        .product-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .watch-info {
+            padding: 1.2rem;
+        }
+        .status {
+            color: #c6a43f;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .name {
+            font-size: 1rem;
+            margin: 0.5rem 0;
+            font-weight: 500;
+            min-height: 48px;
+        }
+        .price {
+            color: #c6a43f;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Middle Video Section with Overlay Text */
+        .middle-video-section {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            min-height: 450px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+        #middleVideo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: 1;
+        }
+        .middle-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
+            z-index: 2;
+        }
+        .middle-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 3;
+            width: 80%;
+            max-width: 700px;
+        }
+        .middle-content h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #fff, #c6a43f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+        .middle-content p {
+            font-size: 1.1rem;
+            color: #eee;
+            margin-bottom: 1.5rem;
+        }
+        .middle-btn {
+            background: transparent;
+            border: 2px solid #c6a43f;
+            color: #c6a43f;
+            padding: 0.7rem 1.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 0.9rem;
+            border-radius: 40px;
+        }
+        .middle-btn:hover {
+            background: #c6a43f;
+            color: #0a0a0a;
+        }
+
+        /* Enhanced Footer */
+        .footer {
+            background: #050505;
+            padding: 3rem 5% 1.5rem;
+            margin-top: 3rem;
+            border-top: 1px solid #1a1a1a;
+        }
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-col h4 {
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+            color: #c6a43f;
+            letter-spacing: 1px;
+        }
+        .footer-col p, .footer-col a {
+            font-size: 0.8rem;
+            color: #aaa;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.6rem;
+            transition: 0.2s;
+        }
+        .footer-col a:hover {
+            color: #c6a43f;
+            transform: translateX(3px);
+        }
+        .newsletter-form {
+            display: flex;
+            margin-top: 0.5rem;
+            border-bottom: 1px solid #333;
+        }
+        .newsletter-form input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 0.6rem 0;
+            color: #fff;
+            outline: none;
+            font-size: 0.8rem;
+        }
+        .newsletter-form button {
+            background: transparent;
+            border: none;
+            color: #c6a43f;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .social-icons i {
+            font-size: 1.2rem;
+            color: #aaa;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .social-icons i:hover {
+            color: #c6a43f;
+        }
+        .payment-icons {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        .payment-icons i {
+            font-size: 1.8rem;
+            color: #aaa;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #1a1a1a;
+            font-size: 0.7rem;
+            color: #666;
+        }
+        .footer-bottom a {
+            color: #c6a43f;
+            text-decoration: none;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1024px) {
+            .product-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .product-grid { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 2rem; }
+            .middle-content h2 { font-size: 1.6rem; }
+        }
     </style>
 </head>
 <body>
@@ -58,6 +384,7 @@
         <a href="#">Watches</a>
         <a href="#">Jewelry</a>
         <a href="#">Collections</a>
+        <a href="#">Journal</a>
     </div>
     <div class="nav-icons">
         <i class="fas fa-search"></i>
@@ -67,25 +394,30 @@
     </div>
 </nav>
 
+<!-- Hero Video -->
 <div class="hero-video-section">
     <video autoplay loop muted playsinline id="heroVideo">
-        <source src="136967-765457958_medium.mp4" type="video/mp4">
+        <source src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/136967-765457958_medium.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-content">
         <h1>Time Forged in Fire</h1>
+        <p>Discover the new Vanguard Carbon Chrono. Bold by design, relentless in spirit.</p>
         <button class="hero-btn">EXPLORE THE COLLECTION →</button>
     </div>
 </div>
 
 <main>
-    <h2 style="padding: 3rem 5% 0;">Latest Drops · <span style="color:#c6a43f">Timeless Edge</span></h2>
-    
+    <div class="section-header">
+        <h2>Latest Drops · <span>Timeless Edge</span></h2>
+    </div>
+
+    <!-- Product Grid with Videos -->
     <div class="product-grid">
         <div class="watch-item">
             <div class="video-box">
                 <video class="product-video" muted loop playsinline>
-                    <source src="136967-765457958_medium.mp4" type="video/mp4">
+                    <source src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/136967-765457958_medium.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="watch-info">
@@ -94,11 +426,10 @@
                 <p class="price">HK$4,100</p>
             </div>
         </div>
-
         <div class="watch-item">
             <div class="video-box">
                 <video class="product-video" muted loop playsinline>
-                    <source src="3019-165457954_medium.mp4" type="video/mp4">
+                    <source src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/3019-165457954_medium.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="watch-info">
@@ -107,11 +438,10 @@
                 <p class="price">HK$2,000</p>
             </div>
         </div>
-
         <div class="watch-item">
             <div class="video-box">
                 <video class="product-video" muted loop playsinline>
-                    <source src="34855-403777679_medium.mp4" type="video/mp4">
+                    <source src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/34855-403777679_medium.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="watch-info">
@@ -120,11 +450,10 @@
                 <p class="price">HK$1,750</p>
             </div>
         </div>
-
         <div class="watch-item">
             <div class="video-box">
                 <video class="product-video" muted loop playsinline>
-                    <source src="39863-425400884_medium.mp4" type="video/mp4">
+                    <source src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/39863-425400884_medium.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="watch-info">
@@ -135,30 +464,86 @@
         </div>
     </div>
 
+    <!-- Middle Video with Text Overlay -->
     <div class="middle-video-section">
         <video autoplay loop muted playsinline id="middleVideo">
-            <source src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/videos/Extreme.mp4" type="video/mp4">
+            <source src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/37006-413208203_medium.mp4" type="video/mp4">
         </video>
+        <div class="middle-overlay"></div>
+        <div class="middle-content">
+            <h2>Crafted for the Bold</h2>
+            <p>Every detail tells a story. Every timepiece, a legacy.</p>
+            <button class="middle-btn">DISCOVER THE CRAFT →</button>
+        </div>
     </div>
 </main>
 
-<footer>
-    <p style="text-align: center; padding: 3rem; color: #666;">© 2026 INDI-GRADA — Bold By Design</p>
+<!-- Enhanced Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-col">
+            <h4>Information</h4>
+            <p>Delivery Information</p>
+            <p>Store Locators</p>
+            <p>Size Chart</p>
+            <p>Returns & Refunds</p>
+            <p>FAQ</p>
+        </div>
+        <div class="footer-col">
+            <h4>Policies</h4>
+            <p>Privacy & Legal</p>
+            <p>Terms & Conditions</p>
+            <p>Contact</p>
+            <p>Exchange Policy</p>
+        </div>
+        <div class="footer-col">
+            <h4>Stay in Style!</h4>
+            <p style="font-size:0.8rem;">Be the first to know about new arrivals, exclusive deals, and fashion updates.</p>
+            <div class="newsletter-form">
+                <input type="email" placeholder="Your email address">
+                <button>Subscribe →</button>
+            </div>
+            <div class="social-icons">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-youtube"></i>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>We Accept</h4>
+            <div class="payment-icons">
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-cc-mastercard"></i>
+                <i class="fab fa-cc-paypal"></i>
+                <i class="fab fa-cc-amex"></i>
+            </div>
+            <div style="margin-top: 1rem;">
+                <p>Free shipping on all orders above Rs.2500/-</p>
+                <p>Support 24/7</p>
+                <p>10 days exchange</p>
+                <p>100% secure payment</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>Copyright © 2026 <a href="#">INDI-GRADA</a> all rights reserved. | Designed with <i class="fas fa-heart" style="color:#c6a43f;"></i> for the bold.</p>
+    </div>
 </footer>
 
 <script>
-    // Hover to play script
+    // Hover to play/pause for product videos
     document.querySelectorAll('.watch-item').forEach(item => {
         const vid = item.querySelector('.product-video');
-        
-        item.addEventListener('mouseenter', () => {
-            vid.play();
-        });
-        
-        item.addEventListener('mouseleave', () => {
-            vid.pause();
-            vid.currentTime = 0;
-        });
+        if(vid) {
+            item.addEventListener('mouseenter', () => {
+                vid.play().catch(e => console.log('hover play error'));
+            });
+            item.addEventListener('mouseleave', () => {
+                vid.pause();
+                vid.currentTime = 0;
+            });
+        }
     });
 </script>
 
