@@ -135,15 +135,85 @@
         </div>
     </div>
 
-    <div class="middle-video-section">
-        <video autoplay loop muted playsinline id="middleVideo">
+        <div class="middle-video-section" style="position: relative;">
+        <video autoplay loop muted playsinline id="middleVideo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
             <source src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/videos/Extreme.mp4" type="video/mp4">
         </video>
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2;"></div>
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 3; color: white; width: 80%;">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #c6a43f;">Crafted for the Bold</h2>
+            <p style="margin-bottom: 1.5rem;">Every detail tells a story. Every timepiece, a legacy.</p>
+            <button style="background: transparent; border: 2px solid #c6a43f; color: #c6a43f; padding: 0.6rem 1.5rem; border-radius: 40px; cursor: pointer;">DISCOVER THE CRAFT →</button>
+        </div>
     </div>
 </main>
 
-<footer>
-    <p style="text-align: center; padding: 3rem; color: #666;">© 2026 INDI-GRADA — Bold By Design</p>
+<footer style="background: #050505; padding: 3rem 5% 1.5rem; border-top: 1px solid #1a1a1a;">
+    <!-- Top Bar with 4 Service Icons -->
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; text-align: center; margin-bottom: 3rem; border-bottom: 1px solid #1a1a1a; padding-bottom: 2rem;">
+        <div>
+            <i class="fas fa-truck" style="font-size: 1.8rem; color: #c6a43f; margin-bottom: 0.5rem;"></i>
+            <h4 style="font-size: 0.9rem;">FREE SHIPPING</h4>
+            <p style="font-size: 0.7rem; color: #aaa;">Free shipping on all orders above Rs.2500/-</p>
+        </div>
+        <div>
+            <i class="fas fa-headset" style="font-size: 1.8rem; color: #c6a43f; margin-bottom: 0.5rem;"></i>
+            <h4 style="font-size: 0.9rem;">SUPPORT 24/7</h4>
+            <p style="font-size: 0.7rem; color: #aaa;">Contact us 24 hours a day, 7 days a week</p>
+        </div>
+        <div>
+            <i class="fas fa-exchange-alt" style="font-size: 1.8rem; color: #c6a43f; margin-bottom: 0.5rem;"></i>
+            <h4 style="font-size: 0.9rem;">10 DAYS EXCHANGE</h4>
+            <p style="font-size: 0.7rem; color: #aaa;">Simply exchange it within 10 days</p>
+        </div>
+        <div>
+            <i class="fas fa-lock" style="font-size: 1.8rem; color: #c6a43f; margin-bottom: 0.5rem;"></i>
+            <h4 style="font-size: 0.9rem;">100% PAYMENT SECURE</h4>
+            <p style="font-size: 0.7rem; color: #aaa;">We ensure secure payment with COD</p>
+        </div>
+    </div>
+
+    <!-- 3 Column Footer (Information, Policies, Newsletter) -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+        <!-- Information Column -->
+        <div>
+            <h4 style="color: #c6a43f; margin-bottom: 1rem;">Information</h4>
+            <p style="color: #aaa; margin-bottom: 0.5rem;">DELIVERY INFORMATION</p>
+            <p style="color: #aaa; margin-bottom: 0.5rem;">STORE LOCATORS</p>
+            <p style="color: #aaa; margin-bottom: 0.5rem;">SIZE CHART</p>
+        </div>
+        
+        <!-- Policies Column -->
+        <div>
+            <h4 style="color: #c6a43f; margin-bottom: 1rem;">Policies</h4>
+            <p style="color: #aaa; margin-bottom: 0.5rem;">PRIVACY & LEGAL</p>
+            <p style="color: #aaa; margin-bottom: 0.5rem;">TERMS & CONDITIONS</p>
+            <p style="color: #aaa; margin-bottom: 0.5rem;">CONTACT</p>
+            <p style="color: #aaa; margin-bottom: 0.5rem;">RETURNS & REFUNDS</p>
+            <p style="color: #aaa; margin-bottom: 0.5rem;">FAQ</p>
+        </div>
+        
+        <!-- Newsletter Column -->
+        <div>
+            <h4 style="color: #c6a43f; margin-bottom: 1rem;">Stay in Style!</h4>
+            <p style="color: #aaa; margin-bottom: 1rem; font-size: 0.8rem;">Be the first to know about new arrivals, exclusive deals, and fashion updates.</p>
+            <div style="display: flex; border-bottom: 1px solid #333;">
+                <input type="email" placeholder="Your email address" style="flex: 1; background: transparent; border: none; padding: 0.6rem 0; color: #fff; outline: none;">
+                <button style="background: transparent; border: none; color: #c6a43f; cursor: pointer;">Subscribe →</button>
+            </div>
+            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                <i class="fab fa-facebook-f" style="color: #aaa; cursor: pointer;"></i>
+                <i class="fab fa-instagram" style="color: #aaa; cursor: pointer;"></i>
+                <i class="fab fa-twitter" style="color: #aaa; cursor: pointer;"></i>
+                <i class="fab fa-youtube" style="color: #aaa; cursor: pointer;"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copyright -->
+    <div style="text-align: center; padding-top: 1.5rem; border-top: 1px solid #1a1a1a;">
+        <p style="font-size: 0.7rem; color: #666;">Copyright © 2026 INDI-GRADA all rights reserved.</p>
+    </div>
 </footer>
 
 <script>
