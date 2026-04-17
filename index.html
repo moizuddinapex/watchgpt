@@ -5,172 +5,198 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>INDI-GRADA | Bold Luxury Watches & Jewelry</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #eaeaea; scroll-behavior: smooth; overflow-x: hidden; }
 
         /* Navigation */
         .navbar {
-            display: flex; justify-content: space-between; align-items: center; padding: 1.8rem 5%;
-            background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100;
+            display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 5%;
+            background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100;
             border-bottom: 1px solid rgba(198, 164, 63, 0.3);
         }
-        .logo { font-size: 1.9rem; font-weight: 700; letter-spacing: 3px; background: linear-gradient(135deg, #fff, #c6a43f); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .nav-links { display: flex; gap: 2.5rem; }
-        .nav-links a { color: #ddd; text-decoration: none; transition: 0.3s; }
-        .nav-links a:hover { color: #c6a43f; }
-        .nav-icons { display: flex; gap: 1.2rem; align-items: center; }
-        .nav-icons i { font-size: 1.2rem; cursor: pointer; transition: 0.2s; position: relative; }
+        .logo { font-size: 1.6rem; font-weight: 700; letter-spacing: 2px; background: linear-gradient(135deg, #fff, #c6a43f); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .nav-links { display: flex; gap: 1.8rem; align-items: center; }
+        .nav-links > a, .dropbtn { color: #ddd; text-decoration: none; transition: 0.3s; font-size: 0.85rem; font-weight: 500; }
+        .nav-links > a:hover, .dropbtn:hover { color: #c6a43f; }
+        
+        /* Mega Dropdown - Like Ralph Christian */
+        .dropdown { position: relative; display: inline-block; }
+        .dropbtn { background: none; border: none; cursor: pointer; font-family: inherit; font-size: 0.85rem; }
+        .dropbtn i { font-size: 0.6rem; margin-left: 4px; transition: transform 0.2s; }
+        .dropdown:hover .dropbtn i { transform: rotate(180deg); }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: -100px;
+            background: #0f0f0f;
+            min-width: 700px;
+            border-radius: 16px;
+            border: 1px solid #333;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            z-index: 1000;
+            padding: 1.5rem;
+        }
+        .dropdown:hover .dropdown-content { display: block; animation: fadeIn 0.2s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .dropdown-grid { display: flex; gap: 2rem; }
+        .dropdown-column { flex: 1; }
+        .dropdown-column h4 { color: #c6a43f; font-size: 0.7rem; letter-spacing: 1px; margin-bottom: 0.8rem; border-bottom: 1px solid #222; padding-bottom: 0.3rem; }
+        .dropdown-column h5 { color: #c6a43f; font-size: 0.65rem; margin: 0.8rem 0 0.3rem; }
+        .dropdown-column a { display: block; color: #aaa; text-decoration: none; font-size: 0.7rem; padding: 0.3rem 0; transition: 0.2s; }
+        .dropdown-column a:hover { color: #c6a43f; transform: translateX(3px); }
+        .highlight-link { color: #c6a43f !important; font-weight: 500; }
+        
+        .nav-icons { display: flex; gap: 1rem; align-items: center; }
+        .nav-icons i { font-size: 1rem; cursor: pointer; transition: 0.2s; color: #ddd; position: relative; }
+        .nav-icons i:hover { color: #c6a43f; }
+        .cart-count, .wishlist-count { position: absolute; top: -8px; right: -10px; background: #c6a43f; color: #0a0a0a; font-size: 0.6rem; font-weight: bold; padding: 2px 5px; border-radius: 10px; min-width: 16px; text-align: center; }
 
         /* Hero */
         .hero-video-section { position: relative; width: 100%; height: 90vh; overflow: hidden; }
         #heroVideo { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); object-fit: cover; z-index: 1; }
         .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2; }
-        .hero-content { position: absolute; bottom: 15%; left: 5%; z-index: 3; max-width: 650px; }
-        .hero-content h1 { font-size: 3.5rem; margin-bottom: 1rem; }
-        .hero-btn { background: transparent; border: 2px solid #c6a43f; color: #c6a43f; padding: 0.8rem 2rem; border-radius: 40px; cursor: pointer; font-weight: bold; }
+        .hero-content { position: absolute; bottom: 15%; left: 5%; z-index: 3; max-width: 500px; }
+        .hero-content h1 { font-size: 2.8rem; margin-bottom: 1rem; }
+        .hero-btn { background: transparent; border: 2px solid #c6a43f; color: #c6a43f; padding: 0.6rem 1.5rem; border-radius: 40px; cursor: pointer; font-weight: bold; transition: 0.2s; }
+        .hero-btn:hover { background: #c6a43f; color: #0a0a0a; }
 
-        /* Watch Grid */
+        /* Product Grid */
         .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 2rem 5%; }
-        .watch-item { background: #111; border: 1px solid #222; border-radius: 12px; overflow: hidden; transition: 0.3s; }
-        .video-box { width: 100%; aspect-ratio: 1/1; background: #000; position: relative; }
-        .product-video { width: 100%; height: 100%; object-fit: cover; cursor: pointer; }
-        .watch-info { padding: 1.5rem; }
-        .status { color: #d4af37; font-size: 12px; font-weight: bold; text-transform: uppercase; }
-        .name { font-size: 16px; margin: 8px 0; min-height: 40px; }
-        .price { color: #d4af37; font-size: 18px; font-weight: bold; }
+        .watch-item { background: #111; border: 1px solid #222; border-radius: 12px; overflow: hidden; transition: 0.3s; cursor: pointer; }
+        .watch-item:hover { transform: translateY(-5px); border-color: #c6a43f; }
+        .video-box { width: 100%; aspect-ratio: 1/1; background: #000; position: relative; overflow: hidden; }
+        .product-video { width: 100%; height: 100%; object-fit: cover; }
+        .watch-info { padding: 1rem; text-align: center; }
+        .status { color: #c6a43f; font-size: 10px; font-weight: bold; text-transform: uppercase; }
+        .name { font-size: 14px; margin: 5px 0; }
+        .price { color: #c6a43f; font-size: 16px; font-weight: bold; }
         
-        /* Middle Video Section */
-        .middle-video-section { position: relative; width: 100%; height: 60vh; overflow: hidden; margin: 3rem 0; }
+        /* Middle Video */
+        .middle-video-section { position: relative; width: 100%; height: 60vh; overflow: hidden; margin: 2rem 0; }
         #middleVideo { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); object-fit: cover; }
         
-        @media (max-width: 1024px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px) { .product-grid { grid-template-columns: 1fr; } }
-  
+        /* Search Modal */
+        .search-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 1001; justify-content: center; align-items: center; }
+        .search-modal.active { display: flex; }
+        .search-container { width: 80%; max-width: 600px; }
+        .search-container input { width: 100%; padding: 1rem; background: #111; border: 1px solid #c6a43f; color: white; border-radius: 50px; font-size: 1rem; outline: none; }
+        .search-results { margin-top: 1rem; background: #111; border-radius: 16px; padding: 1rem; max-height: 400px; overflow-y: auto; }
+        .search-result-item { padding: 0.8rem; border-bottom: 1px solid #222; cursor: pointer; }
+        .search-result-item:hover { background: #1a1a1a; color: #c6a43f; }
+        .close-search { position: absolute; top: 20px; right: 30px; font-size: 2rem; cursor: pointer; color: white; }
 
-        /* Simple Dropdown - Does NOT interfere with scroll effects */
-        .simple-dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        
-        .dropdown-arrow {
-            font-size: 0.6rem;
-            margin-left: 4px;
-            display: inline-block;
-            transition: transform 0.2s ease;
-        }
-        
-        .simple-dropdown:hover .dropdown-arrow {
-            transform: rotate(180deg);
-        }
-        
-        .simple-dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: #111;
-            min-width: 260px;
-            border-radius: 12px;
-            border: 1px solid #333;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            z-index: 1000;
-            padding: 0.5rem 0;
-        }
-        
-        .simple-dropdown:hover .simple-dropdown-menu {
-            display: block;
-        }
-        
-        .simple-dropdown-menu a {
-            display: block;
-            color: #ddd;
-            padding: 0.5rem 1rem;
-            font-size: 0.75rem;
-            transition: all 0.2s ease;
-            text-decoration: none;
-        }
-        
-        .simple-dropdown-menu a:hover {
-            background: #1a1a1a;
-            color: #c6a43f;
-            padding-left: 1.2rem;
-        }
-        
-        /* Mobile friendly */
-        @media (max-width: 768px) {
-            .simple-dropdown-menu {
-                position: static;
-                display: none;
-                background: transparent;
-                box-shadow: none;
-                border: none;
-                padding-left: 1rem;
-            }
-            .simple-dropdown:hover .simple-dropdown-menu {
-                display: block;
-            }
-            .simple-dropdown-menu a {
-                font-size: 0.7rem;
-                padding: 0.3rem 0 0.3rem 1rem;
-            }
-        }
+        /* Toast Notification */
+        .toast { position: fixed; bottom: 30px; right: 30px; background: #c6a43f; color: #0a0a0a; padding: 12px 20px; border-radius: 40px; font-size: 0.8rem; font-weight: bold; z-index: 1002; display: none; animation: slideIn 0.3s ease; }
+        .toast.show { display: block; }
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 
-
-
-        
-        
+        @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } .dropdown-content { left: -150px; min-width: 500px; } }
+        @media (max-width: 600px) { .product-grid { grid-template-columns: 1fr; } .dropdown-content { display: none; } }
     </style>
 </head>
 <body>
 
-      <nav class="navbar">
+<nav class="navbar">
     <div class="logo">✦ INDI-GRADA</div>
     <div class="nav-links">
         <a href="index.html">Home</a>
         
-        <!-- Watches Dropdown -->
-        <div class="simple-dropdown">
-            <a href="watches.html">Watches <span class="dropdown-arrow">▼</span></a>
-            <div class="simple-dropdown-menu">
-                <a href="vanguard-collection.html">✦ The Vanguard Carbon Chrono</a>
-                <a href="#">✦ Intrepid Sport</a>
-                <a href="#">✦ Intrepid Sport Ice</a>
-                <a href="#">✦ Polaris Chrono</a>
-                <a href="#">✦ Titan Chrono</a>
-                <a href="#">✦ Equinox Chrono</a>
-                <a href="#">✦ Spectre Chrono</a>
-                <a href="#">✦ Apex Chrono</a>
-                <a href="#">✦ Legacy Chrono</a>
+        <!-- Watches Mega Dropdown -->
+        <div class="dropdown">
+            <button class="dropbtn">WATCHES <i class="fas fa-chevron-down"></i></button>
+            <div class="dropdown-content">
+                <div class="dropdown-grid">
+                    <div class="dropdown-column">
+                        <h4>Shop by Gender</h4>
+                        <a href="#">MEN'S WATCHES</a>
+                        <a href="#">WOMEN'S WATCHES</a>
+                        <h5>Featured</h5>
+                        <a href="#">BEST SELLERS</a>
+                        <a href="#">GOLD WATCHES</a>
+                        <a href="#">SILVER WATCHES</a>
+                        <a href="#">BLACK WATCHES</a>
+                    </div>
+                    <div class="dropdown-column">
+                        <h4>Shop by Collection</h4>
+                        <a href="vanguard-collection.html">✦ VANGUARD CARBON CHRONO</a>
+                        <a href="#">INTREPID SPORT</a>
+                        <a href="#">INTREPID SPORT ICE</a>
+                        <a href="#">POLARIS CHRONO</a>
+                        <a href="#">TITAN CHRONO</a>
+                        <a href="#">EQUINOX CHRONO</a>
+                        <a href="#">SPECTRE CHRONO</a>
+                        <a href="#">APEX CHRONO</a>
+                        <a href="#">LEGACY CHRONO</a>
+                    </div>
+                    <div class="dropdown-column">
+                        <h4>Highlights</h4>
+                        <a href="#" class="highlight-link">🔥 VINTAGE COLLECTION</a>
+                        <a href="#" class="highlight-link">⚡ INTREPID SPORT CARBON</a>
+                        <a href="#" class="highlight-link">💎 GHOST AUTOMATIC</a>
+                        <a href="#" class="highlight-link">🌊 AVALON</a>
+                    </div>
+                </div>
             </div>
         </div>
         
-        <!-- Jewelry Dropdown -->
-        <div class="simple-dropdown">
-            <a href="jewelry.html">Jewelry <span class="dropdown-arrow">▼</span></a>
-            <div class="simple-dropdown-menu">
-                <a href="#">✦ Jewelry Bundles</a>
-                <a href="#">✦ Pendants</a>
-                <a href="#">✦ Necklaces</a>
-                <a href="#">✦ Bracelets</a>
-                <a href="#">✦ The Gold Crucifix Pendant</a>
-                <a href="#">✦ The Gemstone Necklace</a>
-                <a href="#">✦ The Gemstone Bracelet</a>
+        <!-- Jewelry Mega Dropdown -->
+        <div class="dropdown">
+            <button class="dropbtn">JEWELRY <i class="fas fa-chevron-down"></i></button>
+            <div class="dropdown-content">
+                <div class="dropdown-grid">
+                    <div class="dropdown-column">
+                        <h4>Shop by Gender</h4>
+                        <a href="#">MEN'S JEWELRY</a>
+                        <a href="#">WOMEN'S JEWELRY</a>
+                        <h5>Featured</h5>
+                        <a href="#">THE ESSENTIALS COLLECTION</a>
+                        <a href="#">GOLD JEWELRY</a>
+                        <a href="#">SILVER JEWELRY</a>
+                    </div>
+                    <div class="dropdown-column">
+                        <h4>Shop by Collection</h4>
+                        <a href="#">JEWELRY BUNDLES</a>
+                        <a href="#">PENDANTS</a>
+                        <a href="#">NECKLACES</a>
+                        <a href="#">BRACELETS</a>
+                    </div>
+                    <div class="dropdown-column">
+                        <h4>Highlights</h4>
+                        <a href="#" class="highlight-link">✨ THE GOLD CRUCIFIX PENDANT</a>
+                        <a href="#" class="highlight-link">💎 THE GEMSTONE NECKLACE</a>
+                        <a href="#" class="highlight-link">📿 THE GEMSTONE BRACELET</a>
+                    </div>
+                </div>
             </div>
         </div>
         
-        <a href="collections.html">Collections</a>
-        <a href="journal.html">Journal</a>
+        <a href="collections.html">COLLECTIONS</a>
+        <a href="journal.html">JOURNAL</a>
     </div>
     <div class="nav-icons">
-        <i class="fas fa-search"></i>
-        <i class="far fa-user"></i>
-        <i class="far fa-heart"></i>
-        <i class="fas fa-bag-shopping"></i>
+        <i class="fas fa-search" id="searchIcon"></i>
+        <i class="far fa-user" id="userIcon"></i>
+        <i class="far fa-heart" id="wishlistIcon"></i>
+        <i class="fas fa-bag-shopping" id="cartIcon"></i>
     </div>
 </nav>
+
+<!-- Search Modal -->
+<div class="search-modal" id="searchModal">
+    <span class="close-search" id="closeSearch">&times;</span>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search for watches, jewelry...">
+        <div class="search-results" id="searchResults"></div>
+    </div>
+</div>
+
+<!-- Toast Notification -->
+<div class="toast" id="toast"></div>
 
 <div class="hero-video-section">
     <video autoplay loop muted playsinline id="heroVideo">
@@ -184,10 +210,10 @@
 </div>
 
 <main>
-    <h2 style="padding: 3rem 5% 0;">Latest Drops · <span style="color:#c6a43f">Timeless Edge</span></h2>
+    <h2 style="padding: 2rem 5% 0;">Latest Drops · <span style="color:#c6a43f">Timeless Edge</span></h2>
     
     <div class="product-grid">
-        <div class="watch-item" onclick="location.href='vanguard-collection.html'" style="cursor: pointer;">
+        <div class="watch-item" data-name="The Vanguard Carbon Chrono" data-price="4100" data-type="watch" onclick="addToCartAndRedirect('The Vanguard Carbon Chrono', 4100, 'vanguard-collection.html')">
             <div class="video-box">
                 <video class="product-video" muted loop playsinline>
                     <source src="136967-765457958_medium.mp4" type="video/mp4">
@@ -200,7 +226,7 @@
             </div>
         </div>
 
-        <div class="watch-item">
+        <div class="watch-item" data-name="Intrepid Sport Northern Lights" data-price="2000" data-type="watch" onclick="addToCartAndRedirect('Intrepid Sport Northern Lights', 2000, null)">
             <div class="video-box">
                 <video class="product-video" muted loop playsinline>
                     <source src="3019-165457954_medium.mp4" type="video/mp4">
@@ -213,7 +239,7 @@
             </div>
         </div>
 
-        <div class="watch-item">
+        <div class="watch-item" data-name="The Valencia Rose Allure" data-price="1750" data-type="watch" onclick="addToCartAndRedirect('The Valencia Rose Allure', 1750, null)">
             <div class="video-box">
                 <video class="product-video" muted loop playsinline>
                     <source src="34855-403777679_medium.mp4" type="video/mp4">
@@ -226,7 +252,7 @@
             </div>
         </div>
 
-        <div class="watch-item">
+        <div class="watch-item" data-name="Intrepid Sport Emerald Mist" data-price="2000" data-type="watch" onclick="addToCartAndRedirect('Intrepid Sport Emerald Mist', 2000, null)">
             <div class="video-box">
                 <video class="product-video" muted loop playsinline>
                     <source src="39863-425400884_medium.mp4" type="video/mp4">
@@ -240,139 +266,138 @@
         </div>
     </div>
 
-
-
-    
-            <div class="middle-video-section" style="position: relative; width: 100%; height: 60vh; overflow: hidden; margin: 3rem 0;">
+    <div class="middle-video-section" style="position: relative; width: 100%; height: 60vh; overflow: hidden; margin: 2rem 0;">
         <video autoplay loop muted playsinline id="middleVideo" style="position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); object-fit: cover; z-index: 1;">
             <source src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/videos/Extreme.mp4" type="video/mp4">
         </video>
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2;"></div>
         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 3; color: white; width: 80%;">
             <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #c6a43f;">Crafted for the Bold</h2>
-            <p style="margin-bottom: 1.5rem;">Every detail tells a story. Every timepiece, a legacy.</p>
-            <button style="background: transparent; border: 2px solid #c6a43f; color: #c6a43f; padding: 0.6rem 1.5rem; border-radius: 40px; cursor: pointer;">DISCOVER THE CRAFT →</button>
+            <p style="margin-bottom: 1rem;">Every detail tells a story. Every timepiece, a legacy.</p>
+            <button style="background: transparent; border: 2px solid #c6a43f; color: #c6a43f; padding: 0.5rem 1.2rem; border-radius: 40px; cursor: pointer;">DISCOVER THE CRAFT →</button>
         </div>
     </div>
 </main>
 
-<footer style="background: #050505; padding: 3rem 5% 1.5rem; border-top: 1px solid #1a1a1a;">
-    <!-- Top Bar with 4 Service Icons -->
-    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; text-align: center; margin-bottom: 3rem; border-bottom: 1px solid #1a1a1a; padding-bottom: 2rem;">
-        <div>
-            <i class="fas fa-truck" style="font-size: 1.8rem; color: #c6a43f; margin-bottom: 0.5rem;"></i>
-            <h4 style="font-size: 0.9rem;">FREE SHIPPING</h4>
-            <p style="font-size: 0.7rem; color: #aaa;">Free shipping on all orders above Rs.2500/-</p>
-        </div>
-        <div>
-            <i class="fas fa-headset" style="font-size: 1.8rem; color: #c6a43f; margin-bottom: 0.5rem;"></i>
-            <h4 style="font-size: 0.9rem;">SUPPORT 24/7</h4>
-            <p style="font-size: 0.7rem; color: #aaa;">Contact us 24 hours a day, 7 days a week</p>
-        </div>
-        <div>
-            <i class="fas fa-exchange-alt" style="font-size: 1.8rem; color: #c6a43f; margin-bottom: 0.5rem;"></i>
-            <h4 style="font-size: 0.9rem;">10 DAYS EXCHANGE</h4>
-            <p style="font-size: 0.7rem; color: #aaa;">Simply exchange it within 10 days</p>
-        </div>
-        <div>
-            <i class="fas fa-lock" style="font-size: 1.8rem; color: #c6a43f; margin-bottom: 0.5rem;"></i>
-            <h4 style="font-size: 0.9rem;">100% PAYMENT SECURE</h4>
-            <p style="font-size: 0.7rem; color: #aaa;">We ensure secure payment with COD</p>
-        </div>
+<footer style="background: #050505; padding: 2rem 5% 1rem; border-top: 1px solid #1a1a1a;">
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; text-align: center; margin-bottom: 2rem; border-bottom: 1px solid #1a1a1a; padding-bottom: 1.5rem;">
+        <div><i class="fas fa-truck" style="font-size: 1.5rem; color: #c6a43f;"></i><h4 style="font-size: 0.8rem;">FREE SHIPPING</h4><p style="font-size: 0.65rem; color: #aaa;">Free shipping on orders above Rs.2500/-</p></div>
+        <div><i class="fas fa-headset" style="font-size: 1.5rem; color: #c6a43f;"></i><h4 style="font-size: 0.8rem;">SUPPORT 24/7</h4><p style="font-size: 0.65rem; color: #aaa;">Contact us 24/7</p></div>
+        <div><i class="fas fa-exchange-alt" style="font-size: 1.5rem; color: #c6a43f;"></i><h4 style="font-size: 0.8rem;">10 DAYS EXCHANGE</h4><p style="font-size: 0.65rem; color: #aaa;">Exchange within 10 days</p></div>
+        <div><i class="fas fa-lock" style="font-size: 1.5rem; color: #c6a43f;"></i><h4 style="font-size: 0.8rem;">100% SECURE</h4><p style="font-size: 0.65rem; color: #aaa;">Secure payment with COD</p></div>
     </div>
-
-    <!-- 3 Column Footer (Information, Policies, Newsletter) -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
-        <!-- Information Column -->
-        <div>
-            <h4 style="color: #c6a43f; margin-bottom: 1rem;">Information</h4>
-            <p style="color: #aaa; margin-bottom: 0.5rem;">DELIVERY INFORMATION</p>
-            <p style="color: #aaa; margin-bottom: 0.5rem;">STORE LOCATORS</p>
-            <p style="color: #aaa; margin-bottom: 0.5rem;">SIZE CHART</p>
-        </div>
-        
-        <!-- Policies Column -->
-        <div>
-            <h4 style="color: #c6a43f; margin-bottom: 1rem;">Policies</h4>
-            <p style="color: #aaa; margin-bottom: 0.5rem;">PRIVACY & LEGAL</p>
-            <p style="color: #aaa; margin-bottom: 0.5rem;">TERMS & CONDITIONS</p>
-            <p style="color: #aaa; margin-bottom: 0.5rem;">CONTACT</p>
-            <p style="color: #aaa; margin-bottom: 0.5rem;">RETURNS & REFUNDS</p>
-            <p style="color: #aaa; margin-bottom: 0.5rem;">FAQ</p>
-        </div>
-        
-        <!-- Newsletter Column -->
-        <div>
-            <h4 style="color: #c6a43f; margin-bottom: 1rem;">Stay in Style!</h4>
-            <p style="color: #aaa; margin-bottom: 1rem; font-size: 0.8rem;">Be the first to know about new arrivals, exclusive deals, and fashion updates.</p>
-            <div style="display: flex; border-bottom: 1px solid #333;">
-                <input type="email" placeholder="Your email address" style="flex: 1; background: transparent; border: none; padding: 0.6rem 0; color: #fff; outline: none;">
-                <button style="background: transparent; border: none; color: #c6a43f; cursor: pointer;">Subscribe →</button>
-            </div>
-            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-                <i class="fab fa-facebook-f" style="color: #aaa; cursor: pointer;"></i>
-                <i class="fab fa-instagram" style="color: #aaa; cursor: pointer;"></i>
-                <i class="fab fa-twitter" style="color: #aaa; cursor: pointer;"></i>
-                <i class="fab fa-youtube" style="color: #aaa; cursor: pointer;"></i>
-            </div>
-        </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+        <div><h4 style="color: #c6a43f; font-size: 0.8rem;">Information</h4><p style="color: #aaa; font-size: 0.7rem;">DELIVERY INFO</p><p style="color: #aaa; font-size: 0.7rem;">STORE LOCATORS</p><p style="color: #aaa; font-size: 0.7rem;">SIZE CHART</p></div>
+        <div><h4 style="color: #c6a43f; font-size: 0.8rem;">Policies</h4><p style="color: #aaa; font-size: 0.7rem;">PRIVACY & LEGAL</p><p style="color: #aaa; font-size: 0.7rem;">TERMS & CONDITIONS</p><p style="color: #aaa; font-size: 0.7rem;">CONTACT</p><p style="color: #aaa; font-size: 0.7rem;">RETURNS & REFUNDS</p></div>
+        <div><h4 style="color: #c6a43f; font-size: 0.8rem;">Stay in Style!</h4><p style="color: #aaa; font-size: 0.7rem;">Be the first to know about new arrivals.</p><div style="display: flex; border-bottom: 1px solid #333;"><input type="email" id="newsletterEmail" placeholder="Your email address" style="flex:1; background:transparent; border:none; padding:0.5rem 0; color:#fff; outline:none;"><button onclick="subscribeNewsletter()" style="background:transparent; border:none; color:#c6a43f; cursor:pointer;">Subscribe →</button></div><div style="display: flex; gap: 0.8rem; margin-top: 0.8rem;"><i class="fab fa-facebook-f"></i><i class="fab fa-instagram"></i><i class="fab fa-twitter"></i><i class="fab fa-youtube"></i></div></div>
+        <div><h4 style="color: #c6a43f; font-size: 0.8rem;">We Accept</h4><div style="display: flex; gap: 0.5rem;"><i class="fab fa-cc-visa" style="font-size:1.5rem;"></i><i class="fab fa-cc-mastercard" style="font-size:1.5rem;"></i><i class="fab fa-cc-paypal" style="font-size:1.5rem;"></i></div></div>
     </div>
-
-    <!-- Copyright -->
-    <div style="text-align: center; padding-top: 1.5rem; border-top: 1px solid #1a1a1a;">
-        <p style="font-size: 0.7rem; color: #666;">Copyright © 2026 INDI-GRADA all rights reserved.</p>
-    </div>
+    <div style="text-align: center; padding-top: 1rem; border-top: 1px solid #1a1a1a;"><p style="font-size: 0.6rem; color: #666;">Copyright © 2026 INDI-GRADA all rights reserved.</p></div>
 </footer>
 
 <script>
-    // Hover to play script
+    // ==================== PRODUCT DATA ====================
+    const products = [
+        { id: 1, name: "The Vanguard Carbon Chrono", price: 4100, type: "watch", image: "136967-765457958_medium.mp4", link: "vanguard-collection.html" },
+        { id: 2, name: "Intrepid Sport Northern Lights", price: 2000, type: "watch", image: "3019-165457954_medium.mp4" },
+        { id: 3, name: "The Valencia Rose Allure", price: 1750, type: "watch", image: "34855-403777679_medium.mp4" },
+        { id: 4, name: "Intrepid Sport Emerald Mist", price: 2000, type: "watch", image: "39863-425400884_medium.mp4" }
+    ];
+
+    // ==================== CART FUNCTIONALITY ====================
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+    function saveCart() { localStorage.setItem('cart', JSON.stringify(cart)); updateCartCount(); }
+    function saveWishlist() { localStorage.setItem('wishlist', JSON.stringify(wishlist)); updateWishlistCount(); }
+
+    function addToCart(productName, price, redirectUrl = null) {
+        cart.push({ name: productName, price: price, quantity: 1 });
+        saveCart();
+        showToast(`✓ ${productName} added to cart!`);
+        if (redirectUrl) { setTimeout(() => { window.location.href = redirectUrl; }, 800); }
+    }
+
+    function addToCartAndRedirect(productName, price, redirectUrl) { addToCart(productName, price, redirectUrl); }
+    function addToWishlist(productName) {
+        if (!wishlist.includes(productName)) { wishlist.push(productName); saveWishlist(); showToast(`❤️ ${productName} added to wishlist!`); }
+        else { showToast(`⚠️ ${productName} is already in wishlist`); }
+    }
+
+    function updateCartCount() { document.querySelectorAll('.cart-count').forEach(el => el.textContent = cart.length); }
+    function updateWishlistCount() { document.querySelectorAll('.wishlist-count').forEach(el => el.textContent = wishlist.length); }
+
+    function showToast(message) {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+
+    // ==================== SEARCH FUNCTIONALITY ====================
+    const searchModal = document.getElementById('searchModal');
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+
+    document.getElementById('searchIcon').onclick = () => searchModal.classList.add('active');
+    document.getElementById('closeSearch').onclick = () => searchModal.classList.remove('active');
+    searchModal.onclick = (e) => { if (e.target === searchModal) searchModal.classList.remove('active'); };
+
+    searchInput.addEventListener('input', function() {
+        const query = this.value.toLowerCase();
+        if (query.length < 2) { searchResults.innerHTML = ''; return; }
+        const filtered = products.filter(p => p.name.toLowerCase().includes(query));
+        searchResults.innerHTML = filtered.map(p => `<div class="search-result-item" onclick="selectProduct('${p.name}', ${p.price})">${p.name} - HK$${p.price}</div>`).join('');
+    });
+
+    function selectProduct(name, price) {
+        searchModal.classList.remove('active');
+        searchInput.value = '';
+        searchResults.innerHTML = '';
+        addToCart(name, price);
+    }
+
+    // ==================== NEWSLETTER SUBSCRIBE ====================
+    function subscribeNewsletter() {
+        const email = document.getElementById('newsletterEmail').value;
+        if (email && email.includes('@')) {
+            let subscribers = JSON.parse(localStorage.getItem('subscribers')) || [];
+            if (!subscribers.includes(email)) { subscribers.push(email); localStorage.setItem('subscribers', JSON.stringify(subscribers)); }
+            showToast(`✅ Subscribed! Check your inbox.`);
+            document.getElementById('newsletterEmail').value = '';
+        } else { showToast(`⚠️ Please enter a valid email`); }
+    }
+
+    // ==================== USER / CHECKOUT ====================
+    document.getElementById('userIcon').onclick = () => { window.location.href = 'checkout.html'; };
+    document.getElementById('cartIcon').onclick = () => { window.location.href = 'checkout.html'; };
+    document.getElementById('wishlistIcon').onclick = () => { alert(`❤️ Wishlist (${wishlist.length} items):\n${wishlist.join('\n') || 'Empty'}`); };
+
+    // ==================== HOVER VIDEOS ====================
     document.querySelectorAll('.watch-item').forEach(item => {
         const vid = item.querySelector('.product-video');
-        
-        item.addEventListener('mouseenter', () => {
-            vid.play();
-        });
-        
-        item.addEventListener('mouseleave', () => {
-            vid.pause();
-            vid.currentTime = 0;
-        });
+        if (vid) { item.addEventListener('mouseenter', () => vid.play()); item.addEventListener('mouseleave', () => { vid.pause(); vid.currentTime = 0; }); }
     });
-</script>
 
-
-<script>
-    // Hero video snaps to navbar on scroll
+    // ==================== HERO SCROLL SNAP ====================
     const heroSection = document.querySelector('.hero-video-section');
     const heroContent = document.querySelector('.hero-content');
-    const navBar = document.querySelector('.navbar');
     let isSnapped = false;
-    
     window.addEventListener('scroll', function() {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
         if (scrollTop > 80 && !isSnapped) {
-            // Snap to navbar
             heroSection.style.transition = 'all 0.3s ease';
-            heroSection.style.height = '0';
-            heroSection.style.opacity = '0';
-            heroSection.style.overflow = 'hidden';
+            heroSection.style.height = '0'; heroSection.style.opacity = '0'; heroSection.style.overflow = 'hidden';
             if (heroContent) heroContent.style.display = 'none';
-            navBar.style.background = 'rgba(10, 10, 10, 0.95)';
             isSnapped = true;
-        } 
-        else if (scrollTop <= 50 && isSnapped) {
-            // Expand back
-            heroSection.style.height = '90vh';
-            heroSection.style.opacity = '1';
-            heroSection.style.overflow = 'hidden';
+        } else if (scrollTop <= 50 && isSnapped) {
+            heroSection.style.height = '90vh'; heroSection.style.opacity = '1'; heroSection.style.overflow = 'hidden';
             if (heroContent) heroContent.style.display = 'block';
-            navBar.style.background = 'rgba(10, 10, 10, 0.85)';
             isSnapped = false;
         }
     });
-</script>
 
-    
+    updateCartCount(); updateWishlistCount();
+</script>
 </body>
 </html>
