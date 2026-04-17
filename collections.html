@@ -9,18 +9,22 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #eaeaea; scroll-behavior: smooth; overflow-x: hidden; }
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #1a1a1a; }
-        ::-webkit-scrollbar-thumb { background: #c6a43f; border-radius: 4px; }
-        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1.8rem 5%; background: rgba(10, 10, 10, 0.92); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(198, 164, 63, 0.2); }
+
+        .navbar {
+            display: flex; justify-content: space-between; align-items: center; padding: 1.8rem 5%;
+            background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100;
+            border-bottom: 1px solid rgba(198, 164, 63, 0.3);
+        }
         .logo { font-size: 1.9rem; font-weight: 700; letter-spacing: 3px; background: linear-gradient(135deg, #fff, #c6a43f); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .nav-links { display: flex; gap: 2.5rem; font-weight: 500; }
-        .nav-links a { color: #ddd; text-decoration: none; transition: 0.3s; font-size: 0.95rem; }
+        .nav-links { display: flex; gap: 2.5rem; }
+        .nav-links a { color: #ddd; text-decoration: none; transition: 0.3s; }
         .nav-links a:hover, .nav-links a.active { color: #c6a43f; }
-        .nav-icons i { margin-left: 1.2rem; font-size: 1.2rem; cursor: pointer; transition: 0.2s; }
-        .nav-icons i:hover { color: #c6a43f; }
+        .nav-icons { display: flex; gap: 1.2rem; align-items: center; }
+        .nav-icons i { font-size: 1.2rem; cursor: pointer; transition: 0.2s; }
+
         .page-header { text-align: center; padding: 4rem 5% 2rem; }
         .page-header h1 { font-size: 3rem; font-weight: 600; background: linear-gradient(135deg, #fff, #c6a43f); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
         .collections-grid { display: flex; flex-direction: column; gap: 3rem; padding: 2rem 5% 4rem; }
         .collection-banner { display: flex; align-items: center; background: #0f0f0f; border-radius: 28px; overflow: hidden; transition: 0.3s; }
         .collection-banner:hover { transform: scale(1.01); box-shadow: 0 12px 28px rgba(198,164,63,0.15); }
@@ -30,13 +34,12 @@
         .collection-info p { color: #aaa; margin-bottom: 1rem; }
         .collection-btn { background: transparent; border: 1px solid #c6a43f; color: #c6a43f; padding: 0.5rem 1.2rem; border-radius: 40px; cursor: pointer; transition: 0.2s; }
         .collection-btn:hover { background: #c6a43f; color: #0a0a0a; }
-        footer { background: #020202; padding: 2.5rem 5%; text-align: center; border-top: 1px solid #1f1f1f; margin-top: 3rem; }
-        .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
-        .footer-links a { color: #aaa; text-decoration: none; }
-        @media (max-width: 768px) { .nav-links { display: none; } .collection-banner { flex-direction: column; } .page-header h1 { font-size: 2rem; } }
+
+        @media (max-width: 768px) { .collection-banner { flex-direction: column; } }
     </style>
 </head>
 <body>
+
 <nav class="navbar">
     <div class="logo">✦ INDI-GRADA</div>
     <div class="nav-links">
@@ -47,49 +50,28 @@
         <a href="journal.html">Journal</a>
     </div>
     <div class="nav-icons">
-    <i class="fas fa-search" id="searchIcon" style="cursor: pointer;"></i>
-    <i class="far fa-user" id="userIcon" style="cursor: pointer;"></i>
-    <i class="far fa-heart" id="wishlistIcon" style="cursor: pointer;"></i>
-    <i class="fas fa-bag-shopping" id="cartIcon" style="cursor: pointer;"></i>
-</div>
+        <i class="fas fa-search"></i>
+        <i class="far fa-user"></i>
+        <i class="far fa-heart"></i>
+        <i class="fas fa-bag-shopping"></i>
+    </div>
 </nav>
 
 <div class="page-header">
     <h1>Our Signature Collections</h1>
-    <p>Curated stories told through design</p>
+    <p style="color:#aaa;">Curated stories told through design</p>
 </div>
 
-<div class="collections-grid" id="collectionsGrid"></div>
+<div class="collections-grid">
+    <div class="collection-banner"><div class="collection-img">⌚</div><div class="collection-info"><h2>Vanguard</h2><p>Carbon fiber cases, chronograph movements, and avant-garde design. For those who lead.</p><div style="color:#c6a43f; font-weight:bold;">From HK$4,100</div><button class="collection-btn" onclick="alert('Explore Vanguard collection')">Discover →</button></div></div>
+    <div class="collection-banner"><div class="collection-img">⏱️</div><div class="collection-info"><h2>Intrepid</h2><p>Sport meets luxury. Sapphire crystals, 100m water resistance, and bold gradients.</p><div style="color:#c6a43f; font-weight:bold;">From HK$2,000</div><button class="collection-btn" onclick="alert('Explore Intrepid collection')">Discover →</button></div></div>
+    <div class="collection-banner"><div class="collection-img">🌹</div><div class="collection-info"><h2>Valencia</h2><p>Elegance redefined. Delicate dials, rose gold accents, for the modern woman.</p><div style="color:#c6a43f; font-weight:bold;">From HK$1,750</div><button class="collection-btn" onclick="alert('Explore Valencia collection')">Discover →</button></div></div>
+    <div class="collection-banner"><div class="collection-img">🌊</div><div class="collection-info"><h2>Riviera</h2><p>Mediterranean spirit. Gold blossom motifs, interchangeable straps.</p><div style="color:#c6a43f; font-weight:bold;">From HK$1,650</div><button class="collection-btn" onclick="alert('Explore Riviera collection')">Discover →</button></div></div>
+</div>
 
-<footer>
-    <div class="footer-links">
-        <a href="#">About INDI-GRADA</a><a href="#">Sustainability</a><a href="#">Shipping & Returns</a><a href="#">Warranty</a><a href="#">Contact</a>
-    </div>
-    <p style="color:#666;">© 2026 INDI-GRADA — Bold By Design</p>
-</footer>
-
-<script>
-    const collectionsList = [
-        { name: "Vanguard", desc: "Carbon fiber cases, chronograph movements, and avant-garde design. For those who lead.", icon: "⌚", price: "From HK$4,100" },
-        { name: "Intrepid", desc: "Sport meets luxury. Sapphire crystals, 100m water resistance, and bold gradients.", icon: "⏱️", price: "From HK$2,000" },
-        { name: "Valencia", desc: "Elegance redefined. Delicate dials, rose gold accents, for the modern woman.", icon: "🌹", price: "From HK$1,750" },
-        { name: "Riviera", desc: "Mediterranean spirit. Gold blossom motifs, interchangeable straps.", icon: "🌊", price: "From HK$1,650" }
-    ];
-    function renderCollections() {
-        const grid = document.getElementById('collectionsGrid');
-        grid.innerHTML = collectionsList.map(c => `
-            <div class="collection-banner">
-                <div class="collection-img"><span style="font-size:4rem;">${c.icon}</span></div>
-                <div class="collection-info">
-                    <h2>${c.name}</h2>
-                    <p>${c.desc}</p>
-                    <div style="color:#c6a43f; font-weight:bold;">${c.price}</div>
-                    <button class="collection-btn" onclick="alert('Explore ${c.name} collection')">Discover →</button>
-                </div>
-            </div>
-        `).join('');
-    }
-    renderCollections();
-</script>
-</body>
-</html>
+<footer style="background: #050505; padding: 3rem 5% 1.5rem; border-top: 1px solid #1a1a1a;">
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; text-align: center; margin-bottom: 3rem; border-bottom: 1px solid #1a1a1a; padding-bottom: 2rem;">
+        <div><i class="fas fa-truck" style="font-size: 1.8rem; color: #c6a43f;"></i><h4 style="font-size: 0.9rem;">FREE SHIPPING</h4><p style="font-size: 0.7rem; color: #aaa;">Free shipping on all orders above Rs.2500/-</p></div>
+        <div><i class="fas fa-headset" style="font-size: 1.8rem; color: #c6a43f;"></i><h4 style="font-size: 0.9rem;">SUPPORT 24/7</h4><p style="font-size: 0.7rem; color: #aaa;">Contact us 24/7</p></div>
+        <div><i class="fas fa-exchange-alt" style="font-size: 1.8rem; color: #c6a43f;"></i><h4 style="font-size: 0.9rem;">10 DAYS EXCHANGE</h4><p style="font-size: 0.7rem; color: #aaa;">Simply exchange within 10 days</p></div>
+        <div><i class="fas fa-lock" style="font-size: 1.8
