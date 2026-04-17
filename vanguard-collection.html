@@ -88,7 +88,7 @@
 </div>
 
 <div class="product-grid">
-    <!-- Card 1 - Arctic Tundra (UPDATED with WebP image and new video) -->
+    <!-- Card 1 - Arctic Tundra (Using V.Chrono1.webp and V.Chronov1.mp4) -->
     <div class="watch-card">
         <div class="media-container">
             <img class="product-image" src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/V.Chrono1.webp" alt="Vanguard Carbon Chrono Arctic Tundra">
@@ -109,11 +109,33 @@
         </div>
     </div>
 
-    <!-- Card 2 - Emerald Shadow (Unchanged) -->
+    <!-- Card 2 - Crimson Ember (Using V.Crimson.webp and V.Crimsonv1.mp4) -->
     <div class="watch-card">
         <div class="media-container">
-            <video class="product-video" muted loop playsinline style="display: block;">
-                <source src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/3019-165457954_medium.mp4" type="video/mp4">
+            <img class="product-image" src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/V.Crimson.webp" alt="Vanguard Carbon Chrono Crimson Ember">
+            <video class="product-video" muted loop playsinline>
+                <source src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/V.Crimsonv1.mp4" type="video/mp4">
+            </video>
+            <div class="new-badge">NEW</div>
+        </div>
+        <div class="product-info">
+            <div class="brand-name">THE VANGUARD</div>
+            <div class="product-title">CARBON CHRONO</div>
+            <div class="model-name">CRIMSON EMBER</div>
+            <div class="price">HK$4,100</div>
+            <div class="button-group">
+                <button class="view-btn" onclick="location.href='vanguard-carbon-chrono.html'">VIEW</button>
+                <button class="add-btn" onclick="addToCart('Crimson Ember', 4100)">ADD</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 3 - Emerald Shadow (Using V.Emerald.webp and V.Emeraldv1.mp4) -->
+    <div class="watch-card">
+        <div class="media-container">
+            <img class="product-image" src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/V.Emerald.webp" alt="Vanguard Carbon Chrono Emerald Shadow">
+            <video class="product-video" muted loop playsinline>
+                <source src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/V.Emeraldv1.mp4" type="video/mp4">
             </video>
             <div class="new-badge">NEW</div>
         </div>
@@ -125,26 +147,6 @@
             <div class="button-group">
                 <button class="view-btn" onclick="location.href='vanguard-carbon-chrono.html'">VIEW</button>
                 <button class="add-btn" onclick="addToCart('Emerald Shadow', 4100)">ADD</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Card 3 - Tidal Abyss (Unchanged) -->
-    <div class="watch-card">
-        <div class="media-container">
-            <video class="product-video" muted loop playsinline style="display: block;">
-                <source src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/34855-403777679_medium.mp4" type="video/mp4">
-            </video>
-            <div class="new-badge">NEW</div>
-        </div>
-        <div class="product-info">
-            <div class="brand-name">THE VANGUARD</div>
-            <div class="product-title">CARBON CHRONO</div>
-            <div class="model-name">TIDAL ABYSS</div>
-            <div class="price">HK$4,100</div>
-            <div class="button-group">
-                <button class="view-btn" onclick="location.href='vanguard-carbon-chrono.html'">VIEW</button>
-                <button class="add-btn" onclick="addToCart('Tidal Abyss', 4100)">ADD</button>
             </div>
         </div>
     </div>
@@ -168,12 +170,11 @@
 </footer>
 
 <script>
-    // Hover to play videos (for all cards)
+    // Hover to play videos for all cards
     document.querySelectorAll('.watch-card').forEach(card => {
         const img = card.querySelector('.product-image');
         const vid = card.querySelector('.product-video');
         if(img && vid) {
-            // For card with both image and video (Arctic Tundra)
             card.addEventListener('mouseenter', () => {
                 if(vid) vid.play().catch(e => console.log('hover play error'));
             });
@@ -181,7 +182,6 @@
                 if(vid) { vid.pause(); vid.currentTime = 0; }
             });
         } else if(vid && !img) {
-            // For cards with only video (Emerald Shadow, Tidal Abyss)
             card.addEventListener('mouseenter', () => { vid.play(); });
             card.addEventListener('mouseleave', () => { vid.pause(); vid.currentTime = 0; });
         }
