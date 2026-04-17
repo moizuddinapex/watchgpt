@@ -23,33 +23,42 @@
         .nav-icons i { font-size: 1.2rem; cursor: pointer; transition: 0.2s; }
 
         /* Collection Header */
-        .collection-header { text-align: center; padding: 4rem 5% 2rem; background: linear-gradient(135deg, #0a0a0a 0%, #111 100%); }
-        .collection-header h1 { font-size: 3rem; font-weight: 600; background: linear-gradient(135deg, #fff, #c6a43f); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 1rem; }
-        .collection-header p { color: #aaa; max-width: 600px; margin: 0 auto; }
-        .collection-badge { display: inline-block; background: rgba(198,164,63,0.2); color: #c6a43f; padding: 0.3rem 1rem; border-radius: 40px; font-size: 0.8rem; margin-bottom: 1rem; }
+        .collection-header { text-align: center; padding: 3rem 5% 1rem; }
+        .collection-header h1 { font-size: 2.8rem; font-weight: 600; background: linear-gradient(135deg, #fff, #c6a43f); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: 2px; }
+        .collection-header p { color: #888; margin-top: 0.5rem; font-size: 0.9rem; }
 
-        /* Product Grid */
-        .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; padding: 3rem 5%; max-width: 1400px; margin: 0 auto; }
-        .watch-item { background: #111; border: 1px solid #222; border-radius: 16px; overflow: hidden; transition: 0.3s; cursor: pointer; }
-        .watch-item:hover { transform: translateY(-8px); box-shadow: 0 20px 30px rgba(198,164,63,0.2); border-color: #c6a43f; }
-        .video-box { width: 100%; aspect-ratio: 1/1; background: #000; position: relative; overflow: hidden; }
-        .product-video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .watch-item:hover .product-video { transform: scale(1.05); }
-        .watch-info { padding: 1.5rem; text-align: center; }
-        .status { color: #c6a43f; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; }
-        .name { font-size: 1rem; margin: 8px 0; font-weight: 500; }
-        .price { color: #c6a43f; font-size: 1.1rem; font-weight: bold; }
-        .color-tag { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 5px; }
+        /* Product Grid - Exactly like image */
+        .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; padding: 3rem 5%; max-width: 1200px; margin: 0 auto; }
+        .watch-card { background: #0f0f0f; border-radius: 20px; overflow: hidden; transition: 0.3s; border: 1px solid #1a1a1a; }
+        .watch-card:hover { transform: translateY(-5px); border-color: #c6a43f; box-shadow: 0 15px 30px rgba(198,164,63,0.1); }
+        
+        .video-container { position: relative; width: 100%; aspect-ratio: 1/1; overflow: hidden; background: #000; }
+        .product-video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+        .watch-card:hover .product-video { transform: scale(1.03); }
+        
+        .new-badge { position: absolute; top: 12px; left: 12px; background: #c6a43f; color: #0a0a0a; font-size: 0.7rem; font-weight: bold; padding: 4px 10px; border-radius: 20px; z-index: 2; letter-spacing: 1px; }
+        
+        .product-info { padding: 1.5rem; text-align: center; }
+        .brand-name { font-size: 0.7rem; color: #888; letter-spacing: 2px; margin-bottom: 0.3rem; }
+        .product-title { font-size: 1.1rem; font-weight: 600; color: #fff; letter-spacing: 1px; margin-bottom: 0.3rem; }
+        .model-name { font-size: 0.9rem; color: #c6a43f; font-weight: 500; margin-bottom: 0.8rem; }
+        .price { font-size: 1.2rem; font-weight: bold; color: #c6a43f; margin-bottom: 1rem; }
+        
+        .button-group { display: flex; gap: 10px; justify-content: center; }
+        .view-btn { background: transparent; border: 1px solid #c6a43f; color: #c6a43f; padding: 0.5rem 1.2rem; border-radius: 30px; cursor: pointer; font-size: 0.7rem; font-weight: 600; transition: 0.2s; }
+        .view-btn:hover { background: #c6a43f; color: #0a0a0a; }
+        .add-btn { background: #c6a43f; border: none; color: #0a0a0a; padding: 0.5rem 1.2rem; border-radius: 30px; cursor: pointer; font-size: 0.7rem; font-weight: 600; transition: 0.2s; }
+        .add-btn:hover { background: #d4b347; transform: scale(1.02); }
 
         /* Collection Features */
-        .features-section { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; padding: 3rem 5%; border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; margin: 1rem 0; text-align: center; }
+        .features-section { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; padding: 2rem 5%; border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; margin: 1rem 0; text-align: center; }
         .feature { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
-        .feature i { font-size: 2rem; color: #c6a43f; }
-        .feature h4 { font-size: 0.9rem; }
-        .feature p { font-size: 0.7rem; color: #aaa; }
+        .feature i { font-size: 1.5rem; color: #c6a43f; }
+        .feature h4 { font-size: 0.8rem; }
+        .feature p { font-size: 0.65rem; color: #aaa; }
 
-        @media (max-width: 1024px) { .product-grid { grid-template-columns: repeat(2, 1fr); } .features-section { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px) { .product-grid { grid-template-columns: 1fr; } .features-section { grid-template-columns: 1fr; } }
+        @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } .features-section { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 550px) { .product-grid { grid-template-columns: 1fr; } .features-section { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -71,95 +80,106 @@
 </nav>
 
 <div class="collection-header">
-    <div class="collection-badge">The Carbon Series</div>
-    <h1>Vanguard Carbon Chrono</h1>
-    <p>Forged from aerospace-grade carbon fiber. Each timepiece is a statement of power, precision, and bold individuality.</p>
+    <h1>THE VANGUARD CARBON CHRONO</h1>
+    <p>Forged from aerospace-grade carbon fiber | Limited Edition Collection</p>
 </div>
 
 <div class="product-grid">
-    <!-- Arctic Tundra -->
-    <div class="watch-item" onclick="location.href='vanguard-carbon-chrono.html'">
-        <div class="video-box">
+    <!-- Card 1 - Arctic Tundra -->
+    <div class="watch-card">
+        <div class="video-container">
             <video class="product-video" muted loop playsinline>
                 <source src="136967-765457958_medium.mp4" type="video/mp4">
             </video>
+            <div class="new-badge">NEW</div>
         </div>
-        <div class="watch-info">
-            <span class="status">New</span>
-            <h3 class="name">Arctic Tundra</h3>
-            <p class="price">HK$4,100</p>
+        <div class="product-info">
+            <div class="brand-name">THE VANGUARD</div>
+            <div class="product-title">CARBON CHRONO</div>
+            <div class="model-name">ARCTIC TUNDRA</div>
+            <div class="price">HK$4,100</div>
+            <div class="button-group">
+                <button class="view-btn" onclick="location.href='vanguard-carbon-chrono.html'">VIEW</button>
+                <button class="add-btn" onclick="addToCart('Arctic Tundra', 4100)">ADD</button>
+            </div>
         </div>
     </div>
 
-    <!-- Emerald Shadow -->
-    <div class="watch-item">
-        <div class="video-box">
+    <!-- Card 2 - Emerald Shadow -->
+    <div class="watch-card">
+        <div class="video-container">
             <video class="product-video" muted loop playsinline>
                 <source src="3019-165457954_medium.mp4" type="video/mp4">
             </video>
+            <div class="new-badge">NEW</div>
         </div>
-        <div class="watch-info">
-            <span class="status">New</span>
-            <h3 class="name">Emerald Shadow</h3>
-            <p class="price">HK$4,100</p>
+        <div class="product-info">
+            <div class="brand-name">THE VANGUARD</div>
+            <div class="product-title">CARBON CHRONO</div>
+            <div class="model-name">EMERALD SHADOW</div>
+            <div class="price">HK$4,100</div>
+            <div class="button-group">
+                <button class="view-btn" onclick="location.href='vanguard-carbon-chrono.html'">VIEW</button>
+                <button class="add-btn" onclick="addToCart('Emerald Shadow', 4100)">ADD</button>
+            </div>
         </div>
     </div>
 
-    <!-- Tidal Abyss -->
-    <div class="watch-item">
-        <div class="video-box">
+    <!-- Card 3 - Tidal Abyss -->
+    <div class="watch-card">
+        <div class="video-container">
             <video class="product-video" muted loop playsinline>
                 <source src="34855-403777679_medium.mp4" type="video/mp4">
             </video>
+            <div class="new-badge">NEW</div>
         </div>
-        <div class="watch-info">
-            <span class="status">New</span>
-            <h3 class="name">Tidal Abyss</h3>
-            <p class="price">HK$4,100</p>
-        </div>
-    </div>
-
-    <!-- Crimson Ember -->
-    <div class="watch-item">
-        <div class="video-box">
-            <video class="product-video" muted loop playsinline>
-                <source src="39863-425400884_medium.mp4" type="video/mp4">
-            </video>
-        </div>
-        <div class="watch-info">
-            <span class="status">Limited</span>
-            <h3 class="name">Crimson Ember</h3>
-            <p class="price">HK$4,100</p>
+        <div class="product-info">
+            <div class="brand-name">THE VANGUARD</div>
+            <div class="product-title">CARBON CHRONO</div>
+            <div class="model-name">TIDAL ABYSS</div>
+            <div class="price">HK$4,100</div>
+            <div class="button-group">
+                <button class="view-btn" onclick="location.href='vanguard-carbon-chrono.html'">VIEW</button>
+                <button class="add-btn" onclick="addToCart('Tidal Abyss', 4100)">ADD</button>
+            </div>
         </div>
     </div>
 </div>
 
 <div class="features-section">
-    <div class="feature"><i class="fas fa-weight-hanging"></i><h4>Carbon Fiber Case</h4><p>Lightweight yet indestructible</p></div>
-    <div class="feature"><i class="fas fa-gem"></i><h4>Sapphire Crystal</h4><p>Scratch-resistant glass</p></div>
+    <div class="feature"><i class="fas fa-weight-hanging"></i><h4>Carbon Fiber Case</h4><p>Lightweight & durable</p></div>
+    <div class="feature"><i class="fas fa-gem"></i><h4>Sapphire Crystal</h4><p>Scratch-resistant</p></div>
     <div class="feature"><i class="fas fa-stopwatch"></i><h4>Chronograph</h4><p>Precision timing</p></div>
     <div class="feature"><i class="fas fa-water"></i><h4>100m Water Resistant</h4><p>Built for adventure</p></div>
 </div>
 
 <footer style="background: #050505; padding: 3rem 5% 1.5rem; border-top: 1px solid #1a1a1a;">
     <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; text-align: center; margin-bottom: 3rem; border-bottom: 1px solid #1a1a1a; padding-bottom: 2rem;">
-        <div><i class="fas fa-truck" style="font-size: 1.8rem; color: #c6a43f;"></i><h4>FREE SHIPPING</h4><p style="font-size: 0.7rem; color: #aaa;">Free shipping on all orders above Rs.2500/-</p></div>
+        <div><i class="fas fa-truck" style="font-size: 1.8rem; color: #c6a43f;"></i><h4>FREE SHIPPING</h4><p style="font-size: 0.7rem; color: #aaa;">Free shipping on orders above Rs.2500/-</p></div>
         <div><i class="fas fa-headset" style="font-size: 1.8rem; color: #c6a43f;"></i><h4>SUPPORT 24/7</h4><p style="font-size: 0.7rem; color: #aaa;">Contact us 24/7</p></div>
-        <div><i class="fas fa-exchange-alt" style="font-size: 1.8rem; color: #c6a43f;"></i><h4>10 DAYS EXCHANGE</h4><p style="font-size: 0.7rem; color: #aaa;">Simply exchange within 10 days</p></div>
-        <div><i class="fas fa-lock" style="font-size: 1.8rem; color: #c6a43f;"></i><h4>100% PAYMENT SECURE</h4><p style="font-size: 0.7rem; color: #aaa;">Secure payment with COD</p></div>
+        <div><i class="fas fa-exchange-alt" style="font-size: 1.8rem; color: #c6a43f;"></i><h4>10 DAYS EXCHANGE</h4><p style="font-size: 0.7rem; color: #aaa;">Exchange within 10 days</p></div>
+        <div><i class="fas fa-lock" style="font-size: 1.8rem; color: #c6a43f;"></i><h4>100% SECURE</h4><p style="font-size: 0.7rem; color: #aaa;">Secure payment with COD</p></div>
     </div>
     <div style="text-align: center; padding-top: 1.5rem; border-top: 1px solid #1a1a1a;"><p style="font-size: 0.7rem; color: #666;">Copyright © 2026 INDI-GRADA all rights reserved.</p></div>
 </footer>
 
 <script>
-    // Hover to play script for all videos
-    document.querySelectorAll('.watch-item').forEach(item => {
-        const vid = item.querySelector('.product-video');
+    // Hover to play videos
+    document.querySelectorAll('.watch-card').forEach(card => {
+        const vid = card.querySelector('.product-video');
         if(vid) {
-            item.addEventListener('mouseenter', () => { vid.play(); });
-            item.addEventListener('mouseleave', () => { vid.pause(); vid.currentTime = 0; });
+            card.addEventListener('mouseenter', () => { vid.play(); });
+            card.addEventListener('mouseleave', () => { vid.pause(); vid.currentTime = 0; });
         }
     });
+
+    // Add to Cart function
+    function addToCart(model, price) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push({ title: `Vanguard Carbon Chrono - ${model}`, price: `HK$${price}` });
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(`🛒 ${model} added to cart!`);
+    }
 </script>
 </body>
 </html>
