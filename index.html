@@ -234,31 +234,36 @@
 
 
 <script>
-    // Hero video shrinks as you scroll (like Rolex website)
+    // Hero video snaps to navbar on scroll
     const heroSection = document.querySelector('.hero-video-section');
     const heroContent = document.querySelector('.hero-content');
     const navBar = document.querySelector('.navbar');
+    let isSnapped = false;
     
     window.addEventListener('scroll', function() {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
-        // Calculate new height: starts at 90vh (900px), shrinks to 0 as scroll reaches 300px
-        let newHeight = Math.max(0, 90 - (scrollTop / 3));
-        newHeight = Math.min(90, newHeight); // Cap at 90vh max
-        newHeight = newHeight + 'vh';
-        
-        heroSection.style.height = newHeight;
-        
-        // Fade out hero content as we scroll
-        let opacity = Math.max(0, 1 - (scrollTop / 200));
-        if (heroContent) heroContent.style.opacity = opacity;
-        
-        // Make navbar more solid as we scroll
-        let navOpacity = Math.min(0.95, 0.7 + (scrollTop / 300));
-        navBar.style.background = `rgba(10, 10, 10, ${navOpacity})`;
+        if (scrollTop > 80 && !isSnapped) {
+            // Snap to navbar
+            heroSection.style.transition = 'all 0.3s ease';
+            heroSection.style.height = '0';
+            heroSection.style.opacity = '0';
+            heroSection.style.overflow = 'hidden';
+            if (heroContent) heroContent.style.display = 'none';
+            navBar.style.background = 'rgba(10, 10, 10, 0.95)';
+            isSnapped = true;
+        } 
+        else if (scrollTop <= 50 && isSnapped) {
+            // Expand back
+            heroSection.style.height = '90vh';
+            heroSection.style.opacity = '1';
+            heroSection.style.overflow = 'hidden';
+            if (heroContent) heroContent.style.display = 'block';
+            navBar.style.background = 'rgba(10, 10, 10, 0.85)';
+            isSnapped = false;
+        }
     });
 </script>
-
 
     
 </body>
