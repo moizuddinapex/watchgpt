@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>INDI-GRADA | Vanguard Carbon Chrono</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #eaeaea; scroll-behavior: smooth; overflow-x: hidden; }
+
+        .navbar {
+            display: flex; justify-content: space-between; align-items: center; padding: 1.8rem 5%;
+            background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100;
+            border-bottom: 1px solid rgba(198, 164, 63, 0.3);
+        }
+        .logo { font-size: 1.9rem; font-weight: 700; letter-spacing: 3px; background: linear-gradient(135deg, #fff, #c6a43f); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .nav-links { display: flex; gap: 2.5rem; }
+        .nav-links a { color: #ddd; text-decoration: none; transition: 0.3s; }
+        .nav-links a:hover { color: #c6a43f; }
+        .nav-icons { display: flex; gap: 1.2rem; align-items: center; }
+        .nav-icons i { font-size: 1.2rem; cursor: pointer; transition: 0.2s; }
+
+        /* Product Detail Section */
+        .product-detail { display: flex; flex-wrap: wrap; gap: 3rem; padding: 3rem 5%; max-width: 1400px; margin: 0 auto; }
+        .product-gallery { flex: 1; min-width: 300px; }
+        .product-gallery video { width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .product-info { flex: 1; min-width: 300px; }
+        .product-status { color: #c6a43f; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; }
+        .product-title { font-size: 2.5rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .product-price { font-size: 1.8rem; color: #c6a43f; font-weight: bold; margin-bottom: 1rem; }
+        .product-description { color: #aaa; line-height: 1.6; margin-bottom: 1.5rem; }
+        .features { list-style: none; margin-bottom: 2rem; }
+        .features li { margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .features i { color: #c6a43f; width: 20px; }
+        
+        .quantity-selector { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+        .quantity-btn { background: #222; border: none; color: white; width: 40px; height: 40px; border-radius: 8px; cursor: pointer; font-size: 1.2rem; }
+        .quantity-input { width: 60px; text-align: center; background: #111; border: 1px solid #333; color: white; padding: 0.5rem; border-radius: 8px; }
+        
+        .add-to-cart { background: #c6a43f; color: #0a0a0a; border: none; padding: 1rem 2rem; border-radius: 40px; font-weight: bold; cursor: pointer; width: 100%; font-size: 1rem; transition: 0.3s; margin-bottom: 1rem; }
+        .add-to-cart:hover { transform: scale(1.02); background: #d4b347; }
+        .buy-now { background: transparent; border: 2px solid #c6a43f; color: #c6a43f; padding: 1rem 2rem; border-radius: 40px; font-weight: bold; cursor: pointer; width: 100%; font-size: 1rem; transition: 0.3s; }
+        .buy-now:hover { background: #c6a43f; color: #0a0a0a; }
+        
+        .specs { background: #111; border-radius: 20px; padding: 1.5rem; margin-top: 2rem; }
+        .specs h3 { margin-bottom: 1rem; color: #c6a43f; }
+        .specs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+        .specs-grid span:first-child { color: #888; }
+        .specs-grid span:last-child { color: white; }
+        
+        .related-section { padding: 2rem 5%; border-top: 1px solid #1a1a1a; margin-top: 2rem; }
+        .related-title { font-size: 1.5rem; margin-bottom: 1.5rem; }
+        .related-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .related-item { background: #111; border-radius: 12px; overflow: hidden; transition: 0.3s; cursor: pointer; text-align: center; padding: 1rem; }
+        .related-item:hover { transform: translateY(-5px); box-shadow: 0 12px 24px rgba(198,164,63,0.15); }
+        .related-video { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px; }
+        .related-name { margin-top: 0.5rem; font-size: 0.9rem; }
+        .related-price { color: #c6a43f; font-weight: bold; }
+        
+        @media (max-width: 768px) { .related-grid { grid-template-columns: repeat(2, 1fr); } .product-title { font-size: 1.8rem; } }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">✦ INDI-GRADA</div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="watches.html">Watches</a>
+        <a href="jewelry.html">Jewelry</a>
+        <a href="collections.html">Collections</a>
+    </div>
+    <div class="nav-icons">
+        <i class="fas fa-search"></i>
+        <i class="far fa-user"></i>
+        <i class="far fa-heart"></i>
+        <i class="fas fa-bag-shopping"></i>
+    </div>
+</nav>
+
+<div class="product-detail">
+    <div class="product-gallery">
+        <video autoplay loop muted playsinline>
+            <source src="136967-765457958_medium.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="product-info">
+        <div class="product-status">New Release</div>
+        <h1 class="product-title">The Vanguard Carbon Chrono</h1>
+        <div class="product-price">HK$4,100</div>
+        <p class="product-description">Carbon fiber case meets precision chronograph movement. The Vanguard Carbon Chrono is forged for those who demand bold design without compromise. Sapphire crystal, 100m water resistance, and a skeletonized dial that reveals the beating heart of the machine.</p>
+        
+        <ul class="features">
+            <li><i class="fas fa-check-circle"></i> Carbon Fiber Case</li>
+            <li><i class="fas fa-check-circle"></i> Sapphire Crystal Glass</li>
+            <li><i class="fas fa-check-circle"></i> Swiss Quartz Chronograph Movement</li>
+            <li><i class="fas fa-check-circle"></i> 100m / 10ATM Water Resistant</li>
+            <li><i class="fas fa-check-circle"></i> Interchangeable Strap System</li>
+        </ul>
+        
+        <div class="quantity-selector">
+            <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
+            <input type="number" id="quantity" value="1" min="1" class="quantity-input">
+            <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
+        </div>
+        
+        <button class="add-to-cart" onclick="addToCart()"><i class="fas fa-bag-shopping"></i> Add to Cart</button>
+        <button class="buy-now" onclick="buyNow()">Buy Now →</button>
+        
+        <div class="specs">
+            <h3>Technical Specifications</h3>
+            <div class="specs-grid">
+                <span>Case Diameter:</span><span>44mm</span>
+                <span>Case Thickness:</span><span>12.5mm</span>
+                <span>Lug Width:</span><span>22mm</span>
+                <span>Crystal:</span><span>Sapphire</span>
+                <span>Movement:</span><span>Chronograph Quartz</span>
+                <span>Water Resistance:</span><span>100m / 10ATM</span>
+                <span>Strap:</span><span>Carbon Fiber Texture</span>
+                <span>Warranty:</span><span>2 Years</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="related-section">
+    <h2 class="related-title">You May Also Like</h2>
+    <div class="related-grid">
+        <div class="related-item" onclick="location.href='vanguard-carbon-chrono.html'">
+            <video class="related-video" muted loop playsinline>
+                <source src="136967-765457958_medium.mp4" type="video/mp4">
+            </video>
+            <div class="related-name">Vanguard Carbon Chrono</div>
+            <div class="related-price">HK$4,100</div>
+        </div>
+        <div class="related-item" onclick="location.href='#'">
+            <video class="related-video" muted loop playsinline>
+                <source src="3019-165457954_medium.mp4" type="video/mp4">
+            </video>
+            <div class="related-name">Intrepid Sport Northern Lights</div>
+            <div class="related-price">HK$2,000</div>
+        </div>
+        <div class="related-item" onclick="location.href='#'">
+            <video class="related-video" muted loop playsinline>
+                <source src="34855-403777679_medium.mp4" type="video/mp4">
+            </video>
+            <div class="related-name">Valencia Rose Allure</div>
+            <div class="related-price">HK$1,750</div>
+        </div>
+        <div class="related-item" onclick="location.href='#'">
+            <video class="related-video" muted loop playsinline>
+                <source src="39863-425400884_medium.mp4" type="video/mp4">
+            </video>
+            <div class="related-name">Intrepid Sport Emerald Mist</div>
+            <div class="related-price">HK$2,000</div>
+        </div>
+    </div>
+</div>
+
+<footer style="background: #050505; padding: 3rem 5% 1.5rem; border-top: 1px solid #1a1a1a;">
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; text-align: center; margin-bottom: 3rem; border-bottom: 1px solid #1a1a1a; padding-bottom: 2rem;">
+        <div><i class="fas fa-truck" style="font-size: 1.8rem; color: #c6a43f;"></i><h4>FREE SHIPPING</h4><p style="font-size: 0.7rem; color: #aaa;">Free shipping on all orders above Rs.2500/-</p></div>
+        <div><i class="fas fa-headset" style="font-size: 1.8rem; color: #c6a43f;"></i><h4>SUPPORT 24/7</h4><p style="font-size: 0.7rem; color: #aaa;">Contact us 24/7</p></div>
+        <div><i class="fas fa-exchange-alt" style="font-size: 1.8rem; color: #c6a43f;"></i><h4>10 DAYS EXCHANGE</h4><p style="font-size: 0.7rem; color: #aaa;">Simply exchange within 10 days</p></div>
+        <div><i class="fas fa-lock" style="font-size: 1.8rem; color: #c6a43f;"></i><h4>100% PAYMENT SECURE</h4><p style="font-size: 0.7rem; color: #aaa;">Secure payment with COD</p></div>
+    </div>
+    <div style="text-align: center; padding-top: 1.5rem; border-top: 1px solid #1a1a1a;"><p style="font-size: 0.7rem; color: #666;">Copyright © 2026 INDI-GRADA all rights reserved.</p></div>
+</footer>
+
+<script>
+    function changeQuantity(delta) {
+        let input = document.getElementById('quantity');
+        let newVal = parseInt(input.value) + delta;
+        if (newVal >= 1) input.value = newVal;
+    }
+    
+    function addToCart() {
+        let qty = document.getElementById('quantity').value;
+        alert(`🛒 Added ${qty} x Vanguard Carbon Chrono to cart. Total: HK$${(4100 * qty).toLocaleString()}`);
+        // You can expand this to use localStorage
+    }
+    
+    function buyNow() {
+        let qty = document.getElementById('quantity').value;
+        alert(`Proceeding to checkout with ${qty} item(s). Total: HK$${(4100 * qty).toLocaleString()}`);
+    }
+    
+    // Hover play for related videos
+    document.querySelectorAll('.related-item').forEach(item => {
+        const vid = item.querySelector('.related-video');
+        if(vid) {
+            item.addEventListener('mouseenter', () => vid.play());
+            item.addEventListener('mouseleave', () => { vid.pause(); vid.currentTime = 0; });
+        }
+    });
+</script>
+</body>
+</html>
