@@ -47,18 +47,157 @@
         
         @media (max-width: 1024px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 600px) { .product-grid { grid-template-columns: 1fr; } }
+  
+            /* Dropdown Menu Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropbtn i {
+            font-size: 0.7rem;
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .dropdown:hover .dropbtn i {
+            transform: rotate(180deg);
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(15, 15, 15, 0.98);
+            backdrop-filter: blur(10px);
+            min-width: 320px;
+            border-radius: 16px;
+            border: 1px solid rgba(198, 164, 63, 0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+            animation: fadeInDropdown 0.3s ease;
+        }
+        
+        @keyframes fadeInDropdown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .dropdown-column {
+            padding: 0 1rem;
+        }
+        
+        .dropdown-column h4 {
+            color: #c6a43f;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(198, 164, 63, 0.3);
+        }
+        
+        .dropdown-column a {
+            display: block;
+            color: #ddd;
+            padding: 0.4rem 0;
+            font-size: 0.75rem;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        
+        .dropdown-column a:hover {
+            color: #c6a43f;
+            transform: translateX(5px);
+        }
+        
+        @media (max-width: 1024px) {
+            .dropdown-content {
+                position: static;
+                display: none;
+                background: transparent;
+                box-shadow: none;
+                padding-left: 1rem;
+            }
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+            .dropdown-column a {
+                white-space: normal;
+            }
+        }
+    
+    
+    
+    
+    
+    
+    
     </style>
 </head>
 <body>
 
-<nav class="navbar">
-    <div class="logo">✦ INDI-GRADA</div>
-       <div class="nav-links">
+    <div class="nav-links">
         <a href="index.html">Home</a>
-        <a href="watches.html">Watches</a>
-        <a href="jewelry.html">Jewelry</a>
+        
+        <!-- Watches Dropdown -->
+        <div class="dropdown">
+            <a href="watches.html" class="dropbtn">Watches <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-content">
+                <div class="dropdown-column">
+                    <h4>Shop by Collection</h4>
+                    <a href="vanguard-collection.html">✦ The Vanguard Carbon Chrono - Arctic Tundra</a>
+                    <a href="#">✦ Vanguard Carbon Chrono</a>
+                    <a href="#">✦ The Intrepid Sport - Aurora Burst</a>
+                    <a href="#">✦ Intrepid Sport</a>
+                    <a href="#">✦ The Intrepid Sport Ice - Midas Black</a>
+                    <a href="#">✦ Intrepid Sport Ice</a>
+                    <a href="#">✦ The Polaris Chrono - Obsidian Black</a>
+                    <a href="#">✦ Polaris Chrono</a>
+                    <a href="#">✦ The Polaris Chrono Ice Aurora Prism</a>
+                    <a href="#">✦ Polaris Chrono Ice</a>
+                    <a href="#">✦ The Titan Chrono - Hyperburst</a>
+                    <a href="#">✦ Titan Chrono</a>
+                    <a href="#">✦ Equinox Chrono</a>
+                    <a href="#">✦ Spectre Chrono</a>
+                    <a href="#">✦ The Apex Chrono - Celestial Blue</a>
+                    <a href="#">✦ Apex Chrono</a>
+                    <a href="#">✦ Intrepid Sport Carbon Fibre - Petrol Blaze</a>
+                    <a href="#">✦ Intrepid Sport Carbon Fiber</a>
+                    <a href="#">✦ The Legacy Chrono - Arctic Azure</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Jewelry Dropdown -->
+        <div class="dropdown">
+            <a href="jewelry.html" class="dropbtn">Jewelry <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-content">
+                <div class="dropdown-column">
+                    <h4>Shop by Collection</h4>
+                    <a href="#">✦ Build Your Own Bundle - Gold</a>
+                    <a href="#">✦ Jewelry Bundles</a>
+                    <a href="#">✦ The Gold Crucifix Pendant - Essentials Collection</a>
+                    <a href="#">✦ Pendants</a>
+                    <a href="#">✦ The Gemstone Necklace</a>
+                    <a href="#">✦ Necklaces</a>
+                    <a href="#">✦ The Gemstone Bracelet</a>
+                    <a href="#">✦ Bracelets</a>
+                </div>
+            </div>
+        </div>
+        
         <a href="collections.html">Collections</a>
+        <a href="journal.html">Journal</a>
     </div>
+
+
+    
     <div class="nav-icons">
         <i class="fas fa-search"></i>
         <i class="far fa-user"></i>
