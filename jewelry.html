@@ -9,34 +9,37 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #eaeaea; scroll-behavior: smooth; overflow-x: hidden; }
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #1a1a1a; }
-        ::-webkit-scrollbar-thumb { background: #c6a43f; border-radius: 4px; }
-        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1.8rem 5%; background: rgba(10, 10, 10, 0.92); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(198, 164, 63, 0.2); }
+
+        .navbar {
+            display: flex; justify-content: space-between; align-items: center; padding: 1.8rem 5%;
+            background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100;
+            border-bottom: 1px solid rgba(198, 164, 63, 0.3);
+        }
         .logo { font-size: 1.9rem; font-weight: 700; letter-spacing: 3px; background: linear-gradient(135deg, #fff, #c6a43f); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .nav-links { display: flex; gap: 2.5rem; font-weight: 500; }
-        .nav-links a { color: #ddd; text-decoration: none; transition: 0.3s; font-size: 0.95rem; }
+        .nav-links { display: flex; gap: 2.5rem; }
+        .nav-links a { color: #ddd; text-decoration: none; transition: 0.3s; }
         .nav-links a:hover, .nav-links a.active { color: #c6a43f; }
-        .nav-icons i { margin-left: 1.2rem; font-size: 1.2rem; cursor: pointer; transition: 0.2s; }
-        .nav-icons i:hover { color: #c6a43f; }
+        .nav-icons { display: flex; gap: 1.2rem; align-items: center; }
+        .nav-icons i { font-size: 1.2rem; cursor: pointer; transition: 0.2s; }
+
         .page-header { text-align: center; padding: 4rem 5% 2rem; }
         .page-header h1 { font-size: 3rem; font-weight: 600; background: linear-gradient(135deg, #fff, #c6a43f); -webkit-background-clip: text; background-clip: text; color: transparent; }
         .page-header p { color: #aaa; margin-top: 0.5rem; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; padding: 2rem 5% 4rem; }
-        .product-card { background: #0f0f0f; border-radius: 24px; overflow: hidden; transition: all 0.3s; }
-        .product-card:hover { transform: scale(1.02); background: #141414; box-shadow: 0 12px 24px rgba(0,0,0,0.6); }
-        .product-img { height: 280px; background: linear-gradient(145deg, #1f1f1f, #0c0c0c); display: flex; align-items: center; justify-content: center; font-size: 3.2rem; }
-        .product-details { padding: 1rem 1.2rem 1.5rem; }
-        .product-title { font-weight: 600; font-size: 1rem; }
-        .product-price { font-weight: 700; margin-top: 0.6rem; font-size: 1.2rem; color: #c6a43f; }
-        .tag { font-size: 0.7rem; background: #c6a43f30; display: inline-block; padding: 0.2rem 0.6rem; border-radius: 30px; margin-bottom: 0.5rem; }
-        footer { background: #020202; padding: 2.5rem 5%; text-align: center; border-top: 1px solid #1f1f1f; margin-top: 3rem; }
-        .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
-        .footer-links a { color: #aaa; text-decoration: none; }
-        @media (max-width: 768px) { .nav-links { display: none; } .page-header h1 { font-size: 2rem; } }
+
+        .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 2rem 5%; }
+        .product-card { background: #111; border: 1px solid #222; border-radius: 12px; overflow: hidden; transition: 0.3s; text-align: center; padding: 1.5rem; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 12px 24px rgba(198,164,63,0.15); }
+        .product-icon { font-size: 3rem; margin-bottom: 1rem; display: block; }
+        .product-title { font-size: 1rem; margin: 0.5rem 0; }
+        .product-price { color: #c6a43f; font-size: 1.1rem; font-weight: bold; }
+        .tag { color: #c6a43f; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        @media (max-width: 1024px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .product-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
+
 <nav class="navbar">
     <div class="logo">✦ INDI-GRADA</div>
     <div class="nav-links">
@@ -47,11 +50,11 @@
         <a href="journal.html">Journal</a>
     </div>
     <div class="nav-icons">
-    <i class="fas fa-search" id="searchIcon" style="cursor: pointer;"></i>
-    <i class="far fa-user" id="userIcon" style="cursor: pointer;"></i>
-    <i class="far fa-heart" id="wishlistIcon" style="cursor: pointer;"></i>
-    <i class="fas fa-bag-shopping" id="cartIcon" style="cursor: pointer;"></i>
-</div>
+        <i class="fas fa-search"></i>
+        <i class="far fa-user"></i>
+        <i class="far fa-heart"></i>
+        <i class="fas fa-bag-shopping"></i>
+    </div>
 </nav>
 
 <div class="page-header">
@@ -59,36 +62,31 @@
     <p>Handcrafted pieces that command attention</p>
 </div>
 
-<div class="product-grid" id="jewelryGrid"></div>
+<div class="product-grid">
+    <div class="product-card"><div class="product-icon">🔗</div><span class="tag">Men's</span><h3 class="product-title">Forged Steel Cuff</h3><p class="product-price">HK$1,200</p></div>
+    <div class="product-card"><div class="product-icon">✨</div><span class="tag">Women's</span><h3 class="product-title">Celestial Pendant</h3><p class="product-price">HK$2,800</p></div>
+    <div class="product-card"><div class="product-icon">💍</div><span class="tag">Limited</span><h3 class="product-title">Rose Gold Signet Ring</h3><p class="product-price">HK$1,750</p></div>
+    <div class="product-card"><div class="product-icon">⛓️</div><span class="tag">New</span><h3 class="product-title">Carbon Fiber Bracelet</h3><p class="product-price">HK$950</p></div>
+    <div class="product-card"><div class="product-icon">💎</div><span class="tag">Premium</span><h3 class="product-title">Diamond Halo Earrings</h3><p class="product-price">HK$3,200</p></div>
+    <div class="product-card"><div class="product-icon">📿</div><span class="tag">Best Seller</span><h3 class="product-title">Titanium Chain Necklace</h3><p class="product-price">HK$1,500</p></div>
+    <div class="product-card"><div class="product-icon">⚫</div><span class="tag">Unisex</span><h3 class="product-title">Obsidian Beads</h3><p class="product-price">HK$800</p></div>
+    <div class="product-card"><div class="product-icon">🌿</div><span class="tag">Formal</span><h3 class="product-title">Golden Ivy Cufflinks</h3><p class="product-price">HK$1,650</p></div>
+</div>
 
-<footer>
-    <div class="footer-links">
-        <a href="#">About INDI-GRADA</a><a href="#">Sustainability</a><a href="#">Shipping & Returns</a><a href="#">Warranty</a><a href="#">Contact</a>
+<footer style="background: #050505; padding: 3rem 5% 1.5rem; border-top: 1px solid #1a1a1a;">
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; text-align: center; margin-bottom: 3rem; border-bottom: 1px solid #1a1a1a; padding-bottom: 2rem;">
+        <div><i class="fas fa-truck" style="font-size: 1.8rem; color: #c6a43f;"></i><h4 style="font-size: 0.9rem;">FREE SHIPPING</h4><p style="font-size: 0.7rem; color: #aaa;">Free shipping on all orders above Rs.2500/-</p></div>
+        <div><i class="fas fa-headset" style="font-size: 1.8rem; color: #c6a43f;"></i><h4 style="font-size: 0.9rem;">SUPPORT 24/7</h4><p style="font-size: 0.7rem; color: #aaa;">Contact us 24/7</p></div>
+        <div><i class="fas fa-exchange-alt" style="font-size: 1.8rem; color: #c6a43f;"></i><h4 style="font-size: 0.9rem;">10 DAYS EXCHANGE</h4><p style="font-size: 0.7rem; color: #aaa;">Simply exchange within 10 days</p></div>
+        <div><i class="fas fa-lock" style="font-size: 1.8rem; color: #c6a43f;"></i><h4 style="font-size: 0.9rem;">100% PAYMENT SECURE</h4><p style="font-size: 0.7rem; color: #aaa;">Secure payment with COD</p></div>
     </div>
-    <p style="color:#666;">© 2026 INDI-GRADA — Bold By Design</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+        <div><h4 style="color: #c6a43f;">Information</h4><p style="color: #aaa;">DELIVERY INFORMATION</p><p style="color: #aaa;">STORE LOCATORS</p><p style="color: #aaa;">SIZE CHART</p></div>
+        <div><h4 style="color: #c6a43f;">Policies</h4><p style="color: #aaa;">PRIVACY & LEGAL</p><p style="color: #aaa;">TERMS & CONDITIONS</p><p style="color: #aaa;">CONTACT</p><p style="color: #aaa;">RETURNS & REFUNDS</p><p style="color: #aaa;">FAQ</p></div>
+        <div><h4 style="color: #c6a43f;">Stay in Style!</h4><p style="color: #aaa; font-size: 0.8rem;">Be the first to know about new arrivals.</p><div style="display: flex; border-bottom: 1px solid #333;"><input type="email" placeholder="Your email address" style="flex:1; background:transparent; border:none; padding:0.6rem 0; color:#fff;"><button style="background:transparent; border:none; color:#c6a43f;">Subscribe →</button></div><div style="display: flex; gap: 1rem; margin-top: 1rem;"><i class="fab fa-facebook-f"></i><i class="fab fa-instagram"></i><i class="fab fa-twitter"></i><i class="fab fa-youtube"></i></div></div>
+        <div><h4 style="color: #c6a43f;">We Accept</h4><div style="display: flex; gap: 0.8rem;"><i class="fab fa-cc-visa" style="font-size:1.8rem;"></i><i class="fab fa-cc-mastercard" style="font-size:1.8rem;"></i><i class="fab fa-cc-paypal" style="font-size:1.8rem;"></i><i class="fab fa-cc-amex" style="font-size:1.8rem;"></i></div><div style="margin-top:1rem;"><p>Free shipping above Rs.2500/-</p><p>Support 24/7</p><p>10 days exchange</p></div></div>
+    </div>
+    <div style="text-align: center; padding-top: 1.5rem; border-top: 1px solid #1a1a1a;"><p style="font-size: 0.7rem; color: #666;">Copyright © 2026 INDI-GRADA all rights reserved.</p></div>
 </footer>
-
-<script>
-    const jewelry = [
-        { title: "Forged Steel Cuff", price: "HK$1,200", tag: "Men's", icon: "🔗" },
-        { title: "Celestial Pendant", price: "HK$2,800", tag: "Women's", icon: "✨" },
-        { title: "Rose Gold Signet Ring", price: "HK$1,750", tag: "Limited", icon: "💍" },
-        { title: "Carbon Fiber Bracelet", price: "HK$950", tag: "New", icon: "⛓️" },
-        { title: "Diamond Halo Earrings", price: "HK$3,200", tag: "Premium", icon: "💎" },
-        { title: "Titanium Chain Necklace", price: "HK$1,500", tag: "Best Seller", icon: "📿" },
-        { title: "Obsidian Beads", price: "HK$800", tag: "Unisex", icon: "⚫" },
-        { title: "Golden Ivy Cufflinks", price: "HK$1,650", tag: "Formal", icon: "🌿" }
-    ];
-    function renderJewelry() {
-        const grid = document.getElementById('jewelryGrid');
-        grid.innerHTML = jewelry.map(j => `
-            <div class="product-card">
-                <div class="product-img"><span style="font-size:3rem;">${j.icon}</span></div>
-                <div class="product-details"><span class="tag">${j.tag}</span><div class="product-title">${j.title}</div><div class="product-price">${j.price}</div></div>
-            </div>
-        `).join('');
-    }
-    renderJewelry();
-</script>
 </body>
 </html>
