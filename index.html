@@ -234,36 +234,30 @@
 
 
 <script>
-    // Smooth minimize/expand on scroll
+    // Hero video shrinks as you scroll (like Rolex website)
     const heroSection = document.querySelector('.hero-video-section');
     const heroContent = document.querySelector('.hero-content');
-    let isVideoMinimized = false;
-
+    const navBar = document.querySelector('.navbar');
+    
     window.addEventListener('scroll', function() {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
-        if (scrollTop > 100 && !isVideoMinimized) {
-            heroSection.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-            heroSection.style.height = '70px';
-            heroSection.style.position = 'sticky';
-            heroSection.style.top = '0';
-            heroSection.style.zIndex = '99';
-            heroSection.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
-            if (heroContent) heroContent.style.transition = 'opacity 0.3s ease';
-            if (heroContent) heroContent.style.opacity = '0';
-            isVideoMinimized = true;
-        } 
-        else if (scrollTop <= 50 && isVideoMinimized) {
-            heroSection.style.height = '90vh';
-            heroSection.style.position = 'relative';
-            heroSection.style.boxShadow = 'none';
-            if (heroContent) heroContent.style.opacity = '1';
-            isVideoMinimized = false;
-        }
+        // Calculate new height: starts at 90vh (900px), shrinks to 0 as scroll reaches 300px
+        let newHeight = Math.max(0, 90 - (scrollTop / 3));
+        newHeight = Math.min(90, newHeight); // Cap at 90vh max
+        newHeight = newHeight + 'vh';
+        
+        heroSection.style.height = newHeight;
+        
+        // Fade out hero content as we scroll
+        let opacity = Math.max(0, 1 - (scrollTop / 200));
+        if (heroContent) heroContent.style.opacity = opacity;
+        
+        // Make navbar more solid as we scroll
+        let navOpacity = Math.min(0.95, 0.7 + (scrollTop / 300));
+        navBar.style.background = `rgba(10, 10, 10, ${navOpacity})`;
     });
 </script>
-
-
 
 
     
