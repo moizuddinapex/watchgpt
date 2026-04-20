@@ -11,57 +11,57 @@
         body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #eaeaea; scroll-behavior: smooth; overflow-x: hidden; }
 
         .navbar {
-            display: flex; justify-content: space-between; align-items: center; padding: 1.8rem 5%;
-            background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100;
+            display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 5%;
+            background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100;
             border-bottom: 1px solid rgba(198, 164, 63, 0.3);
         }
-        .logo { font-size: 1.9rem; font-weight: 700; letter-spacing: 3px; background: linear-gradient(135deg, #fff, #c6a43f); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .nav-links { display: flex; gap: 2.5rem; }
-        .nav-links a { color: #ddd; text-decoration: none; transition: 0.3s; }
+        .logo { font-size: 1.6rem; font-weight: 700; letter-spacing: 2px; background: linear-gradient(135deg, #fff, #c6a43f); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .nav-links { display: flex; gap: 1.8rem; align-items: center; }
+        .nav-links a { color: #ddd; text-decoration: none; transition: 0.3s; font-size: 0.85rem; }
         .nav-links a:hover { color: #c6a43f; }
-        .nav-icons { display: flex; gap: 1.2rem; align-items: center; }
-        .nav-icons i { font-size: 1.2rem; cursor: pointer; transition: 0.2s; }
+        .nav-icons { display: flex; gap: 1rem; align-items: center; }
+        .nav-icons i { font-size: 1rem; cursor: pointer; transition: 0.2s; color: #ddd; position: relative; }
+        .nav-icons i:hover { color: #c6a43f; }
+        .cart-count, .wishlist-count { position: absolute; top: -8px; right: -10px; background: #c6a43f; color: #0a0a0a; font-size: 0.6rem; font-weight: bold; padding: 2px 5px; border-radius: 10px; }
 
-        /* Collection Header */
-        .collection-header { text-align: center; padding: 3rem 5% 1rem; }
-        .collection-header h1 { font-size: 2.8rem; font-weight: 600; background: linear-gradient(135deg, #fff, #c6a43f); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: 2px; }
-        .collection-header p { color: #888; margin-top: 0.5rem; font-size: 0.9rem; }
+        .collection-header { text-align: center; padding: 2rem 5% 1rem; }
+        .collection-header h1 { font-size: 2.2rem; font-weight: 600; background: linear-gradient(135deg, #fff, #c6a43f); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .collection-header p { color: #888; font-size: 0.8rem; }
 
-        /* Product Grid */
-        .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; padding: 3rem 5%; max-width: 1200px; margin: 0 auto; }
-        .watch-card { background: #0f0f0f; border-radius: 20px; overflow: hidden; transition: 0.3s; border: 1px solid #1a1a1a; }
-        .watch-card:hover { transform: translateY(-5px); border-color: #c6a43f; box-shadow: 0 15px 30px rgba(198,164,63,0.1); }
-        
+        .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; padding: 2rem 5%; max-width: 1200px; margin: 0 auto; }
+        .watch-card { background: #0f0f0f; border-radius: 16px; overflow: hidden; transition: 0.3s; border: 1px solid #1a1a1a; }
+        .watch-card:hover { transform: translateY(-5px); border-color: #c6a43f; }
         .media-container { position: relative; width: 100%; aspect-ratio: 1/1; overflow: hidden; background: #000; }
-        .product-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block; }
-        .product-video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: none; position: absolute; top: 0; left: 0; }
+        .product-image { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .product-video { width: 100%; height: 100%; object-fit: cover; display: none; position: absolute; top: 0; left: 0; }
         .watch-card:hover .product-image { display: none; }
         .watch-card:hover .product-video { display: block; }
-        .watch-card:hover .product-video { transform: scale(1.03); }
+        .new-badge { position: absolute; top: 10px; left: 10px; background: #c6a43f; color: #0a0a0a; font-size: 0.6rem; font-weight: bold; padding: 3px 8px; border-radius: 20px; z-index: 2; }
         
-        .new-badge { position: absolute; top: 12px; left: 12px; background: #c6a43f; color: #0a0a0a; font-size: 0.7rem; font-weight: bold; padding: 4px 10px; border-radius: 20px; z-index: 2; letter-spacing: 1px; }
-        
-        .product-info { padding: 1.5rem; text-align: center; }
-        .brand-name { font-size: 0.7rem; color: #888; letter-spacing: 2px; margin-bottom: 0.3rem; }
-        .product-title { font-size: 1.1rem; font-weight: 600; color: #fff; letter-spacing: 1px; margin-bottom: 0.3rem; }
-        .model-name { font-size: 0.9rem; color: #c6a43f; font-weight: 500; margin-bottom: 0.8rem; }
-        .price { font-size: 1.2rem; font-weight: bold; color: #c6a43f; margin-bottom: 1rem; }
-        
-        .button-group { display: flex; gap: 10px; justify-content: center; }
-        .view-btn { background: transparent; border: 1px solid #c6a43f; color: #c6a43f; padding: 0.5rem 1.2rem; border-radius: 30px; cursor: pointer; font-size: 0.7rem; font-weight: 600; transition: 0.2s; }
+        .product-info { padding: 1rem; text-align: center; }
+        .brand-name { font-size: 0.6rem; color: #888; letter-spacing: 2px; }
+        .product-title { font-size: 0.9rem; font-weight: 600; color: #fff; margin: 3px 0; }
+        .model-name { font-size: 0.8rem; color: #c6a43f; margin-bottom: 5px; }
+        .price { font-size: 1rem; font-weight: bold; color: #c6a43f; margin-bottom: 0.8rem; }
+        .button-group { display: flex; gap: 8px; justify-content: center; }
+        .view-btn, .add-btn { padding: 0.4rem 1rem; border-radius: 30px; cursor: pointer; font-size: 0.65rem; font-weight: 600; transition: 0.2s; }
+        .view-btn { background: transparent; border: 1px solid #c6a43f; color: #c6a43f; }
         .view-btn:hover { background: #c6a43f; color: #0a0a0a; }
-        .add-btn { background: #c6a43f; border: none; color: #0a0a0a; padding: 0.5rem 1.2rem; border-radius: 30px; cursor: pointer; font-size: 0.7rem; font-weight: 600; transition: 0.2s; }
+        .add-btn { background: #c6a43f; border: none; color: #0a0a0a; }
         .add-btn:hover { background: #d4b347; transform: scale(1.02); }
 
-        /* Features */
-        .features-section { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; padding: 2rem 5%; border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; margin: 1rem 0; text-align: center; }
-        .feature { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
-        .feature i { font-size: 1.5rem; color: #c6a43f; }
-        .feature h4 { font-size: 0.8rem; }
-        .feature p { font-size: 0.65rem; color: #aaa; }
+        .features-section { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; padding: 2rem 5%; border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; margin: 1rem 0; text-align: center; }
+        .feature { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
+        .feature i { font-size: 1.2rem; color: #c6a43f; }
+        .feature h4 { font-size: 0.7rem; }
+        .feature p { font-size: 0.6rem; color: #aaa; }
+
+        .toast { position: fixed; bottom: 30px; right: 30px; background: #c6a43f; color: #0a0a0a; padding: 10px 18px; border-radius: 40px; font-size: 0.75rem; font-weight: bold; z-index: 1002; display: none; }
+        .toast.show { display: block; animation: slideIn 0.3s ease; }
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 
         @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } .features-section { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 550px) { .product-grid { grid-template-columns: 1fr; } .features-section { grid-template-columns: 1fr; } }
+        @media (max-width: 550px) { .product-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -73,12 +73,13 @@
         <a href="watches.html">Watches</a>
         <a href="jewelry.html">Jewelry</a>
         <a href="collections.html">Collections</a>
+        <a href="journal.html">Journal</a>
     </div>
     <div class="nav-icons">
         <i class="fas fa-search"></i>
         <i class="far fa-user"></i>
-        <i class="far fa-heart"></i>
-        <i class="fas fa-bag-shopping"></i>
+        <i class="far fa-heart" id="wishlistIcon"></i>
+        <i class="fas fa-bag-shopping" id="cartIcon"></i>
     </div>
 </nav>
 
@@ -88,10 +89,10 @@
 </div>
 
 <div class="product-grid">
-    <!-- Card 1 - Arctic Tundra (Using V.Chrono1.webp and V.Chronov1.mp4) -->
+    <!-- Card 1 - Arctic Tundra -->
     <div class="watch-card">
         <div class="media-container">
-            <img class="product-image" src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/V.Chrono1.webp" alt="Vanguard Carbon Chrono Arctic Tundra">
+            <img class="product-image" src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/V.Chrono1.webp" alt="Arctic Tundra">
             <video class="product-video" muted loop playsinline>
                 <source src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/V.Chronov1.mp4" type="video/mp4">
             </video>
@@ -104,15 +105,15 @@
             <div class="price">HK$4,100</div>
             <div class="button-group">
                 <button class="view-btn" onclick="location.href='vanguard-carbon-chrono.html'">VIEW</button>
-                <button class="add-btn" onclick="addToCart('Arctic Tundra', 4100)">ADD</button>
+                <button class="add-btn" onclick="addToCart('Vanguard Carbon Chrono - Arctic Tundra', 4100)">ADD</button>
             </div>
         </div>
     </div>
 
-    <!-- Card 2 - Crimson Ember (Using V.Crimson.webp and V.Crimsonv1.mp4) -->
+    <!-- Card 2 - Crimson Ember -->
     <div class="watch-card">
         <div class="media-container">
-            <img class="product-image" src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/V.Crimson.webp" alt="Vanguard Carbon Chrono Crimson Ember">
+            <img class="product-image" src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/V.Crimson.webp" alt="Crimson Ember">
             <video class="product-video" muted loop playsinline>
                 <source src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/V.Crimsonv1.mp4" type="video/mp4">
             </video>
@@ -125,15 +126,15 @@
             <div class="price">HK$4,100</div>
             <div class="button-group">
                 <button class="view-btn" onclick="location.href='vanguard-carbon-chrono.html'">VIEW</button>
-                <button class="add-btn" onclick="addToCart('Crimson Ember', 4100)">ADD</button>
+                <button class="add-btn" onclick="addToCart('Vanguard Carbon Chrono - Crimson Ember', 4100)">ADD</button>
             </div>
         </div>
     </div>
 
-    <!-- Card 3 - Emerald Shadow (Using V.Emerald.webp and V.Emeraldv1.mp4) -->
+    <!-- Card 3 - Emerald Shadow -->
     <div class="watch-card">
         <div class="media-container">
-            <img class="product-image" src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/V.Emerald.webp" alt="Vanguard Carbon Chrono Emerald Shadow">
+            <img class="product-image" src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/V.Emerald.webp" alt="Emerald Shadow">
             <video class="product-video" muted loop playsinline>
                 <source src="https://raw.githubusercontent.com/moizuddinapex/watchgpt/main/images/V.Emeraldv1.mp4" type="video/mp4">
             </video>
@@ -146,7 +147,7 @@
             <div class="price">HK$4,100</div>
             <div class="button-group">
                 <button class="view-btn" onclick="location.href='vanguard-carbon-chrono.html'">VIEW</button>
-                <button class="add-btn" onclick="addToCart('Emerald Shadow', 4100)">ADD</button>
+                <button class="add-btn" onclick="addToCart('Vanguard Carbon Chrono - Emerald Shadow', 4100)">ADD</button>
             </div>
         </div>
     </div>
@@ -159,40 +160,77 @@
     <div class="feature"><i class="fas fa-water"></i><h4>100m Water Resistant</h4><p>Built for adventure</p></div>
 </div>
 
-<footer style="background: #050505; padding: 3rem 5% 1.5rem; border-top: 1px solid #1a1a1a;">
-    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; text-align: center; margin-bottom: 3rem; border-bottom: 1px solid #1a1a1a; padding-bottom: 2rem;">
-        <div><i class="fas fa-truck" style="font-size: 1.8rem; color: #c6a43f;"></i><h4>FREE SHIPPING</h4><p style="font-size: 0.7rem; color: #aaa;">Free shipping on orders above Rs.2500/-</p></div>
-        <div><i class="fas fa-headset" style="font-size: 1.8rem; color: #c6a43f;"></i><h4>SUPPORT 24/7</h4><p style="font-size: 0.7rem; color: #aaa;">Contact us 24/7</p></div>
-        <div><i class="fas fa-exchange-alt" style="font-size: 1.8rem; color: #c6a43f;"></i><h4>10 DAYS EXCHANGE</h4><p style="font-size: 0.7rem; color: #aaa;">Exchange within 10 days</p></div>
-        <div><i class="fas fa-lock" style="font-size: 1.8rem; color: #c6a43f;"></i><h4>100% SECURE</h4><p style="font-size: 0.7rem; color: #aaa;">Secure payment with COD</p></div>
+<footer style="background: #050505; padding: 2rem 5% 1rem; border-top: 1px solid #1a1a1a;">
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; text-align: center; margin-bottom: 2rem;">
+        <div><i class="fas fa-truck" style="color:#c6a43f;"></i><h4 style="font-size:0.7rem;">FREE SHIPPING</h4></div>
+        <div><i class="fas fa-headset" style="color:#c6a43f;"></i><h4 style="font-size:0.7rem;">SUPPORT 24/7</h4></div>
+        <div><i class="fas fa-exchange-alt" style="color:#c6a43f;"></i><h4 style="font-size:0.7rem;">10 DAYS EXCHANGE</h4></div>
+        <div><i class="fas fa-lock" style="color:#c6a43f;"></i><h4 style="font-size:0.7rem;">100% SECURE</h4></div>
     </div>
-    <div style="text-align: center; padding-top: 1.5rem; border-top: 1px solid #1a1a1a;"><p style="font-size: 0.7rem; color: #666;">Copyright © 2026 INDI-GRADA all rights reserved.</p></div>
+    <div style="text-align: center; padding-top: 1rem; border-top: 1px solid #1a1a1a;"><p style="font-size: 0.6rem; color: #666;">Copyright © 2026 INDI-GRADA all rights reserved.</p></div>
 </footer>
 
+<!-- Toast Notification -->
+<div class="toast" id="toast"></div>
+
 <script>
-    // Hover to play videos for all cards
+    // ==================== CART FUNCTIONALITY ====================
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function saveCart() {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+    }
+
+    function updateCartCount() {
+        const cartCountElements = document.querySelectorAll('.cart-count');
+        cartCountElements.forEach(el => el.textContent = cart.length);
+    }
+
+    function showToast(message) {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+
+    function addToCart(productName, price) {
+        cart.push({ name: productName, price: price, quantity: 1 });
+        saveCart();
+        showToast(`✓ ${productName} added to cart!`);
+    }
+
+    // Cart icon redirect to checkout
+    document.getElementById('cartIcon').onclick = () => {
+        window.location.href = 'checkout.html';
+    };
+
+    // Wishlist icon
+    document.getElementById('wishlistIcon').onclick = () => {
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        alert(`❤️ Wishlist (${wishlist.length} items)`);
+    };
+
+    // Hover videos
     document.querySelectorAll('.watch-card').forEach(card => {
-        const img = card.querySelector('.product-image');
         const vid = card.querySelector('.product-video');
-        if(img && vid) {
-            card.addEventListener('mouseenter', () => {
-                if(vid) vid.play().catch(e => console.log('hover play error'));
-            });
-            card.addEventListener('mouseleave', () => {
-                if(vid) { vid.pause(); vid.currentTime = 0; }
-            });
-        } else if(vid && !img) {
-            card.addEventListener('mouseenter', () => { vid.play(); });
+        if (vid) {
+            card.addEventListener('mouseenter', () => vid.play());
             card.addEventListener('mouseleave', () => { vid.pause(); vid.currentTime = 0; });
         }
     });
 
-    // Add to Cart function
-    function addToCart(model, price) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.push({ title: `Vanguard Carbon Chrono - ${model}`, price: `HK$${price}` });
-        localStorage.setItem('cart', JSON.stringify(cart));
-        alert(`🛒 ${model} added to cart!`);
+    // Update cart count on page load
+    updateCartCount();
+
+    // Add cart badge to cart icon
+    const cartIcon = document.getElementById('cartIcon');
+    if (cart.length > 0) {
+        const badge = document.createElement('span');
+        badge.className = 'cart-count';
+        badge.textContent = cart.length;
+        cartIcon.style.position = 'relative';
+        cartIcon.appendChild(badge);
     }
 </script>
 </body>
