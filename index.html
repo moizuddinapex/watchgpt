@@ -98,6 +98,17 @@
         @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } .dropdown-content { left: -150px; min-width: 500px; } }
         @media (max-width: 600px) { .product-grid { grid-template-columns: 1fr; } .dropdown-content { display: none; } }
     </style>
+<!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+
+
+
 </head>
 <body>
 
@@ -214,7 +225,8 @@
     
     <div class="product-grid">
         <div class="watch-item" data-name="The Vanguard Carbon Chrono" data-price="4100" data-type="watch" onclick="addToCartAndRedirect('The Vanguard Carbon Chrono', 4100, 'vanguard-collection.html')">
-            <div class="video-box">
+           
+        <div class="video-box">
                 <video class="product-video" muted loop playsinline>
                     <source src="136967-765457958_medium.mp4" type="video/mp4">
                 </video>
@@ -223,6 +235,7 @@
                 <span class="status">New</span>
                 <h3 class="name">The Vanguard Carbon Chrono</h3>
                 <p class="price">HK$4,100</p>
+            <span class="stock-status" style="color:#4CAF50; font-size:10px;">✓ In Stock</span>
             </div>
         </div>
 
@@ -236,6 +249,7 @@
                 <span class="status">New</span>
                 <h3 class="name">Intrepid Sport Northern Lights</h3>
                 <p class="price">HK$2,000</p>
+            <span class="stock-status" style="color:#4CAF50; font-size:10px;">✓ In Stock</span>
             </div>
         </div>
 
@@ -249,6 +263,7 @@
                 <span class="status">Limited</span>
                 <h3 class="name">The Valencia Rose Allure</h3>
                 <p class="price">HK$1,750</p>
+            <span class="stock-status" style="color:#4CAF50; font-size:10px;">✓ In Stock</span>
             </div>
         </div>
 
@@ -262,6 +277,7 @@
                 <span class="status">New</span>
                 <h3 class="name">Intrepid Sport Emerald Mist</h3>
                 <p class="price">HK$2,000</p>
+            <span class="stock-status" style="color:#4CAF50; font-size:10px;">✓ In Stock</span>
             </div>
         </div>
     </div>
@@ -293,6 +309,11 @@
         <div><h4 style="color: #c6a43f; font-size: 0.8rem;">We Accept</h4><div style="display: flex; gap: 0.5rem;"><i class="fab fa-cc-visa" style="font-size:1.5rem;"></i><i class="fab fa-cc-mastercard" style="font-size:1.5rem;"></i><i class="fab fa-cc-paypal" style="font-size:1.5rem;"></i></div></div>
     </div>
     <div style="text-align: center; padding-top: 1rem; border-top: 1px solid #1a1a1a;"><p style="font-size: 0.6rem; color: #666;">Copyright © 2026 DUSK all rights reserved.</p></div>
+    
+    <!-- WhatsApp Chat Link -->
+    <a href="https://wa.me/923000000000?text=Hi! I have a question about your watches." target="_blank" style="position:fixed; bottom:20px; left:20px; background:#25D366; color:white; padding:10px 15px; border-radius:40px; text-decoration:none; font-size:0.8rem; font-weight:bold; z-index:999; display:flex; align-items:center; gap:8px;">
+        <i class="fab fa-whatsapp"></i> Chat with us
+    </a>
 </footer>
 
 <script>
@@ -383,5 +404,10 @@
     // Hero video now scrolls normally with the page
     updateCartCount(); updateWishlistCount();
 </script>
+
+<!-- Back to Top Button -->
+<button onclick="window.scrollTo({top:0,behavior:'smooth'})" style="position:fixed; bottom:20px; right:20px; background:#c6a43f; color:#000; border:none; border-radius:50%; width:45px; height:45px; cursor:pointer; z-index:999; font-size:1.2rem;">↑</button>
+
+
 </body>
 </html>
