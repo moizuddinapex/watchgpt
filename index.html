@@ -379,24 +379,8 @@
         if (vid) { item.addEventListener('mouseenter', () => vid.play()); item.addEventListener('mouseleave', () => { vid.pause(); vid.currentTime = 0; }); }
     });
 
-    // ==================== HERO SCROLL SNAP ====================
-    const heroSection = document.querySelector('.hero-video-section');
-    const heroContent = document.querySelector('.hero-content');
-    let isSnapped = false;
-    window.addEventListener('scroll', function() {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        if (scrollTop > 80 && !isSnapped) {
-            heroSection.style.transition = 'all 0.3s ease';
-            heroSection.style.height = '0'; heroSection.style.opacity = '0'; heroSection.style.overflow = 'hidden';
-            if (heroContent) heroContent.style.display = 'none';
-            isSnapped = true;
-        } else if (scrollTop <= 50 && isSnapped) {
-            heroSection.style.height = '90vh'; heroSection.style.opacity = '1'; heroSection.style.overflow = 'hidden';
-            if (heroContent) heroContent.style.display = 'block';
-            isSnapped = false;
-        }
-    });
-
+        // ==================== HERO SCROLL SNAP - DISABLED FOR NORMAL SCROLLING ====================
+    // Hero video now scrolls normally with the page
     updateCartCount(); updateWishlistCount();
 </script>
 </body>
